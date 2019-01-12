@@ -10,14 +10,13 @@ int printTriangle(int size) {
      //count from 0 (inclusive) to i (inclusive), for each number j that you count
      for (int j = 0; j <= i; j++) {
         //print a "*"
-       printf("*")
+       printf("*");
         //increment starCount
        starCount++;
      }
      //when you finish counting on j, 
-
      //print a newline ("\n")
-     printf("\n")
+     printf("\n");
   }
   //when you finish counting on i, 
      
