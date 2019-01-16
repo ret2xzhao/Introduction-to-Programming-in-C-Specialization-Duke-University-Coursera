@@ -14,11 +14,11 @@ int is_border(int x, int y,
 	      int xmin, int xmax,
 	      int ymin, int ymax) {
 
-  if (x >= xmin && x < xmax && (y == ymin || y == ymax)) {
+  if (x >= xmin && x <= xmax && (y == ymin || y == ymax)) {
     return 1;
   }
 
-  if (y >= ymin && y < ymax && (x == xmin || x == xmax)) {
+  if (y >= ymin && y <= ymax && (x == xmin || x == xmax)) {
     return 1;
   }
 
