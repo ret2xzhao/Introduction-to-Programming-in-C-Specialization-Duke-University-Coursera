@@ -1,37 +1,24 @@
-Grading at Mon Jan 21 20:46:01 UTC 2019
+Grading at Mon Jan 21 21:09:52 UTC 2019
 Attempting to compile rectangle.c
-Tring to run rectangle
-Line_5_did_not_match
-Line_6_did_not_match
-Line_7_did_not_match
-Line_9_did_not_match
-Line_10_did_not_match
-Line_11_did_not_match
-Line_13_did_not_match
-Line_14_did_not_match
-Line_15_did_not_match
-Line_20_did_not_match
-Your file did not match the expected ouput
-Your output did not match what we expected. Here is what you printed
-r1 is (2,3) to (7,9)
-r2 is (-1,-2) to (4,5)
-r3 is (-2,-3) to (5,7)
-r4 is (-4,7) to (0,9)
-intersection(r1,r1): (2,3) to (9,12)
-intersection(r1,r2): (2,3) to (6,8)
-intersection(r1,r3): (2,3) to (7,10)
-intersection(r1,r4): <empty>
-intersection(r2,r1): (2,3) to (6,8)
-intersection(r2,r2): (-1,-2) to (3,3)
-intersection(r2,r3): (-1,-2) to (3,3)
-intersection(r2,r4): <empty>
-intersection(r3,r1): (2,3) to (7,10)
-intersection(r3,r2): (-1,-2) to (3,3)
-intersection(r3,r3): (-2,-3) to (3,4)
-intersection(r3,r4): (-2,7) to (0,7)
-intersection(r4,r1): <empty>
-intersection(r4,r2): <empty>
-intersection(r4,r3): (-2,7) to (0,7)
-intersection(r4,r4): (-4,7) to (-4,16)
+rectangle.c:1:2: error: invalid preprocessing directive #tdio
+ #tdio.h>
+  ^
+rectangle.c: In function ‘printRectangle’:
+rectangle.c:82:5: error: implicit declaration of function ‘printf’ [-Werror=implicit-function-declaration]
+     printf("<empty>\n");
+     ^
+rectangle.c:82:5: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror]
+rectangle.c:82:5: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+rectangle.c:85:5: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror]
+     printf("(%d,%d) to (%d,%d)\n", r.x, r.y,
+     ^
+rectangle.c:85:5: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+rectangle.c: In function ‘main’:
+rectangle.c:100:3: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror]
+   printf("r1 is ");
+   ^
+rectangle.c:100:3: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+cc1: all warnings being treated as errors
+The code did not compile!
 
 Overall Grade: F
