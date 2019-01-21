@@ -1,4 +1,4 @@
-#tdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 //I've provided "min" and "max" functions in
 //case they are useful to you
