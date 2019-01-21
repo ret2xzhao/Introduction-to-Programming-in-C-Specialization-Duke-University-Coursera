@@ -47,7 +47,7 @@ rectangle intersection(rectangle r1, rectangle r2) {
     ans.x = 0;
     ans.y = 0;
     ans.width = 0;
-    ans.width = 0;
+    ans.height = 0;
     return ans;
   }
 
