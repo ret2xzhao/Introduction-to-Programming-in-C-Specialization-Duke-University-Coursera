@@ -22,17 +22,13 @@ void retirement (int startAge, double initial, retire_info working, retire_info 
     balance = balance + balance * working.rate_of_return;
     balance = balance + working.contribution;
     total_months = total_months + 1;
-  
-    return balance;
   }
 
-  for (int j = 0; j < retired.months; j++) {
+  for (int j = 0; j <= retired.months; j++) {
     print_current_balance (total_months, balance);
     balance = balance + balance * retired.rate_of_return;
     balance = balance + retired.contribution;
     total_months = total_months + 1;
-  
-    return balance;
   }
 }
   
