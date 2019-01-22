@@ -24,7 +24,7 @@ void retirement (int startAge, double initial, retire_info working, retire_info 
     total_months = total_months + 1;
   }
 
-  for (int j = 0; j <= retired.months; j++) {
+  for (int j = 0; j < (retired.months+1); j++) {
     print_current_balance (total_months, balance);
     balance = balance + balance * retired.rate_of_return;
     balance = balance + retired.contribution;
@@ -34,12 +34,12 @@ void retirement (int startAge, double initial, retire_info working, retire_info 
   
 int main(void) {
   retire_info working;
-  working.months = 489;
+  working.months = 2;
   working.contribution = 1000;
   working.rate_of_return = 0.045 / 12;
 
   retire_info retired;
-  retired.months = 384;
+  retired.months = 3;
   retired.contribution = -4000;
   retired.rate_of_return = 0.01 / 12;
 
