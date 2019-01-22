@@ -1,46 +1,13 @@
-Grading at Tue Jan 22 08:32:38 UTC 2019
+Grading at Tue Jan 22 09:02:31 UTC 2019
 Attempting to compile retirement.c
 retirement.c: In function ‘retirement’:
-retirement.c:16:3: error: parameter ‘balance’ is initialized
-   double balance = initial;
-   ^
-retirement.c:16:20: error: ‘initial’ undeclared (first use in this function)
-   double balance = initial;
-                    ^
-retirement.c:16:20: note: each undeclared identifier is reported only once for each function it appears in
-retirement.c:17:1: error: parameter ‘total_months’ is initialized
- int total_months = startAge;
- ^
-retirement.c:17:20: error: ‘startAge’ undeclared (first use in this function)
- int total_months = startAge;
-                    ^
-retirement.c:19:1: error: expected declaration specifiers before ‘for’
- for (int i = 0; i < retire_info working.months; i++) {
- ^
-retirement.c:19:17: error: expected declaration specifiers before ‘i’
- for (int i = 0; i < retire_info working.months; i++) {
-                 ^
-retirement.c:19:49: error: expected declaration specifiers before ‘i’
- for (int i = 0; i < retire_info working.months; i++) {
-                                                 ^
-retirement.c:28:1: error: expected declaration specifiers before ‘for’
- for (int j = 0; j < retire_info retired.months; j++) {
- ^
-retirement.c:28:17: error: expected declaration specifiers before ‘j’
- for (int j = 0; j < retire_info retired.months; j++) {
-                 ^
-retirement.c:28:49: error: expected declaration specifiers before ‘j’
- for (int j = 0; j < retire_info retired.months; j++) {
-                                                 ^
-retirement.c:37:16: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
- int main(void) {
-                ^
-retirement.c:15:6: error: old-style parameter declarations in prototyped function definition
- void retirement (int startAge, double initial, retire_info working, retire_info retired)
-      ^
-retirement.c:50:1: error: expected ‘{’ at end of input
- }
- ^
+retirement.c:26:12: error: ‘return’ with a value, in function returning void [-Werror]
+     return balance;
+            ^
+retirement.c:35:12: error: ‘return’ with a value, in function returning void [-Werror]
+     return balance;
+            ^
+cc1: all warnings being treated as errors
 The code did not compile!
 
 Overall Grade: F
