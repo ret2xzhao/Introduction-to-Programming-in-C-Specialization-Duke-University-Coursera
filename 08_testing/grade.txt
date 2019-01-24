@@ -1,9 +1,10 @@
-Grading at Thu Jan 24 00:26:01 UTC 2019
+Grading at Thu Jan 24 00:28:07 UTC 2019
 #################################################
 test input.1:
 I expected to find a file called 'input.1' but it did not exist
 (or was not a regular file)
 Here are the files that I can find:
+grade.txt
 isPrime-broken1
 isPrime-broken2
 isPrime-broken3
@@ -15,6 +16,7 @@ test input.2:
 I expected to find a file called 'input.2' but it did not exist
 (or was not a regular file)
 Here are the files that I can find:
+grade.txt
 isPrime-broken1
 isPrime-broken2
 isPrime-broken3
@@ -26,6 +28,7 @@ test input.3:
 I expected to find a file called 'input.3' but it did not exist
 (or was not a regular file)
 Here are the files that I can find:
+grade.txt
 isPrime-broken1
 isPrime-broken2
 isPrime-broken3
@@ -37,6 +40,7 @@ test input.4:
 I expected to find a file called 'input.4' but it did not exist
 (or was not a regular file)
 Here are the files that I can find:
+grade.txt
 isPrime-broken1
 isPrime-broken2
 isPrime-broken3
