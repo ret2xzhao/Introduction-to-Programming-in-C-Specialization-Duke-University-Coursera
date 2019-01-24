@@ -10,15 +10,24 @@ aaaab bbbcc
 aaaab bbccc
 aaaab bcccc
 aaaab ccccc
+aaabb bbbbb
+aaabb bbbbc
+aaabb bbbcc
 aaabb bbccc
-aaabc bbccc
-aaaa bbbbb
-aaaaa bbbb
-aaa bbb ccc
-a
-13333 ? ???
-aaaaa bbbbbb
-üüüüö uuuua
-aaaaA aaaaa
-aabcd aabbb
-abcde fghij
+aaabb bcccc
+aaabb ccccc
+aabbb bbbbb
+aabbb bbbbc
+aabbb bbbcc
+aabbb bbccc
+aabbb bcccc
+aabbb ccccc
+abbbb bbbbb
+abbbb bbbbc
+abbbb bbbcc
+abbbb bbccc
+abbbb bcccc
+abbbb ccccc
+bbbbb ccccc
+aaaaa bbbbb ccccc
+aaaaa
