@@ -29,6 +29,20 @@ abbbb bbccc
 abbbb bcccc
 abbbb ccccc
 bbbbb ccccc
+aaaaa abcde
+aaaab aacde
+aaaab abcde
+aaabb abcde
+aabcd bbbbb
+aabcd bbbbc
+aabcd bbbcc
+aabcd bbcde
+aabcd abcde
+abcde bbbbb
+abcde bbbbc
+abcde bbbcc
+abcde aabcd
+abcde abcde
 aaaaa bbbbb ccccc
 aaaaa
 aaaaaa bbbbb
