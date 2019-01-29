@@ -1,167 +1,167 @@
-Grading at Tue Jan 29 06:35:33 UTC 2019
+Grading at Tue Jan 29 06:39:17 UTC 2019
 Compiling cards.c
 cards.c: In function ‘value_letter’:
 cards.c:46:6: error: expected ‘(’ before ‘c’
-   if c = "2"; {
+   if c.value = "2"; {
       ^
-cards.c:46:8: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   if c = "2"; {
-        ^
+cards.c:46:14: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   if c.value = "2"; {
+              ^
 cards.c:49:3: error: ‘else’ without a previous ‘if’
-   else if c = "3"; {
+   else if c.value = "3"; {
    ^
 cards.c:49:11: error: expected ‘(’ before ‘c’
-   else if c = "3"; {
+   else if c.value = "3"; {
            ^
-cards.c:49:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "3"; {
-             ^
+cards.c:49:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "3"; {
+                   ^
 cards.c:52:3: error: ‘else’ without a previous ‘if’
-   else if c = "4"; {
+   else if c.value = "4"; {
    ^
 cards.c:52:11: error: expected ‘(’ before ‘c’
-   else if c = "4"; {
+   else if c.value = "4"; {
            ^
-cards.c:52:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "4"; {
-             ^
+cards.c:52:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "4"; {
+                   ^
 cards.c:55:3: error: ‘else’ without a previous ‘if’
-   else if c = "5"; {
+   else if c.value = "5"; {
    ^
 cards.c:55:11: error: expected ‘(’ before ‘c’
-   else if c = "5"; {
+   else if c.value = "5"; {
            ^
-cards.c:55:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "5"; {
-             ^
+cards.c:55:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "5"; {
+                   ^
 cards.c:58:3: error: ‘else’ without a previous ‘if’
-   else if c = "6"; {
+   else if c.value = "6"; {
    ^
 cards.c:58:11: error: expected ‘(’ before ‘c’
-   else if c = "6"; {
+   else if c.value = "6"; {
            ^
-cards.c:58:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "6"; {
-             ^
+cards.c:58:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "6"; {
+                   ^
 cards.c:61:3: error: ‘else’ without a previous ‘if’
-   else if c = "7"; {
+   else if c.value = "7"; {
    ^
 cards.c:61:11: error: expected ‘(’ before ‘c’
-   else if c = "7"; {
+   else if c.value = "7"; {
            ^
-cards.c:61:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "7"; {
-             ^
+cards.c:61:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "7"; {
+                   ^
 cards.c:64:3: error: ‘else’ without a previous ‘if’
-   else if c = "8"; {
+   else if c.value = "8"; {
    ^
 cards.c:64:11: error: expected ‘(’ before ‘c’
-   else if c = "8"; {
+   else if c.value = "8"; {
            ^
-cards.c:64:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "8"; {
-             ^
+cards.c:64:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "8"; {
+                   ^
 cards.c:67:3: error: ‘else’ without a previous ‘if’
-   else if c = "9"; {
+   else if c.value = "9"; {
    ^
 cards.c:67:11: error: expected ‘(’ before ‘c’
-   else if c = "9"; {
+   else if c.value = "9"; {
            ^
-cards.c:67:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "9"; {
-             ^
+cards.c:67:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "9"; {
+                   ^
 cards.c:70:3: error: ‘else’ without a previous ‘if’
-   else if c = "10"; {
+   else if c.value = "10"; {
    ^
 cards.c:70:11: error: expected ‘(’ before ‘c’
-   else if c = "10"; {
+   else if c.value = "10"; {
            ^
-cards.c:70:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "10"; {
-             ^
+cards.c:70:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "10"; {
+                   ^
 cards.c:73:3: error: ‘else’ without a previous ‘if’
-   else if c = "Jack"; {
+   else if c.value = "Jack"; {
    ^
 cards.c:73:11: error: expected ‘(’ before ‘c’
-   else if c = "Jack"; {
+   else if c.value = "Jack"; {
            ^
-cards.c:73:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "Jack"; {
-             ^
+cards.c:73:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "Jack"; {
+                   ^
 cards.c:74:18: error: ‘J’ undeclared (first use in this function)
      printf("%d", J);
                   ^
 cards.c:74:18: note: each undeclared identifier is reported only once for each function it appears in
 cards.c:76:3: error: ‘else’ without a previous ‘if’
-   else if c = "Queen"; {
+   else if c.value = "Queen"; {
    ^
 cards.c:76:11: error: expected ‘(’ before ‘c’
-   else if c = "Queen"; {
+   else if c.value = "Queen"; {
            ^
-cards.c:76:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "Queen"; {
-             ^
+cards.c:76:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "Queen"; {
+                   ^
 cards.c:77:18: error: ‘Q’ undeclared (first use in this function)
      printf("%d", Q);
                   ^
 cards.c:79:3: error: ‘else’ without a previous ‘if’
-   else if c = "King"; {
+   else if c.value = "King"; {
    ^
 cards.c:79:11: error: expected ‘(’ before ‘c’
-   else if c = "King"; {
+   else if c.value = "King"; {
            ^
-cards.c:79:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "King"; {
-             ^
+cards.c:79:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "King"; {
+                   ^
 cards.c:80:18: error: ‘K’ undeclared (first use in this function)
      printf("%d", K);
                   ^
 cards.c:82:3: error: ‘else’ without a previous ‘if’
-   else if c = "Ace"; {
+   else if c.value = "Ace"; {
    ^
 cards.c:82:11: error: expected ‘(’ before ‘c’
-   else if c = "Ace"; {
+   else if c.value = "Ace"; {
            ^
-cards.c:82:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "Ace"; {
-             ^
+cards.c:82:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+   else if c.value = "Ace"; {
+                   ^
 cards.c:83:18: error: ‘A’ undeclared (first use in this function)
      printf("%d", A);
                   ^
 cards.c: In function ‘suit_letter’:
 cards.c:90:6: error: expected ‘(’ before ‘c’
-   if c = "SPADES"; {
+   if c.suit = "SPADES"; {
       ^
-cards.c:90:8: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   if c = "SPADES"; {
-        ^
+cards.c:90:13: error: incompatible types when assigning to type ‘suit_t {aka enum <anonymous>}’ from type ‘char *’
+   if c.suit = "SPADES"; {
+             ^
 cards.c:93:3: error: ‘else’ without a previous ‘if’
-   else if c = "HEARTS"; {
+   else if c.suit = "HEARTS"; {
    ^
 cards.c:93:11: error: expected ‘(’ before ‘c’
-   else if c = "HEARTS"; {
+   else if c.suit = "HEARTS"; {
            ^
-cards.c:93:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "HEARTS"; {
-             ^
+cards.c:93:18: error: incompatible types when assigning to type ‘suit_t {aka enum <anonymous>}’ from type ‘char *’
+   else if c.suit = "HEARTS"; {
+                  ^
 cards.c:96:3: error: ‘else’ without a previous ‘if’
-   else if c = "DIAMONDS"; {
+   else if c.suit = "DIAMONDS"; {
    ^
 cards.c:96:11: error: expected ‘(’ before ‘c’
-   else if c = "DIAMONDS"; {
+   else if c.suit = "DIAMONDS"; {
            ^
-cards.c:96:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "DIAMONDS"; {
-             ^
+cards.c:96:18: error: incompatible types when assigning to type ‘suit_t {aka enum <anonymous>}’ from type ‘char *’
+   else if c.suit = "DIAMONDS"; {
+                  ^
 cards.c:99:3: error: ‘else’ without a previous ‘if’
-   else if c = "CLUBS"; {
+   else if c.suit = "CLUBS"; {
    ^
 cards.c:99:11: error: expected ‘(’ before ‘c’
-   else if c = "CLUBS"; {
+   else if c.suit = "CLUBS"; {
            ^
-cards.c:99:13: error: incompatible types when assigning to type ‘card_t {aka struct card_tag}’ from type ‘char *’
-   else if c = "CLUBS"; {
-             ^
+cards.c:99:18: error: incompatible types when assigning to type ‘suit_t {aka enum <anonymous>}’ from type ‘char *’
+   else if c.suit = "CLUBS"; {
+                  ^
 cards.c: In function ‘print_card’:
 cards.c:106:15: error: invalid operands to binary + (have ‘char *’ and ‘char *’)
    printf("%c" + "%c",value_letter(card_t c) ,suit_letter(card_t c))
