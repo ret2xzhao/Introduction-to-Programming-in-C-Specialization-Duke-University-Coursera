@@ -1,15 +1,21 @@
-Grading at Tue Jan 29 18:20:06 UTC 2019
+Grading at Tue Jan 29 18:23:17 UTC 2019
 Compiling cards.c
 cards.c: In function ‘print_card’:
-cards.c:60:30: error: expected expression before ‘card_t’
-   printf("%c%c",value_letter(card_t c) ,suit_letter(card_t c))
+cards.c:60:30: error: incompatible type for argument 1 of ‘value_letter’
+   printf("%c%c",value_letter(c.value) ,suit_letter(c.suit))
                               ^
-cards.c:60:53: error: expected expression before ‘card_t’
-   printf("%c%c",value_letter(card_t c) ,suit_letter(card_t c))
-                                                     ^
-cards.c:61:5: error: expected ‘;’ before ‘}’ token
-     }
-     ^
+cards.c:27:6: note: expected ‘card_t {aka struct card_tag}’ but argument is of type ‘unsigned int’
+ char value_letter(card_t c) {
+      ^
+cards.c:60:52: error: incompatible type for argument 1 of ‘suit_letter’
+   printf("%c%c",value_letter(c.value) ,suit_letter(c.suit))
+                                                    ^
+cards.c:48:6: note: expected ‘card_t {aka struct card_tag}’ but argument is of type ‘suit_t {aka enum <anonymous>}’
+ char suit_letter(card_t c) {
+      ^
+cards.c:61:3: error: expected ‘;’ before ‘}’ token
+   }
+   ^
 cards.c: In function ‘card_from_letters’:
 cards.c:74:8: error: multi-character character constant [-Werror=multichar]
    case '10': temp.value = 0; break;
