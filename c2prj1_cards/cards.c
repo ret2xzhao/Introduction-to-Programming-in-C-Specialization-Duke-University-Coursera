@@ -20,7 +20,6 @@ const char * ranking_to_string(hand_ranking_t r) {
   case TWO_PAIR: printf("TWO_PAIR"); break;
   case PAIR: printf("PAIR"); break;
   case NOTHING: printf("NOTHING"); break;
-  default: return '?'; break;
   }
   return "";
 }
