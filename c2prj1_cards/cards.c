@@ -43,45 +43,46 @@ const char * ranking_to_string(hand_ranking_t r) {
 }
 
 char value_letter(card_t c) {
-  if c.value == "2"; {
-    printf("%d", 50);
-  }
-  else if c.value == "3"; {
-    printf("%d", 51);
-  }
-  else if c.value == "4"; {
-    printf("%d", 52);
-  }
-  else if c.value == "5"; {
-    printf("%d", 53);
-  }
-  else if c.value == "6"; {
-    printf("%d", 54);
-  }
-  else if c.value == "7"; {
-    printf("%d", 55);
-  }
-  else if c.value == "8"; {
-    printf("%d", 56);
-  }
-  else if c.value == "9"; {
-    printf("%d", 57);
-  }
-  else if c.value == "10"; {
-    printf("%d", 48);
-  }
-  else if c.value == "Jack"; {
-    printf("%d", J);
-  }
-  else if c.value == "Queen"; {
-    printf("%d", Q);
-  }
-  else if c.value == "King"; {
-    printf("%d", K);
-  }
-  else if c.value == "Ace"; {
-    printf("%d", A);
-  }
+  switch(c.value) {
+  case 2:
+    return "2";
+    break;
+  case 3:
+    return "3";
+    break;
+  case 4:
+    return "4";
+    break;
+  case 5:
+    return "5";
+    break;
+  case 6:
+    return "6";
+    break;
+  case 7:
+    return "7";
+    break;
+  case 8:
+    return "8";
+    break;
+  case 9:
+    return "9";
+    break;
+  case 10:
+    return "0";
+    break;
+  case Jack:
+    return "J";
+    break;
+  case Queen:
+    return "Q";
+    break;
+  case King:
+    return "K";
+    break;
+  case Ace:
+    return "A";
+    break;
   return 'x';
 }
 
