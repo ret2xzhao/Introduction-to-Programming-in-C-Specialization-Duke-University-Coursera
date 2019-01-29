@@ -1,103 +1,24 @@
-Grading at Tue Jan 29 18:11:02 UTC 2019
+Grading at Tue Jan 29 18:20:06 UTC 2019
 Compiling cards.c
-cards.c: In function ‘suit_letter’:
-cards.c:48:3: error: enumeration value ‘NUM_SUITS’ not handled in switch [-Werror=switch]
-   switch(c.suit) {
-   ^
 cards.c: In function ‘print_card’:
-cards.c:58:15: error: invalid operands to binary + (have ‘char *’ and ‘char *’)
-   printf("%c" + "%c",value_letter(card_t c) ,suit_letter(card_t c))
-               ^
-cards.c:58:35: error: expected expression before ‘card_t’
-   printf("%c" + "%c",value_letter(card_t c) ,suit_letter(card_t c))
-                                   ^
-cards.c:58:58: error: expected expression before ‘card_t’
-   printf("%c" + "%c",value_letter(card_t c) ,suit_letter(card_t c))
-                                                          ^
-cards.c:59:5: error: expected ‘;’ before ‘}’ token
+cards.c:60:30: error: expected expression before ‘card_t’
+   printf("%c%c",value_letter(card_t c) ,suit_letter(card_t c))
+                              ^
+cards.c:60:53: error: expected expression before ‘card_t’
+   printf("%c%c",value_letter(card_t c) ,suit_letter(card_t c))
+                                                     ^
+cards.c:61:5: error: expected ‘;’ before ‘}’ token
      }
      ^
 cards.c: In function ‘card_from_letters’:
-cards.c:64:3: error: case label does not reduce to an integer constant
-   case "2": temp.value = "2";
-   ^
-cards.c:64:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "2": temp.value = "2";
-                        ^
-cards.c:66:3: error: case label does not reduce to an integer constant
-   case "3": temp.value = "3";
-   ^
-cards.c:66:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "3": temp.value = "3";
-                        ^
-cards.c:68:3: error: case label does not reduce to an integer constant
-   case "4": temp.value = "4";
-   ^
-cards.c:68:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "4": temp.value = "4";
-                        ^
-cards.c:70:3: error: case label does not reduce to an integer constant
-   case "5": temp.value = "5";
-   ^
-cards.c:70:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "5": temp.value = "5";
-                        ^
-cards.c:72:3: error: case label does not reduce to an integer constant
-   case "6": temp.value = "6";
-   ^
-cards.c:72:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "6": temp.value = "6";
-                        ^
-cards.c:74:3: error: case label does not reduce to an integer constant
-   case "7": temp.value = "7";
-   ^
-cards.c:74:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "7": temp.value = "7";
-                        ^
-cards.c:76:3: error: case label does not reduce to an integer constant
-   case "8": temp.value = "8";
-   ^
-cards.c:76:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "8": temp.value = "8";
-                        ^
-cards.c:78:3: error: case label does not reduce to an integer constant
-   case "9": temp.value = "9";
-   ^
-cards.c:78:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "9": temp.value = "9";
-                        ^
-cards.c:80:3: error: case label does not reduce to an integer constant
-   case "10": temp.value = "0";
-   ^
-cards.c:80:25: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
-   case "10": temp.value = "0";
-                         ^
-cards.c:82:3: error: case label does not reduce to an integer constant
-   case "J": temp.value = VALUE_JACK;
-   ^
-cards.c:84:3: error: case label does not reduce to an integer constant
-   case "Q": temp.value = VALUE_QUEEN;
-   ^
-cards.c:86:3: error: case label does not reduce to an integer constant
-   case "K": temp.value = VALUE_KING;
-   ^
-cards.c:88:3: error: case label does not reduce to an integer constant
-   case "A": temp.value = VALUE_ACE;
-   ^
-cards.c:92:3: error: case label does not reduce to an integer constant
-   case "s": temp.value = SPADES;
-   ^
-cards.c:94:3: error: case label does not reduce to an integer constant
-   case "h": temp.value = HEARTS;
-   ^
-cards.c:96:3: error: case label does not reduce to an integer constant
-   case "d": temp.value = DIAMONDS;
-   ^
-cards.c:98:3: error: case label does not reduce to an integer constant
-   case "c": temp.value = CLUBS;
+cards.c:74:8: error: multi-character character constant [-Werror=multichar]
+   case '10': temp.value = 0; break;
+        ^
+cards.c:74:3: error: case label value exceeds maximum value for type [-Werror]
+   case '10': temp.value = 0; break;
    ^
 In file included from cards.c:2:0:
-cards.c:101:10: error: void value not ignored as it ought to be
+cards.c:86:10: error: void value not ignored as it ought to be
    assert(assert_card_valid(temp));
           ^
 cc1: all warnings being treated as errors
