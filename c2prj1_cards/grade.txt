@@ -1,19 +1,5 @@
-Grading at Tue Jan 29 18:05:06 UTC 2019
+Grading at Tue Jan 29 18:11:02 UTC 2019
 Compiling cards.c
-cards.c: In function ‘value_letter’:
-cards.c:38:8: error: ‘Jack’ undeclared (first use in this function)
-   case Jack: return 'J'; break;
-        ^
-cards.c:38:8: note: each undeclared identifier is reported only once for each function it appears in
-cards.c:39:8: error: ‘Queen’ undeclared (first use in this function)
-   case Queen: return 'Q'; break;
-        ^
-cards.c:40:8: error: ‘King’ undeclared (first use in this function)
-   case King: return 'K'; break;
-        ^
-cards.c:41:8: error: ‘Ace’ undeclared (first use in this function)
-   case Ace: return 'A'; break;
-        ^
 cards.c: In function ‘suit_letter’:
 cards.c:48:3: error: enumeration value ‘NUM_SUITS’ not handled in switch [-Werror=switch]
    switch(c.suit) {
