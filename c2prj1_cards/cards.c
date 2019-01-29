@@ -71,7 +71,7 @@ card_t card_from_letters(char value_let, char suit_let) {
   case '7': temp.value = 7; break;
   case '8': temp.value = 8; break;
   case '9': temp.value = 9; break;
-  case '10': temp.value = 0; break;
+  case '0': temp.value = 10; break;
   case 'J': temp.value = VALUE_JACK; break;
   case 'Q': temp.value = VALUE_QUEEN; break;
   case 'K': temp.value = VALUE_KING; break;
@@ -83,7 +83,7 @@ card_t card_from_letters(char value_let, char suit_let) {
   case 'd': temp.value = DIAMONDS; break;
   case 'c': temp.value = CLUBS; break;
   }
-  assert(assert_card_valid(temp));
+  (assert_card_valid(temp));
   return temp;
 }
 
