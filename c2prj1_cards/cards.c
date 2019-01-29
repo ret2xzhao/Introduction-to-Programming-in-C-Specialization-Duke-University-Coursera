@@ -30,31 +30,26 @@ char value_letter(card_t c) {
   case 3: return '3'; break;
   case 4: return '4'; break;
   case 5: return '5'; break;
-  case 6: return "6"; break;
-  case 7: return "7"; break;
-  case 8: return "8"; break;
-  case 9: return "9"; break;
-  case 10: return "0"; break;
-  case Jack: return "J"; break;
-  case Queen: return "Q"; break;
-  case King: return "K"; break;
-  case Ace: return "A"; break;
+  case 6: return '6'; break;
+  case 7: return '7'; break;
+  case 8: return '8'; break;
+  case 9: return '9'; break;
+  case 10: return '0'; break;
+  case Jack: return 'J'; break;
+  case Queen: return 'Q'; break;
+  case King: return 'K'; break;
+  case Ace: return 'A'; break;
+  }
   return 'x';
 }
 
 
 char suit_letter(card_t c) {
-  if c.suit == "SPADES"; {
-    printf("s");
-  }
-  else if c.suit == "HEARTS"; {
-    printf("h");
-  }
-  else if c.suit == "DIAMONDS"; {
-    printf("d");
-  }
-  else if c.suit == "CLUBS"; {
-    printf("c");
+  switch(c.suit) {
+  case SPADES: return 's'; break;
+  case HEARTS: return 'h'; break;
+  case DIAMONDS: return 'd'; break;
+  case CLUBS: return 'c'; break;
   }
   return 'x';
 }
