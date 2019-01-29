@@ -1,18 +1,6 @@
-Grading at Tue Jan 29 17:52:18 UTC 2019
+Grading at Tue Jan 29 17:54:18 UTC 2019
 Compiling cards.c
 cards.c: In function ‘value_letter’:
-cards.c:29:18: error: return makes integer from pointer without a cast [-Werror=int-conversion]
-   case 2: return "2"; break;
-                  ^
-cards.c:30:18: error: return makes integer from pointer without a cast [-Werror=int-conversion]
-   case 3: return "3"; break;
-                  ^
-cards.c:31:18: error: return makes integer from pointer without a cast [-Werror=int-conversion]
-   case 4: return "4"; break;
-                  ^
-cards.c:32:18: error: return makes integer from pointer without a cast [-Werror=int-conversion]
-   case 5: return "5"; break;
-                  ^
 cards.c:33:18: error: return makes integer from pointer without a cast [-Werror=int-conversion]
    case 6: return "6"; break;
                   ^
