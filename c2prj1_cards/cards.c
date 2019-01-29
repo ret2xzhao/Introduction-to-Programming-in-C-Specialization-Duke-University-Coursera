@@ -43,43 +43,43 @@ const char * ranking_to_string(hand_ranking_t r) {
 }
 
 char value_letter(card_t c) {
-  if c.value = "2"; {
+  if c.value == "2"; {
     printf("%d", 50);
   }
-  else if c.value = "3"; {
+  else if c.value == "3"; {
     printf("%d", 51);
   }
-  else if c.value = "4"; {
+  else if c.value == "4"; {
     printf("%d", 52);
   }
-  else if c.value = "5"; {
+  else if c.value == "5"; {
     printf("%d", 53);
   }
-  else if c.value = "6"; {
+  else if c.value == "6"; {
     printf("%d", 54);
   }
-  else if c.value = "7"; {
+  else if c.value == "7"; {
     printf("%d", 55);
   }
-  else if c.value = "8"; {
+  else if c.value == "8"; {
     printf("%d", 56);
   }
-  else if c.value = "9"; {
+  else if c.value == "9"; {
     printf("%d", 57);
   }
-  else if c.value = "10"; {
+  else if c.value == "10"; {
     printf("%d", 48);
   }
-  else if c.value = "Jack"; {
+  else if c.value == "Jack"; {
     printf("%d", J);
   }
-  else if c.value = "Queen"; {
+  else if c.value == "Queen"; {
     printf("%d", Q);
   }
-  else if c.value = "King"; {
+  else if c.value == "King"; {
     printf("%d", K);
   }
-  else if c.value = "Ace"; {
+  else if c.value == "Ace"; {
     printf("%d", A);
   }
   return 'x';
@@ -87,16 +87,16 @@ char value_letter(card_t c) {
 
 
 char suit_letter(card_t c) {
-  if c.suit = "SPADES"; {
+  if c.suit == "SPADES"; {
     printf("s");
   }
-  else if c.suit = "HEARTS"; {
+  else if c.suit == "HEARTS"; {
     printf("h");
   }
-  else if c.suit = "DIAMONDS"; {
+  else if c.suit == "DIAMONDS"; {
     printf("d");
   }
-  else if c.suit = "CLUBS"; {
+  else if c.suit == "CLUBS"; {
     printf("c");
   }
   return 'x';
