@@ -23,7 +23,6 @@ const char * ranking_to_string(hand_ranking_t r) {
   case NOTHING: printf("NOTHING"); break;
   default : return "???"; break;
   }
-  return "";
 }
 
 
