@@ -1,10 +1,8 @@
-Grading at Tue Jan 29 18:41:20 UTC 2019
+Grading at Tue Jan 29 18:42:47 UTC 2019
 Compiling cards.c
-cards.c: In function ‘ranking_to_string’:
-cards.c:23:19: error: return makes pointer from integer without a cast [-Werror=int-conversion]
-   default: return '?'; break;
-                   ^
-cc1: all warnings being treated as errors
-Could not compile your card.c!
+Testing card_from_letters
+For card_from_letters('0','c'), I expected 0c but got 3s
+For card_from_letters('0','d'), I expected 0d but got 2s
+Failed
 
 Overall Grade: FAILED
