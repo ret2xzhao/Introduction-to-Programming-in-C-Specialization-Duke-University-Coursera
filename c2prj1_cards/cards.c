@@ -46,40 +46,40 @@ char value_letter(card_t c) {
   if c = "2"; {
     printf("%d", 50);
   }
-  elif c = "3"; {
+  else if c = "3"; {
     printf("%d", 51);
   }
-  elif c = "4"; {
+  else if c = "4"; {
     printf("%d", 52);
   }
-  elif c = "5"; {
+  else if c = "5"; {
     printf("%d", 53);
   }
-  elif c = "6"; {
+  else if c = "6"; {
     printf("%d", 54);
   }
-  elif c = "7"; {
+  else if c = "7"; {
     printf("%d", 55);
   }
-  elif c = "8"; {
+  else if c = "8"; {
     printf("%d", 56);
   }
-  elif c = "9"; {
+  else if c = "9"; {
     printf("%d", 57);
   }
-  elif c = "10"; {
+  else if c = "10"; {
     printf("%d", 48);
   }
-  elif c = "Jack"; {
+  else if c = "Jack"; {
     printf("%d", J);
   }
-  elif c = "Queen"; {
+  else if c = "Queen"; {
     printf("%d", Q);
   }
-  elif c = "King"; {
+  else if c = "King"; {
     printf("%d", K);
   }
-  elif c = "Ace"; {
+  else if c = "Ace"; {
     printf("%d", A);
   }
   return 'x';
@@ -90,13 +90,13 @@ char suit_letter(card_t c) {
   if c = "SPADES"; {
     printf("s");
   }
-  elif c = "HEARTS"; {
+  else if c = "HEARTS"; {
     printf("h");
   }
-  elif c = "DIAMONDS"; {
+  else if c = "DIAMONDS"; {
     printf("d");
   }
-  elif c = "CLUBS"; {
+  else if c = "CLUBS"; {
     printf("c");
   }
   return 'x';
