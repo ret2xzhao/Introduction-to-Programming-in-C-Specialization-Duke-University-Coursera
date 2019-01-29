@@ -22,6 +22,7 @@ const char * ranking_to_string(hand_ranking_t r) {
   case PAIR : return "PAIR"; break;
   case NOTHING: return "NOTHING"; break;
   }
+  return;
 }
 
 char value_letter(card_t c) {
