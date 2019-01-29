@@ -1,229 +1,201 @@
-Grading at Tue Jan 29 06:43:12 UTC 2019
+Grading at Tue Jan 29 17:44:10 UTC 2019
 Compiling cards.c
 cards.c: In function ‘value_letter’:
-cards.c:46:6: error: expected ‘(’ before ‘c’
-   if c.value == "2"; {
-      ^
-cards.c:46:6: error: statement with no effect [-Werror=unused-value]
-cards.c:49:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "3"; {
-   ^
-cards.c:49:11: error: expected ‘(’ before ‘c’
-   else if c.value == "3"; {
-           ^
-cards.c:49:11: error: statement with no effect [-Werror=unused-value]
-cards.c:52:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "4"; {
-   ^
-cards.c:52:11: error: expected ‘(’ before ‘c’
-   else if c.value == "4"; {
-           ^
-cards.c:52:11: error: statement with no effect [-Werror=unused-value]
-cards.c:55:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "5"; {
-   ^
-cards.c:55:11: error: expected ‘(’ before ‘c’
-   else if c.value == "5"; {
-           ^
-cards.c:55:11: error: statement with no effect [-Werror=unused-value]
-cards.c:58:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "6"; {
-   ^
-cards.c:58:11: error: expected ‘(’ before ‘c’
-   else if c.value == "6"; {
-           ^
-cards.c:58:11: error: statement with no effect [-Werror=unused-value]
-cards.c:61:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "7"; {
-   ^
-cards.c:61:11: error: expected ‘(’ before ‘c’
-   else if c.value == "7"; {
-           ^
-cards.c:61:11: error: statement with no effect [-Werror=unused-value]
-cards.c:64:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "8"; {
-   ^
-cards.c:64:11: error: expected ‘(’ before ‘c’
-   else if c.value == "8"; {
-           ^
-cards.c:64:11: error: statement with no effect [-Werror=unused-value]
-cards.c:67:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "9"; {
-   ^
-cards.c:67:11: error: expected ‘(’ before ‘c’
-   else if c.value == "9"; {
-           ^
-cards.c:67:11: error: statement with no effect [-Werror=unused-value]
-cards.c:70:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "10"; {
-   ^
-cards.c:70:11: error: expected ‘(’ before ‘c’
-   else if c.value == "10"; {
-           ^
-cards.c:70:11: error: statement with no effect [-Werror=unused-value]
-cards.c:73:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "Jack"; {
-   ^
-cards.c:73:11: error: expected ‘(’ before ‘c’
-   else if c.value == "Jack"; {
-           ^
-cards.c:73:11: error: statement with no effect [-Werror=unused-value]
-cards.c:74:18: error: ‘J’ undeclared (first use in this function)
-     printf("%d", J);
-                  ^
-cards.c:74:18: note: each undeclared identifier is reported only once for each function it appears in
-cards.c:76:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "Queen"; {
-   ^
-cards.c:76:11: error: expected ‘(’ before ‘c’
-   else if c.value == "Queen"; {
-           ^
-cards.c:76:11: error: statement with no effect [-Werror=unused-value]
-cards.c:77:18: error: ‘Q’ undeclared (first use in this function)
-     printf("%d", Q);
-                  ^
-cards.c:79:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "King"; {
-   ^
-cards.c:79:11: error: expected ‘(’ before ‘c’
-   else if c.value == "King"; {
-           ^
-cards.c:79:11: error: statement with no effect [-Werror=unused-value]
-cards.c:80:18: error: ‘K’ undeclared (first use in this function)
-     printf("%d", K);
-                  ^
-cards.c:82:3: error: ‘else’ without a previous ‘if’
-   else if c.value == "Ace"; {
-   ^
-cards.c:82:11: error: expected ‘(’ before ‘c’
-   else if c.value == "Ace"; {
-           ^
-cards.c:82:11: error: statement with no effect [-Werror=unused-value]
-cards.c:83:18: error: ‘A’ undeclared (first use in this function)
-     printf("%d", A);
-                  ^
+cards.c:48:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "2";
+            ^
+cards.c:51:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "3";
+            ^
+cards.c:54:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "4";
+            ^
+cards.c:57:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "5";
+            ^
+cards.c:60:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "6";
+            ^
+cards.c:63:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "7";
+            ^
+cards.c:66:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "8";
+            ^
+cards.c:69:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "9";
+            ^
+cards.c:72:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "0";
+            ^
+cards.c:74:8: error: ‘Jack’ undeclared (first use in this function)
+   case Jack:
+        ^
+cards.c:74:8: note: each undeclared identifier is reported only once for each function it appears in
+cards.c:75:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "J";
+            ^
+cards.c:77:8: error: ‘Queen’ undeclared (first use in this function)
+   case Queen:
+        ^
+cards.c:78:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "Q";
+            ^
+cards.c:80:8: error: ‘King’ undeclared (first use in this function)
+   case King:
+        ^
+cards.c:81:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "K";
+            ^
+cards.c:83:8: error: ‘Ace’ undeclared (first use in this function)
+   case Ace:
+        ^
+cards.c:84:12: error: return makes integer from pointer without a cast [-Werror=int-conversion]
+     return "A";
+            ^
+cards.c:90:1: error: ISO C forbids nested functions [-Werror=pedantic]
+ char suit_letter(card_t c) {
+ ^
 cards.c: In function ‘suit_letter’:
-cards.c:90:6: error: expected ‘(’ before ‘c’
+cards.c:91:6: error: expected ‘(’ before ‘c’
    if c.suit == "SPADES"; {
       ^
-cards.c:90:6: error: statement with no effect [-Werror=unused-value]
-cards.c:93:3: error: ‘else’ without a previous ‘if’
+cards.c:91:6: error: statement with no effect [-Werror=unused-value]
+cards.c:94:3: error: ‘else’ without a previous ‘if’
    else if c.suit == "HEARTS"; {
    ^
-cards.c:93:11: error: expected ‘(’ before ‘c’
+cards.c:94:11: error: expected ‘(’ before ‘c’
    else if c.suit == "HEARTS"; {
            ^
-cards.c:93:11: error: statement with no effect [-Werror=unused-value]
-cards.c:96:3: error: ‘else’ without a previous ‘if’
+cards.c:94:11: error: statement with no effect [-Werror=unused-value]
+cards.c:97:3: error: ‘else’ without a previous ‘if’
    else if c.suit == "DIAMONDS"; {
    ^
-cards.c:96:11: error: expected ‘(’ before ‘c’
+cards.c:97:11: error: expected ‘(’ before ‘c’
    else if c.suit == "DIAMONDS"; {
            ^
-cards.c:96:11: error: statement with no effect [-Werror=unused-value]
-cards.c:99:3: error: ‘else’ without a previous ‘if’
+cards.c:97:11: error: statement with no effect [-Werror=unused-value]
+cards.c:100:3: error: ‘else’ without a previous ‘if’
    else if c.suit == "CLUBS"; {
    ^
-cards.c:99:11: error: expected ‘(’ before ‘c’
+cards.c:100:11: error: expected ‘(’ before ‘c’
    else if c.suit == "CLUBS"; {
            ^
-cards.c:99:11: error: statement with no effect [-Werror=unused-value]
+cards.c:100:11: error: statement with no effect [-Werror=unused-value]
+cards.c: In function ‘value_letter’:
+cards.c:106:1: error: ISO C forbids nested functions [-Werror=pedantic]
+ void print_card(card_t c) {
+ ^
 cards.c: In function ‘print_card’:
-cards.c:106:15: error: invalid operands to binary + (have ‘char *’ and ‘char *’)
+cards.c:107:15: error: invalid operands to binary + (have ‘char *’ and ‘char *’)
    printf("%c" + "%c",value_letter(card_t c) ,suit_letter(card_t c))
                ^
-cards.c:106:35: error: expected expression before ‘card_t’
+cards.c:107:35: error: expected expression before ‘card_t’
    printf("%c" + "%c",value_letter(card_t c) ,suit_letter(card_t c))
                                    ^
-cards.c:106:58: error: expected expression before ‘card_t’
+cards.c:107:58: error: expected expression before ‘card_t’
    printf("%c" + "%c",value_letter(card_t c) ,suit_letter(card_t c))
                                                           ^
-cards.c:107:5: error: expected ‘;’ before ‘}’ token
+cards.c:108:5: error: expected ‘;’ before ‘}’ token
      }
      ^
+cards.c: In function ‘value_letter’:
+cards.c:110:1: error: ISO C forbids nested functions [-Werror=pedantic]
+ card_t card_from_letters(char value_let, char suit_let) {
+ ^
 cards.c: In function ‘card_from_letters’:
-cards.c:112:3: error: case label does not reduce to an integer constant
+cards.c:113:3: error: case label does not reduce to an integer constant
    case "2": temp.value = "2";
    ^
-cards.c:112:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:113:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "2": temp.value = "2";
                         ^
-cards.c:114:3: error: case label does not reduce to an integer constant
+cards.c:115:3: error: case label does not reduce to an integer constant
    case "3": temp.value = "3";
    ^
-cards.c:114:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:115:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "3": temp.value = "3";
                         ^
-cards.c:116:3: error: case label does not reduce to an integer constant
+cards.c:117:3: error: case label does not reduce to an integer constant
    case "4": temp.value = "4";
    ^
-cards.c:116:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:117:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "4": temp.value = "4";
                         ^
-cards.c:118:3: error: case label does not reduce to an integer constant
+cards.c:119:3: error: case label does not reduce to an integer constant
    case "5": temp.value = "5";
    ^
-cards.c:118:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:119:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "5": temp.value = "5";
                         ^
-cards.c:120:3: error: case label does not reduce to an integer constant
+cards.c:121:3: error: case label does not reduce to an integer constant
    case "6": temp.value = "6";
    ^
-cards.c:120:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:121:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "6": temp.value = "6";
                         ^
-cards.c:122:3: error: case label does not reduce to an integer constant
+cards.c:123:3: error: case label does not reduce to an integer constant
    case "7": temp.value = "7";
    ^
-cards.c:122:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:123:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "7": temp.value = "7";
                         ^
-cards.c:124:3: error: case label does not reduce to an integer constant
+cards.c:125:3: error: case label does not reduce to an integer constant
    case "8": temp.value = "8";
    ^
-cards.c:124:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:125:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "8": temp.value = "8";
                         ^
-cards.c:126:3: error: case label does not reduce to an integer constant
+cards.c:127:3: error: case label does not reduce to an integer constant
    case "9": temp.value = "9";
    ^
-cards.c:126:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:127:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "9": temp.value = "9";
                         ^
-cards.c:128:3: error: case label does not reduce to an integer constant
+cards.c:129:3: error: case label does not reduce to an integer constant
    case "10": temp.value = "0";
    ^
-cards.c:128:25: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+cards.c:129:25: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
    case "10": temp.value = "0";
                          ^
-cards.c:130:3: error: case label does not reduce to an integer constant
+cards.c:131:3: error: case label does not reduce to an integer constant
    case "J": temp.value = VALUE_JACK;
    ^
-cards.c:132:3: error: case label does not reduce to an integer constant
+cards.c:133:3: error: case label does not reduce to an integer constant
    case "Q": temp.value = VALUE_QUEEN;
    ^
-cards.c:134:3: error: case label does not reduce to an integer constant
+cards.c:135:3: error: case label does not reduce to an integer constant
    case "K": temp.value = VALUE_KING;
    ^
-cards.c:136:3: error: case label does not reduce to an integer constant
+cards.c:137:3: error: case label does not reduce to an integer constant
    case "A": temp.value = VALUE_ACE;
    ^
-cards.c:140:3: error: case label does not reduce to an integer constant
+cards.c:141:3: error: case label does not reduce to an integer constant
    case "s": temp.value = SPADES;
    ^
-cards.c:142:3: error: case label does not reduce to an integer constant
+cards.c:143:3: error: case label does not reduce to an integer constant
    case "h": temp.value = HEARTS;
    ^
-cards.c:144:3: error: case label does not reduce to an integer constant
+cards.c:145:3: error: case label does not reduce to an integer constant
    case "d": temp.value = DIAMONDS;
    ^
-cards.c:146:3: error: case label does not reduce to an integer constant
+cards.c:147:3: error: case label does not reduce to an integer constant
    case "c": temp.value = CLUBS;
    ^
 In file included from cards.c:2:0:
-cards.c:149:10: error: void value not ignored as it ought to be
+cards.c:150:10: error: void value not ignored as it ought to be
    assert(assert_card_valid(temp));
           ^
+cards.c: In function ‘value_letter’:
+cards.c:154:1: error: ISO C forbids nested functions [-Werror=pedantic]
+ card_t card_from_num(unsigned c) {
+ ^
+cards.c:159:1: error: expected declaration or statement at end of input
+ }
+ ^
+cards.c:159:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
 cc1: all warnings being treated as errors
 Could not compile your card.c!
 
