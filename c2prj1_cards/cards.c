@@ -20,6 +20,7 @@ const char * ranking_to_string(hand_ranking_t r) {
   case TWO_PAIR: printf("TWO_PAIR"); break;
   case PAIR: printf("PAIR"); break;
   case NOTHING: printf("NOTHING"); break;
+  default: return '?'; break;
   }
   return "";
 }
@@ -41,7 +42,6 @@ char value_letter(card_t c) {
   case VALUE_ACE: return 'A'; break;
   default: return '?'; break;
   }
-  return 'x';
 }
 
 
@@ -53,7 +53,6 @@ char suit_letter(card_t c) {
   case CLUBS: return 'c'; break;
   default: return '?'; break;
   }
-  return 'x';
 }
 
 void print_card(card_t c) {
@@ -83,7 +82,7 @@ card_t card_from_letters(char value_let, char suit_let) {
   case 'd': temp.value = DIAMONDS; break;
   case 'c': temp.value = CLUBS; break;
   }
-  (assert_card_valid(temp));
+  assert_card_valid(temp);
   return temp;
 }
 
