@@ -1,17 +1,8 @@
-Grading at Tue Jan 29 18:30:06 UTC 2019
+Grading at Tue Jan 29 18:36:26 UTC 2019
 Compiling cards.c
-cards.c: In function ‘card_from_letters’:
-cards.c:74:8: error: multi-character character constant [-Werror=multichar]
-   case '10': temp.value = 0; break;
-        ^
-cards.c:74:3: error: case label value exceeds maximum value for type [-Werror]
-   case '10': temp.value = 0; break;
-   ^
-In file included from cards.c:2:0:
-cards.c:86:10: error: void value not ignored as it ought to be
-   assert(assert_card_valid(temp));
-          ^
-cc1: all warnings being treated as errors
-Could not compile your card.c!
+Testing card_from_letters
+For card_from_letters('0','c'), I expected 0c but got 3s
+For card_from_letters('0','d'), I expected 0d but got 2s
+Failed
 
 Overall Grade: FAILED
