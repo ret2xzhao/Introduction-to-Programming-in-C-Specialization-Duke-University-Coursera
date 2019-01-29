@@ -21,7 +21,6 @@ const char * ranking_to_string(hand_ranking_t r) {
   case TWO_PAIR : return "TWO_PAIR"; break;
   case PAIR : return "PAIR"; break;
   case NOTHING: return "NOTHING"; break;
-  default : return "?"; break;
   }
 }
 
