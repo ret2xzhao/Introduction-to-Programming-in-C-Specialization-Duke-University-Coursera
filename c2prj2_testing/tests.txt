@@ -3,3 +3,6 @@ Kh Jc 9h 6d 3c 2s 5c; Qh 0c 8h 5d 2c As 4c
 Kh Jc 9h 6d 3c 2s 5c; Qh Qc 8h 5d 2c As 4c
 Kh Kc Ac 8c 7h 6s 5c; Kh Kc 8c 7h 6s 5c 2s
 Kh Kc Ac 8c 7h 6s 5c; Kh Kc Ac 7h 3d 5c 2s
+2h Kd Ks Ah As 3s 4c; Jd Ks Kh Ad Ac 8s 2s
+2h Kd Ks Ah As 3s 4c; Kh Jc 9h 6d 3c 2s 5c
+2h Kd Ks Ah As 3s 4c; Kh Kc 8c 7h 6s 5c 2s
