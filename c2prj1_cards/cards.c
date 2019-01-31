@@ -60,9 +60,9 @@ void print_card(card_t c) {
   return;
 }
 
-card_t card_from_letters(char value_let, char suit_let) {
+card_t card_from_letters(char value_letter, char suit_letter) {
   card_t temp;
-  switch(value_let) {
+  switch(value_letter) {
   case '2': temp.value = 2; break;
   case '3': temp.value = 3; break;
   case '4': temp.value = 4; break;
@@ -77,7 +77,7 @@ card_t card_from_letters(char value_let, char suit_let) {
   case 'K': temp.value = VALUE_KING; break;
   case 'A': temp.value = VALUE_ACE; break;
   }
-  switch(suit_let) {
+  switch(suit_letter) {
   case 's': temp.suit = SPADES; break;
   case 'h': temp.suit = HEARTS; break;
   case 'd': temp.suit = DIAMONDS; break;
