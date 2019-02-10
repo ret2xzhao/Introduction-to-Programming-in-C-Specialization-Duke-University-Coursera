@@ -1,11 +1,7 @@
-Grading at Sat Feb  9 22:13:16 UTC 2019
-I expected to find a file called 'test-subseq.c' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-maxSeq.c
-next-README
-README
-run_all.sh
-Can't proceed without test-subseq.c
+Grading at Sun Feb 10 22:54:34 UTC 2019
+**Testing broken implementation 10 **
+-------------------------------------
+
+Could not compile test-subseq.c with /usr/local/l2p/subseq/subseq10.o
 
 Overall Grade: FAILED
