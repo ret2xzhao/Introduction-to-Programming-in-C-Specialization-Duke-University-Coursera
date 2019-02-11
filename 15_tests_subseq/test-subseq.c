@@ -5,7 +5,7 @@ size_t maxSeq(int * array, size_t n);
 int main(void) {
 
   int array1[] = {};
-  if (maxSeq(array1, 0)) {
+  if (maxSeq(array1, 0) !=0) {
     return EXIT_FAILURE;
   }
 
