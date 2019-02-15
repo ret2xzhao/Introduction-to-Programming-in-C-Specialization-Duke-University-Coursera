@@ -8,7 +8,7 @@ void reverse(char * str) {
   int length = strlen(str);
   int i;
   int j = length - 1;
-  if (length == 0) {
+  if (str == NULL) {
     return;
    }
   else {
