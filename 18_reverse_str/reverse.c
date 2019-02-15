@@ -4,12 +4,11 @@
 
 void reverse(char * str) {
   //WRITE ME!
-  const char * p1 = str;
   char temp;
   int length = strlen(str);
   int i;
   int j = length - 1;
-  if (length = 0) {
+  if (length == 0) {
     return "";
    }
    else {
