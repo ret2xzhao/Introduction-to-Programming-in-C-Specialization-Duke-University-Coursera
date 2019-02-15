@@ -11,8 +11,7 @@ void reverse(char * str) {
   if (str == NULL) {
     return;
   }
-  else {
-    for (i = 0; i < (length)/2; i++) {
+  for (i = 0; i < (length)/2; i++) {
       temp = str[j];
       str[j] = str[i];
       str[i] = temp;
