@@ -18,7 +18,6 @@ void reverse(char * str) {
       j--;
     }
     return;
-  }
 }
 
 int main(void) {
