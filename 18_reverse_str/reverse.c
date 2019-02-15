@@ -7,14 +7,14 @@ void reverse(char * str) {
   char temp;
   int length = strlen(str);
   int i;
-  int j = length - 1;
+  int j = length-1
   if (str == NULL) {
     return;
    }
   else {
-    for (i = 0; i < (length-1); i++) {
+    for (i = 0; i < j; i++) {
       temp = str[j];
-      str[j] = str[i];
+      str[j-1] = str[i];
       str[i] = temp;
       j--;
     }
