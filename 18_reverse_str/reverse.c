@@ -12,12 +12,12 @@ void reverse(char * str) {
   int i;
   int j = length-1;
   for (i = 0; i < (length)/2; i++) {
-      temp = str[j];
-      str[j] = str[i];
-      str[i] = temp;
-      j--;
-    }
-    return;
+    temp = str[j];
+    str[j] = str[i];
+    str[i] = temp;
+    j--;
+  }
+  return;
 }
 
 int main(void) {
