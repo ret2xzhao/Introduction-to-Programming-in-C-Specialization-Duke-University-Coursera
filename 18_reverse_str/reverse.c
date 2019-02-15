@@ -12,7 +12,7 @@ void reverse(char * str) {
     return;
   }
   else {
-    for (i = 0; i < j; i++) {
+    for (i = 0; i < (length)/2; i++) {
       temp = str[j];
       str[j-1] = str[i];
       str[i] = temp;
