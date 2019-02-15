@@ -11,15 +11,15 @@ void reverse(char * str) {
   if (length == 0) {
     return;
    }
-   else {
-     for (i = 0; i < (length-1); i++) {
-       temp = str[j];
-       str[j] = str[i];
-       str[i] = temp;
-       j--;
-     }
-     return;
-   }
+  else {
+    for (i = 0; i < (length-1); i++) {
+      temp = str[j];
+      str[j] = str[i];
+      str[i] = temp;
+      j--;
+    }
+    return;
+  }
 }
 
 int main(void) {
