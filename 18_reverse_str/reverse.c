@@ -9,8 +9,8 @@ void reverse(char * str) {
   int i;
   int j = length-1
   if (str == NULL) {
-    return;
-   }
+  return;
+  }
   else {
     for (i = 0; i < j; i++) {
       temp = str[j];
@@ -18,7 +18,7 @@ void reverse(char * str) {
       str[i] = temp;
       j--;
     }
-    return;
+  return;
   }
 }
 
