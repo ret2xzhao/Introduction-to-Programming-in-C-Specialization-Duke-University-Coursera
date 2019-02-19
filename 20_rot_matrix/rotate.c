@@ -6,7 +6,7 @@ void rotate(char matrix[10][10]) {
   int j;
   char temp;
   for (i=0; i<5; i++) {
-    for (j=1; j<(9-i); j++) {
+    for (j=i; j<9; j++) {
       temp = matrix[i][j];
       matrix[i][j] = matrix[9-j][i];
       matrix[9-j][i] = matrix[9-i][9-j];
