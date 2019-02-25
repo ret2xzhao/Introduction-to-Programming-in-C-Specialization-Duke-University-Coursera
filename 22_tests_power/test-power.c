@@ -43,5 +43,10 @@ int main(void) {
     return EXIT_FAILURE;
   }
   
+  //test_case_9
+  if(power(-2, 2) != 4) {
+    return EXIT_FAILURE;
+  }
+  
   return EXIT_SUCCESS;
 }
