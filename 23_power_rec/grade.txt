@@ -1,0 +1,13 @@
+Grading at Mon Feb 25 23:59:49 UTC 2019
+Attempting to compile power.c
+power.c: In function ‘power’:
+power.c:13:10: error: left-hand operand of comma expression has no effect [-Werror=unused-value]
+   if (x>0, y=0) {
+          ^
+power.c:19:5: error: suggest parentheses around assignment used as truth value [-Werror=parentheses]
+     if (y=1) {
+     ^
+cc1: all warnings being treated as errors
+The code did not compile!
+
+Overall Grade: F
