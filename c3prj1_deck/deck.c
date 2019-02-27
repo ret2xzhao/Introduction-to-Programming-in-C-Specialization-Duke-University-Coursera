@@ -6,17 +6,31 @@
 
 #include "deck.h"
 
+
+
+int com (card_t c1,card_t c2){
+  
+  if ((c1.value == c2.value) &&(c1.suit == c2.suit)) return 1;
+  
+  return 0;
+  
+
+  
+}
+
+
+
 void print_hand(deck_t * hand){
   
-  card_t ** ptr = hand->cards;
+  card_t ** card =hand -> cards ;
   
-  for(int i=0; i<(hand->n_cards); i++){
+  card_t  card1;
+  
+  for (size_t i=0 ;i<(hand -> n_cards );i++){
     
-    print_card(**ptr);
+    card1=**(card +i);
     
-    printf("%s"," ");
-    
-    ptr++;
+    print_card(card1);
     
   }
   
@@ -26,19 +40,15 @@ void print_hand(deck_t * hand){
 
 int deck_contains(deck_t * d, card_t c) {
   
-  card_t ** ptr = d->cards;
+  card_t ** card =d -> cards ;
   
-  for(int i=0; i<(d->n_cards); i++){
+  for (size_t i=0 ;i< d -> n_cards ;i++){
     
-    if(suit_letter(**ptr)== suit_letter(c) && value_letter(**ptr)==value_letter(c)){
-      
-      return 1;
-      
-    }
-    
-    ptr++;
+    if (com(**(card+i),c)) return 1;
     
   }
+  
+
   
   return 0;
   
@@ -46,29 +56,25 @@ int deck_contains(deck_t * d, card_t c) {
 
 
 
-void cardPtr_swap(card_t ** ptr1, card_t ** ptr2){
-  
-  card_t * temp = *ptr1;
-  
-  *ptr1 = *ptr2;
-  
-  *ptr2 = temp;
-  
-}
-
-
-
 void shuffle(deck_t * d){
   
-  card_t ** ptr = d->cards;
+  card_t ** card =d -> cards ;
   
-  int size = (int)(d->n_cards);
+  card_t * temp;
   
-  for(int i=0; i<size; i++){
+  size_t n=d ->n_cards;
+  
+  int randarry;
+  
+  for (size_t i=0 ;i< n/2 ;i++){
     
-    int newPos = ((int)rand())%size;
+    randarry= random()%(n-i)+i;
     
-    cardPtr_swap(ptr+i,ptr+newPos);
+    temp=card[i];
+    
+    card[i]=card[randarry];
+    
+    card[randarry]=temp;
     
   }
   
@@ -78,162 +84,28 @@ void shuffle(deck_t * d){
 
 void assert_full_deck(deck_t * d) {
   
-  card_t ** ptr = d->cards;
+  card_t ** card =d -> cards ;
   
-  deck_t temp_deck;
+  card_t c;
   
-  temp_deck.cards = d->cards;
+  int count;
   
-  for(int i=0; i<(d->n_cards); i++){
+
+  
+  for (size_t i=0 ;i< d -> n_cards ;i++){
     
-    card_t temp_card = **ptr;
+    c=**(card+i);
     
-    assert_card_valid(temp_card);
+    count=0;
     
-    if(i>0){
+    for (size_t j=0 ;j< d -> n_cards ;j++){
       
-      temp_deck.n_cards = (size_t)i;
-      
-      assert(!deck_contains(&temp_deck, temp_card));
-      
-    }
-    
-    ptr++;
-    
-  }
-  
-}
-
-
-
-void add_card_to(deck_t * deck, card_t c){
-  
-  deck->n_cards++;
-  
-  deck->cards = realloc(deck->cards,(deck->n_cards)*sizeof(*(deck->cards)));
-  
-  deck->cards[deck->n_cards-1] = NULL;
-  
-  deck->cards[deck->n_cards-1] = realloc(deck->cards[deck->n_cards-1], sizeof(*(deck->cards[deck->n_cards-1])));
-  
-  deck->cards[deck->n_cards-1]->suit = c.suit;
-  
-  deck->cards[deck->n_cards-1]->value = c.value;
-  
-}
-
-
-
-card_t * add_empty_card(deck_t * deck){
-  
-  card_t * temp = malloc(sizeof(*temp));
-  
-  temp->suit = 0;
-  
-  temp->value = 0;
-  
-  deck->n_cards++;
-  
-  deck->cards = realloc(deck->cards, (deck->n_cards)*sizeof(*(deck->cards)));
-  
-  deck->cards[deck->n_cards-1] = temp;
-  
-  return temp;
-  
-}
-
-
-
-deck_t * make_deck_exclude(deck_t * excluded_cards){
-  
-  card_t temp;
-  
-  deck_t * res = malloc(sizeof(*res));
-  
-  res->n_cards = 0;
-  
-  res->cards = NULL;
-  
-
-  
-  int cond = 0;
-  
-  for(unsigned i=0; i<52; i++){
-    
-    temp = card_from_num(i);
-    
-    cond = deck_contains(excluded_cards, temp);
-    
-    if(cond==0){
-      
-      add_card_to(res, temp);
+      if(com(**(card+j), c)) count ++;
       
     }
     
-  }
-  
-  return res;
-  
-}
-
-
-
-deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands){
-  
-  deck_t * temp;
-  
-  deck_t * no_ret_d = malloc(sizeof(*no_ret_d));
-  
-  deck_t * ret_d;
-  
-  no_ret_d->n_cards = 0;
-  
-  no_ret_d->cards = NULL;
-  
-  card_t * temp_c;
-  
-  for(size_t i=0; i<n_hands; i++){
-    
-    temp = hands[i];
-    
-    for(size_t j=0; j<temp->n_cards; j++){
-      
-      temp_c = temp->cards[j];
-      
-      if(temp_c->value != 0){
-	
-	if(deck_contains(no_ret_d, *temp_c)==0){
-	  
-	  add_card_to(no_ret_d, *temp_c);
-	  
-	}
-	
-      }
-      
-    }
+    assert(count ==1);
     
   }
-  
-  ret_d = make_deck_exclude(no_ret_d);
-  
-  free_deck(no_ret_d);
-  
-  return ret_d;
-  
-}
-
-
-
-void free_deck(deck_t * deck){
-  
-  for(size_t i=0; i<deck->n_cards; i++){
-    
-    free(deck->cards[i]);
-    
-  }
-  
-  free(deck->cards);
-  
-  free(deck);
   
 }
