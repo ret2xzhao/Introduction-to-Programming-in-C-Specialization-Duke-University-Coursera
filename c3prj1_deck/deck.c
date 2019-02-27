@@ -3,42 +3,52 @@
 #include <assert.h>
 #include "deck.h"
 
-void print_hand(deck_t * hand){
+void print_hand(deck_t * hand) {
+  card_t ** ptr = hand->cards;
+  for(int i=0; i<(hand->n_cards); i++){
+    print_card(**ptr);
+    printf("%s"," ");
+    ptr++;
   }
-// This should print out the contents of a hand. It should print each card (recall that you wrote print_card in Course 2), and a space after each card. Do not put a newline after the hand, as this function gets called to print a hand in the middle of a line of output.
+}
 
 int deck_contains(deck_t * d, card_t c) {
-  return 0;
+  card_t ** ptr = d->cards;  
+  for(int i=0; i<(d->n_cards); i++){    
+    if(suit_letter(**ptr)== suit_letter(c) && value_letter(**ptr)==value_letter(c)) {      
+      return 1;      
+    }    
+    ptr++;    
+  }  
+  return 0;  
 }
-// This function should check if a deck contains a particular card or not.  If the deck does contain the card, this function should return 1.  Otherwise, it should return 0. (You will use this later to build the deck of remaining cards which are not in any player's hand).
 
-void shuffle(deck_t * d){
+void cardPtr_swap(card_t ** ptr1, card_t ** ptr2) {  
+  card_t * temp = *ptr1;
+  *ptr1 = *ptr2;  
+  *ptr2 = temp;
 }
-// This function takes in a deck an shuffles it, randomly permuting the order of the cards. There are MANY valid ways to shuffle a deck of cards---we'll leave the specifics of the algorithm design up to you.  However, you will want to use random() to generate pseudo-random numbers.  (Pseudo-random numbers are quite sufficient here, since they are not used for security purposes).
-// We will note that in trying to devise this algorithm, you should not try to shuffle a deck of cards "normally". Instead, you should take a small number of cards, and think about ways to shuffle them that involve using random numbers to swap their order, or pick positions for them, or similar principles.
 
-void assert_full_deck(deck_t * d) {
+void shuffle(deck_t * d) {
+  card_t ** ptr = d->cards;  
+  int size = (int)(d->n_cards);  
+  for(int i=0; i<size; i++) {    
+    int newPos = ((int)rand())%size;    
+    cardPtr_swap(ptr+i,ptr+newPos);    
+  }
 }
-// This function should check that the passed in deck contains ever valid card exactly once.  If the deck has any problems, this function should fail an assert.  This will be used to help you test your deck shuffling: we will shuffle a full deck, then call assert_full_deck, so that you can identfiy problems with the deck.  You can print any error messages you want if there is a problem. Hint: you already wrote deck_contains.
 
-#ifndef DECK_H
-#define DECK_H
-#include <stdlib.h>
-#include "cards.h"
-struct deck_tag {
-  card_t ** cards;
-  size_t n_cards;
-};
-typedef struct deck_tag deck_t;
-
-void print_hand(deck_t * hand);
-int deck_contains(deck_t * d, card_t c) ;
-void shuffle(deck_t * d);
-void assert_full_deck(deck_t * d) ;
-//The below functions will be done in course 4.
-deck_t * make_deck_exclude(deck_t * excluded_cards);
-void add_card_to(deck_t * deck, card_t c);
-card_t * add_empty_card(deck_t * deck);
-void free_deck(deck_t * deck) ;
-deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands) ;
-#endif
+void assert_full_deck(deck_t * d) {  
+  card_t ** ptr = d->cards;
+  deck_t temp_deck;
+  temp_deck.cards = d->cards;  
+  for(int i=0; i<(d->n_cards); i++) {
+    card_t temp_card = **ptr;
+    assert_card_valid(temp_card);
+    if(i>0) {
+      temp_deck.n_cards = (size_t)i;
+      assert(!deck_contains(&temp_deck, temp_card));
+    }    
+    ptr++;
+  }
+}
