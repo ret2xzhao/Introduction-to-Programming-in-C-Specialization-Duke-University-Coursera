@@ -26,7 +26,7 @@ void shuffle(deck_t * d){
   card_t ** card =d -> cards ;
   card_t * temp;
   size_t n=d ->n_cards;
-  int randarry;
+  int rand;
   for (size_t i=0 ;i< n/2 ;i++){
     int rand = random()%n;
     temp=card[i];
