@@ -57,7 +57,6 @@ size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
   }
   return -1;
 }
-
 ssize_t  find_secondary_pair(deck_t * hand,
 			     unsigned * match_counts,size_t match_idx) {
 
@@ -80,7 +79,7 @@ ssize_t  find_secondary_pair(deck_t * hand,
     }else{                                                                                       
       second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,3);
     }                                                                                            
-  }
+  }                                                                                              
 
   if(second!=-1){
     second = second + match_idx + (size_t)match_value;
@@ -200,6 +199,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
   return ans;
 }
 
+
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
   qsort(hand2->cards, hand2->n_cards, sizeof(hand2->cards[0]), card_ptr_comp);
@@ -226,6 +226,8 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   }
   return 0;
 }
+
+
 
 //You will write this function in Course 4.
 //For now, we leave a prototype (and provide our
@@ -288,6 +290,7 @@ void copy_straight(card_t ** to, deck_t *from, size_t ind, suit_t fs, size_t cou
   }
 }
 
+
 //This looks for a straight (or straight flush if "fs" is not NUM_SUITS)
 // in "hand".  It calls the student's is_straight_at for each possible
 // index to do the work of detecting the straight.
@@ -320,6 +323,7 @@ int find_straight(deck_t * hand, suit_t fs, hand_eval_t * ans) {
   }
   return 0;
 }
+
 
 //This function puts all the hand evaluation logic together.
 //This function is longer than we generally like to make functions,
