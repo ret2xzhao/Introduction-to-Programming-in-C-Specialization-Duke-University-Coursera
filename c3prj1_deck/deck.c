@@ -22,19 +22,17 @@ int deck_contains(deck_t * d, card_t c) {
   return 0;
 }
 
-void cardPtr_swap(card_t ** ptr1, card_t ** ptr2){  
-  card_t * temp = *ptr1;                            
-  *ptr1 = *ptr2;                                    
-  *ptr2 = temp;                                     
-}
-
 void shuffle(deck_t * d){
-  card_t ** ptr = d->cards;
-  int size = (int)(d->n_cards);
-  for(int i=0; i<size; i++){
-    int newPos = ((int)rand())%size;
-    cardPtr_swap(ptr+i,ptr+newPos);
-  }
+  card_t ** card =d -> cards ;
+  card_t * temp;
+  size_t n=d ->n_cards;
+  int randarry;
+  for (size_t i=0 ;i< n/2 ;i++){
+    int rand = random()%n;
+    temp=card[i];
+    card[i]=card[rand];
+    card[rand]=temp;
+  }  
 }
 
 void assert_full_deck(deck_t * d) {
