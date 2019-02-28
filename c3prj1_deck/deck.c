@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "deck.h"
-void print_hand(deck_t * hand){
+
+void print_hand(deck_t * hand) {
   card_t ** ptr = hand->cards;
-  for(int i=0; i<(hand->n_cards); i++){
+  for(int i=0; i<(hand->n_cards); i++) {
     print_card(**ptr);
     printf("%s"," ");
     ptr++;
@@ -13,8 +14,8 @@ void print_hand(deck_t * hand){
 
 int deck_contains(deck_t * d, card_t c) {
   card_t ** ptr = d->cards;
-  for(int i=0; i<(d->n_cards); i++){
-    if(suit_letter(**ptr)== suit_letter(c) && value_letter(**ptr)==value_letter(c)){
+  for(int i=0; i<(d->n_cards); i++) {
+    if(suit_letter(**ptr) == suit_letter(c) && value_letter(**ptr) == value_letter(c)) {
       return 1;
     }
     ptr++;
@@ -22,16 +23,16 @@ int deck_contains(deck_t * d, card_t c) {
   return 0;
 }
 
-void shuffle(deck_t * d){
+void shuffle(deck_t * d) {
   card_t ** card =d -> cards ;
   card_t * temp;
   size_t n=d ->n_cards;
-  int rand;
-  for (size_t i=0 ;i< n/2 ;i++){
-    rand= rand()%n;
-    temp=card[i];
-    card[i]=card[rand];
-    card[rand]=temp;
+  int random;
+  for (size_t i=0 ;i< n/2 ;i++) {
+    random = rand()%n;
+    temp = card[i];
+    card[i] = card[random];
+    card[random] = temp;
   }  
 }
 
@@ -39,7 +40,7 @@ void assert_full_deck(deck_t * d) {
   card_t ** ptr = d->cards;
   deck_t temp_deck;
   temp_deck.cards = d->cards;
-  for(int i=0; i<(d->n_cards); i++){
+  for(int i=0; i<(d->n_cards); i++) {
     card_t temp_card = **ptr;
     assert_card_valid(temp_card);
     if(i>0){
