@@ -1,54 +1,54 @@
-Grading at Thu Feb 28 01:14:47 UTC 2019
+Grading at Thu Feb 28 07:25:38 UTC 2019
 Compiling your code
 rm-f test poker cards.o my-test-main.o *~
 Makefile:10: recipe for target 'clean' failed
 make: 'test-eval' is up to date.
 Testcase 1: Trying hands with nothing
 Valgrind returned an error status
-==2399== Memcheck, a memory error detector
-==2399== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==2399== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==2399== Command: ./test-eval inp.1.txt
-==2399== Parent PID: 2398
-==2399== 
-==2399== Use of uninitialised value of size 8
-==2399==    at 0x400BFD: print_hand (deck.c:9)
-==2399==    by 0x4027EB: describe_hand (test-eval.c:74)
-==2399==    by 0x4029CB: main (test-eval.c:116)
-==2399== 
-==2399== Invalid read of size 8
-==2399==    at 0x400BFD: print_hand (deck.c:9)
-==2399==    by 0x4027EB: describe_hand (test-eval.c:74)
-==2399==    by 0x4029CB: main (test-eval.c:116)
-==2399==  Address 0x1 is not stack'd, malloc'd or (recently) free'd
-==2399== 
-==2399== 
-==2399== Process terminating with default action of signal 11 (SIGSEGV): dumping core
-==2399==  Access not within mapped region at address 0x1
-==2399==    at 0x400BFD: print_hand (deck.c:9)
-==2399==    by 0x4027EB: describe_hand (test-eval.c:74)
-==2399==    by 0x4029CB: main (test-eval.c:116)
-==2399==  If you believe this happened as a result of a stack
-==2399==  overflow in your program's main thread (unlikely but
-==2399==  possible), you can try to increase the size of the
-==2399==  main thread stack using the --main-stacksize= flag.
-==2399==  The main thread stack size used in this run was 8388608.
-==2399== 
-==2399== HEAP SUMMARY:
-==2399==     in use at exit: 864 bytes in 16 blocks
-==2399==   total heap usage: 202 allocs, 186 frees, 12,472 bytes allocated
-==2399== 
-==2399== LEAK SUMMARY:
-==2399==    definitely lost: 0 bytes in 0 blocks
-==2399==    indirectly lost: 0 bytes in 0 blocks
-==2399==      possibly lost: 0 bytes in 0 blocks
-==2399==    still reachable: 864 bytes in 16 blocks
-==2399==         suppressed: 0 bytes in 0 blocks
-==2399== Rerun with --leak-check=full to see details of leaked memory
-==2399== 
-==2399== For counts of detected and suppressed errors, rerun with: -v
-==2399== Use --track-origins=yes to see where uninitialised values come from
-==2399== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==3360== Memcheck, a memory error detector
+==3360== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==3360== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3360== Command: ./test-eval inp.1.txt
+==3360== Parent PID: 3359
+==3360== 
+==3360== Use of uninitialised value of size 8
+==3360==    at 0x400BFD: print_hand (deck.c:9)
+==3360==    by 0x4027EB: describe_hand (test-eval.c:74)
+==3360==    by 0x4029CB: main (test-eval.c:116)
+==3360== 
+==3360== Invalid read of size 8
+==3360==    at 0x400BFD: print_hand (deck.c:9)
+==3360==    by 0x4027EB: describe_hand (test-eval.c:74)
+==3360==    by 0x4029CB: main (test-eval.c:116)
+==3360==  Address 0x1 is not stack'd, malloc'd or (recently) free'd
+==3360== 
+==3360== 
+==3360== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==3360==  Access not within mapped region at address 0x1
+==3360==    at 0x400BFD: print_hand (deck.c:9)
+==3360==    by 0x4027EB: describe_hand (test-eval.c:74)
+==3360==    by 0x4029CB: main (test-eval.c:116)
+==3360==  If you believe this happened as a result of a stack
+==3360==  overflow in your program's main thread (unlikely but
+==3360==  possible), you can try to increase the size of the
+==3360==  main thread stack using the --main-stacksize= flag.
+==3360==  The main thread stack size used in this run was 8388608.
+==3360== 
+==3360== HEAP SUMMARY:
+==3360==     in use at exit: 864 bytes in 16 blocks
+==3360==   total heap usage: 202 allocs, 186 frees, 12,472 bytes allocated
+==3360== 
+==3360== LEAK SUMMARY:
+==3360==    definitely lost: 0 bytes in 0 blocks
+==3360==    indirectly lost: 0 bytes in 0 blocks
+==3360==      possibly lost: 0 bytes in 0 blocks
+==3360==    still reachable: 864 bytes in 16 blocks
+==3360==         suppressed: 0 bytes in 0 blocks
+==3360== Rerun with --leak-check=full to see details of leaked memory
+==3360== 
+==3360== For counts of detected and suppressed errors, rerun with: -v
+==3360== Use --track-origins=yes to see where uninitialised values come from
+==3360== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 Testcase 2: Trying hands with pairs
  Checking the output 
 Line_3_did_not_match
