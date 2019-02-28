@@ -3,240 +3,214 @@
 #include <stdlib.h>
 #include <assert.h>
 
+// compare function for sorting cards in descending order by rank and suit
+// e.g., 7c 0h Ac Jd Ah -> Ah Ac Jd 0h 7c (0h is 10 of hearts)
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  const card_t * const * cp1 = vp1;
-  const card_t * const * cp2 = vp2;
-
-  if((**cp1).value != (**cp2).value)
-    return ( (**cp2).value - (**cp1).value );
-  return ((**cp2).suit - (**cp1).suit) ;
+  const card_t * const *cp1 = vp1;
+  const card_t * const *cp2 = vp2;
+  const card_t * c1 = *cp1;
+  const card_t * c2 = *cp2;
+  if (c1->value != c2->value) {
+    return c2->value - c1->value;
+  }
+  return c2->suit - c1->suit;
 }
 
+// if hand contains at least 5 cards of one suit,
+// return the suit, else return NUM_SUITS
+// For example:
+// Given Kd Qs 0s 9h 8s 7s, it would return SPADES.
+//   Given Kd Qd 0s 9h 8c 7c, it would return NUM_SUITS.
 suit_t flush_suit(deck_t * hand) {
-  card_t **temp = (*hand).cards;
-  int spades=0;
-  int hearts=0;
-  int diamonds=0;
-  int clubs=0;
-  for(int i=0; i<(*hand).n_cards; i++)
-    {
-      switch((*temp[i]).suit)
-	{
-	case SPADES:spades++;break;
-	case HEARTS:hearts++;break;
-	case DIAMONDS:diamonds++;break;
-	case CLUBS:clubs++;break;
-	default: break;
-	}
+  unsigned suit_counts[4] = {0};
+  for(int i=0; i<hand->n_cards; i++) {
+    suit_t suit = hand->cards[i]->suit;
+    suit_counts[suit]++;
+    if (suit_counts[suit] >= 5) {
+      return suit;
     }
-  if(spades>=5)
-    return SPADES;
-  if(hearts>=5)
-    return HEARTS;
-  if(diamonds>=5)
-    return DIAMONDS;
-  if(clubs>=5)
-    return CLUBS;
-  
+  }
   return NUM_SUITS;
 }
 
-unsigned get_largest_element(unsigned * arr, size_t n){
-  unsigned max = arr[0];
-  
-  for(int i=1; i<n; i++)
-    {
-      if(arr[i] > max)
-	max = arr[i];
+// return largest element in an array of integers
+// Used by get_match_counts, which is written in course 4
+unsigned get_largest_element(unsigned * arr, size_t n) {
+  unsigned largest = 0;
+  for(int i=0; i<n; i++) {
+    if (arr[i] > largest) {
+      largest = arr[i];
     }
-  return max ;
+  }
+  return largest;
 }
 
+// Return index in match_counts whose value is n of a kind
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-  for(size_t i=0; i<n; i++)
-    {
-      if(match_counts[i] == n_of_akind)
-	return i;
+  int match_index;
+  for(match_index=0; match_index<n; match_index++) {
+    if (match_counts[match_index] == n_of_akind) {
+      return match_index;
     }
-  return 0;
+  }
+  return n;
 }
-size_t  find_secondary_pair(deck_t * hand,
-			    unsigned * match_counts,
-			    size_t match_idx) {
 
-  card_t **temp = (*hand).cards;
-  card_t **match_value = temp + match_idx; 
-  for(size_t i = 0; i<(*hand).n_cards; i++)
-    {
-      if(match_counts[i] > 1 && (**temp).value != (**match_value).value)
-	return i;
-      temp++;
+// Assuming 3 of a kind or a pair has been found, see if
+// there is another pair to make a flush or two pairs
+// Return the index of the secondary pair, or -1 if there
+// is none.
+ssize_t  find_secondary_pair(deck_t * hand,
+			     unsigned * match_counts,
+			     size_t match_idx) {
+  ssize_t index;
+  for(index=0; index<hand->n_cards; index++) {
+    if (match_counts[index] > 1
+	&& hand->cards[index]->value != hand->cards[match_idx]->value) {
+      return index;
     }
-  
+  }
   return -1;
 }
+
+/*
+  This function should determine if there is a straight
+   starting at index (and only starting at index) in the
+   given hand.  If fs is NUM_SUITS, then it should look
+   for any straight.  If fs is some other value, then
+   it should look for a straight flush in the specified suit.
+    This function should return:
+    -1 if an Ace-low straight was found at that index
+     0  if no straight was found at that index
+     1  if any other straight was found at that index
+*/
+// assumes cards are sorted in descending order
+// assumes at least 5 cards in hand starting at index
+// n is the number of cards to check (for ace low, we check
+// for an ace and 4 in a row starting with a 5).
 int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
-  int counter = 0;
-  card_t **temp = (*hand).cards;
-  int value = (*temp[index]).value;
-  suit_t suit = (*temp[index]).suit;
-  for(int i=0; i<n; i++)
-    {
-     
-      for(int j=index; j<(*hand).n_cards; j++)
-	{
-	  if(fs == NUM_SUITS)
-	    {
-	      if( (*temp[j]).value == value)
-		{           
-		  counter++;
-		  break;
-		}
-	    }else if (fs != NUM_SUITS)
-	    {
-	      if((*temp[j]).value == value)
+  int num_in_a_row = 0;
+  unsigned last_value = hand->cards[index]->value+1;
 
-		{  if((*temp[j]).suit == suit)
-		    {
-		      counter++;        
-		      break;
-		    }
-		}
-       
-	    }
-
-	}
-      value--;
-      index++;
-    }
-  
-  if(counter >= n)
-    return 1;
-  else  
+  if(fs != NUM_SUITS && hand->cards[index]->suit != fs) {
     return 0;
-}
-int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
-  int isStraight;
-  card_t **temp = (*hand).cards;
-  int index5 = 0;
+  }
 
-  if((*temp[0]).value == VALUE_ACE && (*temp[1]).value == VALUE_KING && (*temp[2]).value == 5 && (*temp[3]).value == 4 && (*temp[4]).value == 3 && (*temp[5]).value == 2 && index == 1)
-    return 0;
-
-
-
-
-
-
-  if( fs == NUM_SUITS )
-    {
-      if((**temp).value == VALUE_ACE)
-	{
-	  for(int i=1; i<(*hand).n_cards; i++)
-	    { if((*temp[i]).value == 5)
-		{index5 = i;
-		  break;}
-	    }
-	  if(index5 !=0 )
-	    { isStraight = is_n_length_straight_at(hand,index5,fs,4) ;
-	      if(isStraight == 1)
-		return -1;
-	    }
+  for(int i=index; i<hand->n_cards; i++) {
+    if(fs == NUM_SUITS) {
+      if(hand->cards[i]->value != last_value) {
+	if (hand->cards[i]->value == last_value-1) {
+	  num_in_a_row++;
+	  if (num_in_a_row >= n) {
+	    return 1;
+	  }
+	} else {
+	  return 0;
 	}
-                   
-      isStraight = is_n_length_straight_at(hand,index,fs,5) ;
-      if(isStraight == 1)
-	return 1;
-      
-    }else
-    {
-      if((**temp).value == VALUE_ACE)
-	{
-	  for(int i=1; i<(*hand).n_cards; i++)
-	    { if((*temp[i]).value == 5 && (*temp[i]).suit == fs)
-		{index5 = i;
-		  break;}
-	    }
-	  if(index5 !=0 )
-	    { isStraight = is_n_length_straight_at(hand,index5,fs,4) ;
-	      if(isStraight == 1)
-		return -1;
-	    }
+	last_value = hand->cards[i]->value;
+      }
+    } else if (hand->cards[i]->suit == fs) {
+      if (hand->cards[i]->value == last_value-1) {
+	num_in_a_row++;
+	if (num_in_a_row >= n) {
+	  return 1;
 	}
-                   
-      isStraight = is_n_length_straight_at(hand,index,fs,5) ;
-      if(isStraight == 1)
-	return 1;
-    
+      } else {
+	return 0;
+      }
+      last_value = hand->cards[i]->value;
     }
+  }
   return 0;
 }
 
+// assumes at least 4 cards in hand starting at index
+int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
+  assert(hand->cards[index]->value == VALUE_ACE &&
+	 (fs == NUM_SUITS || hand->cards[index]->suit == fs));
+  int i = index+1;
+  while(hand->cards[i]->value != 5 ||
+	!(fs==NUM_SUITS || hand->cards[i]->suit ==fs)){
+    i++;
+    if (i > hand->n_cards - 4) {
+      return 0;
+    }
+  }
+  if (is_n_length_straight_at(hand, i, fs, 4)) {
+    return -1;
+  }
+  return 0;
+}
+
+// Determine if there is a straight beginning at index
+// (and only at index) in the hand
+// Assumes cards will appear in descending order by value
+int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
+  if (hand->n_cards - index < 5) {
+    return 0;
+  }
+  if (is_n_length_straight_at(hand, index, fs, 5) == 1) {
+    return 1;
+  }
+  int possible_index = -1;
+  for(int i=index; hand->cards[i]->value == VALUE_ACE && i < hand->n_cards - 4; i++) {
+    if (fs == NUM_SUITS || hand->cards[i]->suit == fs) {
+      possible_index = i;
+      break;
+    }
+  }
+  if (possible_index >= 0) {
+    return is_ace_low_straight_at(hand, possible_index, fs, 4);
+  }
+  return 0;
+}
+
+// assumes cards in hand are in descending order
 hand_eval_t build_hand_from_match(deck_t * hand,
 				  unsigned n,
 				  hand_ranking_t what,
 				  size_t idx) {
-
   hand_eval_t ans;
   ans.ranking = what;
-  int arr[n];
-  for(int i=0; i<n; i++)
-    {
-      ans.cards[i] = (*hand).cards[idx];
-      arr[i]=idx;
-      idx++;
+  // Copy "n" cards from the hand, starting at "idx"
+  // into the first "n" elements of the "cards" array
+  // of "ans"
+  for(int i=0; i<n; i++) {
+    ans.cards[i] = hand->cards[idx+i];    // see eval.h
+  }
+  // Fill the remainder of the "cards" array with the
+  // highest-value cards from the hand which were not
+  // in the "n of a kind".
+  int i=n;
+  int j=0;
+  for(; i<5 && j<idx; i++, j++) {
+    ans.cards[i] = hand->cards[j];
+  }
+  if(i < 5) {
+    j=idx+n;
+    for(; i<5; i++, j++) {
+      ans.cards[i] = hand->cards[j];
     }
-  int j=n;
-  int flag =0;
-  if(j<5)
-    {
-      for(int x=0; x<(*hand).n_cards; x++)
-	{
-	  flag=0;
-	  for(int y=0; y<n;y++)
-	    { if(x==arr[y])
-		{flag = 1;
-		  break;
-		}
-	    }
-	  if(flag == 1)
-	    continue;
-	  else if(j<5)
-	    {ans.cards[j] = (*hand).cards[x];        
-	      j++;
-	    }
-	}
-    } 
-     
+  }
   return ans;
 }
 
+void sort_hand(deck_t * hand) {
+  sort_cards(hand->cards, hand->n_cards);
+}
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
-
-  qsort((*hand1).cards,(*hand1).n_cards,sizeof((*hand1).cards),card_ptr_comp);
-  qsort((*hand2).cards,(*hand2).n_cards,sizeof((*hand2).cards),card_ptr_comp);
-  hand_eval_t evalHand1 = evaluate_hand(hand1);
-  hand_eval_t evalHand2 = evaluate_hand(hand2);
-  card_t **temp1 = evalHand1.cards;
-  card_t **temp2 = evalHand2.cards;
-  
-  if(evalHand1.ranking != evalHand2.ranking)
-    { 
-      return (evalHand2.ranking - evalHand1.ranking);
-    }else 
-    {
-      for(int i=0; i<5; i++)
-	{
-	  if( (*temp1[i]).value - (*temp2[i]).value != 0 )
-	    {
-	      return ((*temp1[i]).value - (*temp2[i]).value);
-	    }
-	  else if( i == (*hand1).n_cards - 1)
-	    return 0;
-	}
+  sort_hand(hand1); sort_hand(hand2);
+  hand_eval_t e1 = evaluate_hand(hand1);
+  hand_eval_t e2 = evaluate_hand(hand2);
+  if (e1.ranking != e2.ranking) {
+    return e2.ranking - e1.ranking;
+  }
+  for(int i=0; i<5; i++) {
+    if(e1.cards[i]->value != e2.cards[i]->value) {
+      return e1.cards[i]->value - e2.cards[i]->value;
     }
-  
+  }
   return 0;
 }
 
