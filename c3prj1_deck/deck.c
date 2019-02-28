@@ -3,13 +3,31 @@
 #include <assert.h>
 #include "deck.h"
 
-void print_hand(deck_t * hand) {
-  card_t ** ptr = hand->cards;
-  for(int i=0; i<(hand->n_cards); i++) {
-    print_card(**ptr);
-    printf("%s"," ");
-    ptr++;
+//void print_hand(deck_t * hand) {
+//  card_t ** ptr = hand->cards;
+//  for(int i=0; i<(hand->n_cards); i++) {
+//    print_card(**ptr);
+//    printf("%s"," ");
+//    ptr++;
+//  }
+//}
+
+void print_hand(deck_t* hand){
+  
+  for (int i = 0; i < hand->n_cards; i++) {
+    
+    if (hand->cards[i] == NULL) {
+      
+      printf("Null card pointer");
+      
+    }
+    
+    print_card(*(hand->cards[i]));
+    
+    printf(" ");
+    
   }
+  
 }
 
 int deck_contains(deck_t * d, card_t c) {
