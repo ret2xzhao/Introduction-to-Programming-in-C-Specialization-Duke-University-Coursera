@@ -1,12 +1,14 @@
-Grading at Thu Feb 28 00:00:21 UTC 2019
+Grading at Thu Feb 28 00:02:54 UTC 2019
 Compiling deck.c
-deck.c: In function ‘shuffle’:
-deck.c:31:11: error: called object ‘rand’ is not a function or function pointer
-     rand= rand()%n;
-           ^
-deck.c:29:7: note: declared here
-   int rand;
-       ^
-Could not compile your deck.c!
+Compiling cards.c
+Linking cards.o deck.o deck-c4.o and the grader's .o file
+Checking the output of all the functions other than shuffle
+Your file matched the expected output
+ - Those functions seem to work!
+Checking your shuffle results with a 6 card hand...
+  Least common hand: 0.131700%
+  Most  common hand: 0.146250%
+  Perfectly even is: 0.138888%
+ Excellent!
 
-Overall Grade: FAILED
+Overall Grade: A
