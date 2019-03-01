@@ -4,19 +4,22 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  const card_t * const * cp1 = vp1;        
-  const card_t * const * cp2 = vp2;        
-  if((**cp1).value > (**cp2).value){       
-    return -1;                             
-  }else if((**cp1).value < (**cp2).value){ 
-    return 1;                              
-  }else{                                   
-    if((**cp1).suit > (**cp2).suit){       
-      return -1;                          
-    }else if((**cp1).suit < (**cp2).suit){ 
-      return 1;                    
-    }                         
-  }                                      
+  const card_t * const * cp1 = vp1;
+  const card_t * const * cp2 = vp2;
+  if ((**cp1).value > (**cp2).value) {
+    return -1;
+  }
+  else if ((**cp1).value < (**cp2).value) {
+    return 1;
+  }
+  else {
+    if ((**cp1).suit > (**cp2).suit) {
+      return -1;
+    }
+    else if ((**cp1).suit > (**cp2).suit) {
+      return 1;
+    }
+  }
   return 0;
 }
 
@@ -226,6 +229,8 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   }
   return 0;
 }
+
+
 
 //You will write this function in Course 4.
 //For now, we leave a prototype (and provide our
