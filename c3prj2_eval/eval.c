@@ -37,13 +37,13 @@ suit_t flush_suit(deck_t * hand) {
     }
   }
   
-  if (n_SPADES >= 5) {
+  if (n_SPADES >= 4) {
     return SPADES;
-  } else if (n_HEARTS >= 5) {
+  } else if (n_HEARTS >= 4) {
     return HEARTS;
-  } else if (n_DIAMONDS >= 5) {
+  } else if (n_DIAMONDS >= 4) {
     return DIAMONDS;
-  } else if (n_CLUBS >= 5) {
+  } else if (n_CLUBS >= 4) {
     return CLUBS;
   } else {
     return NUM_SUITS;
