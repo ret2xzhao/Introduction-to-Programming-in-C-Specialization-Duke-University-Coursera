@@ -4,40 +4,60 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  const card_t * const * cp1 = vp1;        
-  const card_t * const * cp2 = vp2;        
-  if ((**cp1).value > (**cp2).value) {       
-    return -1;                             
+  const card_t * const * cp1 = vp1;
+  const card_t * const * cp2 = vp2;
+  if ((**cp1).value > (**cp2).value) {
+    return -1;
   }
-  else if ((**cp1).value < (**cp2).value) { 
-    return 1;                              
+  else if ((**cp1).value < (**cp2).value) {
+    return 1;
   }
-  else {                                   
-    if((**cp1).suit > (**cp2).suit) {       
-      return -1;                          
+  else {
+    if((**cp1).suit > (**cp2).suit) {
+      return -1;
     }
-    else if ((**cp1).suit < (**cp2).suit) { 
-      return 1;                    
-    }                         
-  }                                      
+    else if ((**cp1).suit < (**cp2).suit) {
+      return 1;
+    }
+  }
   return 0;
 }
 
 suit_t flush_suit(deck_t * hand) {
-  int size = (int)(hand -> n_cards);
-  card_t ** ptr = (hand -> cards);
-  int count_array[] = {0,0,0,0,0};
-  for(int i=0; i<size; i++){
-    card_t card = **ptr;
-    (*(count_array+card.suit))++;
-    ptr++;
-  }
-  for(int j=0; j<4; j++){
-    if(*(count_array+j)>4){
-      return j;
+  int n_SPADES = 0;
+  int n_HEARTS = 0;
+  int n_DIAMONDS = 0;
+  int n_CLUBS = 0;
+  for (int i=0; i<(hand->n_cards); i++) {
+    if ((hand->cards[i])->suit == SPADES) {
+      n_SPADES++;
+    }
+    else if ((hand->cards[i])->suit == HEARTS) {
+      n_HEARTS++;
+    }
+    else if ((hand->cards[i])->suit == DIAMONDS) {
+      n_DIAMONDS++;
+    }
+    else {
+      n_CLUBS++;
     }
   }
-  return NUM_SUITS;
+  
+  if (n_SPADES >= 5) {
+    return SPADES;
+  }
+  else if (n_HEARTS >= 5) {
+    return HEARTS;
+  }
+  else if (n_DIAMONDS >= 5) {
+    return DIAMONDS;
+  }
+  else if (n_CLUBS >= 5) {
+    return CLUBS;
+  }
+  else {
+    return NUM_SUITS;
+  }
 }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
@@ -75,8 +95,10 @@ ssize_t  find_secondary_pair(deck_t * hand,
   }
 
   if(match_idx+(size_t)match_value < size){
-    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,2)
-       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx-match_value,3)){
+    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value\
+		       ,2)
+       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx-match_value\
+			 ,3)){
       second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,2);
     }else{
       second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,3);
