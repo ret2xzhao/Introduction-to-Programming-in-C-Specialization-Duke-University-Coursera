@@ -48,7 +48,7 @@ suit_t flush_suit(deck_t * hand) {
       n_CLUBS++;
     }
   }
-  
+
   if (n_SPADES >= 5) {
     return SPADES;
   } else if (n_HEARTS >= 5) {
@@ -63,14 +63,13 @@ suit_t flush_suit(deck_t * hand) {
 }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
-  unsigned max_val = 0;
-  for(int i=0; i<(int)n; i++){
-    if(*arr > max_val){
-      max_val = *arr;
+  int largestIndex = 0;
+  for (int i = 1; i < n; i++) {
+    if (arr[i] > arr[largestIndex]) {
+      largestIndex = i;
     }
-    arr++;
   }
-  return max_val;
+  return arr[largestIndex];
 }
 
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
@@ -97,13 +96,17 @@ ssize_t  find_secondary_pair(deck_t * hand,
   }
 
   if(match_idx+(size_t)match_value < size){
-    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value\
-		       ,2)
-       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx-match_value\
-			 ,3)){
-      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,2);
+    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_v\
+alue\
+                       ,2)
+       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx-match_v\
+alue\
+                         ,3)){
+      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx -\
+			       match_value,2);
     }else{
-      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,3);
+      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx -\
+			       match_value,3);
     }                                                                           \
 
   }                                                                             \
