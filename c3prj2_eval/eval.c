@@ -4,22 +4,22 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  const card_t * const * cp1 = vp1;
-  const card_t * const * cp2 = vp2;
-  if ((**cp1).value > (**cp2).value) {
-    return -1;
+  const card_t * const * cp1 = vp1;        
+  const card_t * const * cp2 = vp2;        
+  if ((**cp1).value > (**cp2).value) {       
+    return -1;                             
   }
-  else if ((**cp1).value < (**cp2).value) {
-    return 1;
+  else if ((**cp1).value < (**cp2).value) { 
+    return 1;                              
   }
-  else {
-    if ((**cp1).suit > (**cp2).suit) {
-      return -1;
+  else {                                   
+    if((**cp1).suit > (**cp2).suit) {       
+      return -1;                          
     }
-    else if ((**cp1).suit < (**cp2).suit) {
-      return 1;
-    }
-  }
+    else if ((**cp1).suit < (**cp2).suit) { 
+      return 1;                    
+    }                         
+  }                                      
   return 0;
 }
 
@@ -62,42 +62,24 @@ size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
 }
 ssize_t  find_secondary_pair(deck_t * hand,
                              unsigned * match_counts,size_t match_idx) {
+  size_t first = -1;
+  size_t second = -1;
+  size_t size = hand -> n_cards;
+  unsigned match_value = *(match_counts + match_idx);
+  if(match_idx>0){
+    if(get_match_index(match_counts, match_idx,2)<=get_match_index(match_counts, match_idx,3)){
+      first = get_match_index(match_counts, match_idx,2);
+    }else{
+      first = get_match_index(match_counts, match_idx,3);
+    }
+  }
 
-  size_t first = -1;                                                            \
-
-  size_t second = -1;                                                           \
-
-  size_t size = hand -> n_cards;                                                \
-
-  unsigned match_value = *(match_counts + match_idx);                           \
-
-  if(match_idx>0){                                                              \
-
-    if(get_match_index(match_counts, match_idx,2)<=get_match_index(match_counts,\
-								   match_idx,3)){
-      first = get_match_index(match_counts, match_idx,2);                       \
-
-    }else{                                                                      \
-
-      first = get_match_index(match_counts, match_idx,3);                       \
-
-    }                                                                           \
-
-  }                                                                             \
-
-
-  if(match_idx+(size_t)match_value < size){                                     \
-
-    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - matc\
-		       h_idx - match_value,2)
-       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - ma\
-			 tch_idx-match_value,3)){
-      second = get_match_index(match_counts+(unsigned)match_idx+match_value, siz\
-			       e - match_idx - match_value,2);
-    }else{                                                                      \
-
-      second = get_match_index(match_counts+(unsigned)match_idx+match_value, siz\
-			       e - match_idx - match_value,3);
+  if(match_idx+(size_t)match_value < size){
+    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,2)
+       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx-match_value,3)){
+      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,2);
+    }else{
+      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_value,3);
     }                                                                           \
 
   }                                                                             \
@@ -249,6 +231,8 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   return 0;
 }
 
+
+
 //You will write this function in Course 4.
 //For now, we leave a prototype (and provide our
 //implementation in eval-c4.o) so that the
@@ -265,8 +249,7 @@ unsigned * get_match_counts(deck_t * hand) ;
 //into the card array "to"
 //if "fs" is NUM_SUITS, then suits are ignored.
 //if "fs" is any other value, a straight flush (of that suit) is copied.
-void copy_straight(card_t ** to, deck_t *from, size_t ind, suit_t fs, size_t cou\
-		   nt) {
+void copy_straight(card_t ** to, deck_t *from, size_t ind, suit_t fs, size_t count) {
   assert(fs == NUM_SUITS || from->cards[ind]->suit == fs);
   unsigned nextv = from->cards[ind]->value;
   size_t to_ind = 0;
