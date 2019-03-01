@@ -20,6 +20,18 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
   return 0;
 }
 
+//suit_t flush_suit(deck_t * hand) {
+//  unsigned suit_counts[4] = {0};
+//  for(int i=0; i<hand->n_cards; i++) {
+//    suit_t suit = hand->cards[i]->suit;
+//    suit_counts[suit]++;
+//    if (suit_counts[suit] >= 5) {
+//      return suit;
+//    }
+//  }
+//  return NUM_SUITS;
+//}
+
 suit_t flush_suit(deck_t * hand) {
   int n_SPADES = 0;
   int n_HEARTS = 0;
