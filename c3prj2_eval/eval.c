@@ -72,15 +72,15 @@ unsigned get_largest_element(unsigned * arr, size_t n) {
   return arr[largestIndex];
 }
 
-size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-  for(size_t i=0; i<n; i++){
-    if(*match_counts == n_of_akind){
+size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind) {
+  for (int i=0; i<n; i++) {
+    if (match_counts[i] == n_of_akind) {
       return i;
     }
-    match_counts++;
   }
   return -1;
 }
+
 ssize_t  find_secondary_pair(deck_t * hand,
                              unsigned * match_counts,size_t match_idx) {
   size_t first = -1;
@@ -88,7 +88,8 @@ ssize_t  find_secondary_pair(deck_t * hand,
   size_t size = hand -> n_cards;
   unsigned match_value = *(match_counts + match_idx);
   if(match_idx>0){
-    if(get_match_index(match_counts, match_idx,2)<=get_match_index(match_counts, match_idx,3)){
+    if(get_match_index(match_counts, match_idx,2)<=get_match_index(match_counts,\
+								   match_idx,3)){
       first = get_match_index(match_counts, match_idx,2);
     }else{
       first = get_match_index(match_counts, match_idx,3);
@@ -96,20 +97,26 @@ ssize_t  find_secondary_pair(deck_t * hand,
   }
 
   if(match_idx+(size_t)match_value < size){
-    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx - match_v\
+    if(get_match_index(match_counts+(unsigned)match_idx+match_value, size - matc\
+h_idx - match_v\
 alue\
                        ,2)
-       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx-match_v\
+       <=get_match_index(match_counts+(unsigned)match_idx+match_value, size - ma\
+tch_idx-match_v\
 alue\
                          ,3)){
-      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx -\
-			       match_value,2);
+      second = get_match_index(match_counts+(unsigned)match_idx+match_value, siz\
+e - match_idx -\
+                               match_value,2);
     }else{
-      second = get_match_index(match_counts+(unsigned)match_idx+match_value, size - match_idx -\
-			       match_value,3);
+      second = get_match_index(match_counts+(unsigned)match_idx+match_value, siz\
+e - match_idx -\
+                               match_value,3);
     }                                                                           \
+\
 
   }                                                                             \
+\
 
 
   if(second!=-1){
