@@ -103,7 +103,7 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
   unsigned next_value = 5;
   for (int i = index; i < hand->n_cards; i++) {
     if (hand->cards[i]->value == next_value &&
-	(fs == NUM_SUITS || fs == hand->cards[i]->suit)) {
+        (fs == NUM_SUITS || fs == hand->cards[i]->suit)) {
       straight_cards++;
       next_value--;
     }
@@ -136,48 +136,36 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
   if (is_reg_straight_at(hand, index, fs, 5)) {
     return 1;
   }
-  else if (check_ace_low(hand, index, fs) && is_n_length_straight_at(hand, index, fs, 4)) {
+  else if (check_ace_low(hand, index, fs) && is_n_length_straight_at(hand, index\
+								     , fs, 4)) {
     return -1;
   }
   return 0;
 }
 
 hand_eval_t build_hand_from_match(deck_t * hand,
-                                  unsigned n,
-                                  hand_ranking_t what,
-                                  size_t idx) {
-
-  hand_eval_t ans;
-  ans.ranking = what;
-  card_t ** dk_card_ptr = hand-> cards;
-  card_t cur_card = **dk_card_ptr;
-  unsigned n_k_val = (**(dk_card_ptr+idx)).value;
-  unsigned delta_ptr = 0;
-
-  if(n==0){
-    while(delta_ptr<5){
-      *(ans.cards + delta_ptr) = *(dk_card_ptr + delta_ptr);
-      delta_ptr++;
+				  unsigned n,
+				  hand_ranking_t what,
+				  size_t idx) {
+  hand_eval_t result;
+  result.ranking = what;
+  if (idx==0) {
+    for (int i=0; i<5; i++) {
+      result.cards[i] = hand->cards[i];
     }
-    return ans;
   }
-
-  while(delta_ptr<n){
-    *(ans.cards + delta_ptr) = *(dk_card_ptr + idx + delta_ptr);
-    delta_ptr++;
-  }
-
-  int count = 0;
-  while(delta_ptr<5){
-    cur_card =  **(dk_card_ptr+count);
-    if(cur_card.value != n_k_val){
-      *(ans.cards + delta_ptr) = *(dk_card_ptr + count);
-      delta_ptr++;
+  else if (idx > 0) {
+    for (int i=0; i<n; i++) {
+      result.cards[i] = hand->cards[idx+i];
     }
-    count++;
+    for (int i=0; i<idx; i++) {
+      result.cards[n+i] = hand->cards[i];
+    }  
+    for (int i=idx+n; i<5; i++) {
+      result.cards[i] = hand->cards[i];
+    }
   }
-
-  return ans;
+  return result;
 }
 
 
