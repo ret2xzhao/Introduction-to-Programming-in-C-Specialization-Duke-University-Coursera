@@ -91,7 +91,7 @@ ssize_t find_secondary_pair(deck_t * hand, unsigned * match_counts, size_t match
 }
 
 int check_ace_low(deck_t * hand, size_t index, suit_t fs) {
-  if (hand->cards[index]->value == VALUE_ACE &&
+  if (hand->cards[index]->value == 14 &&
       (fs == NUM_SUITS || fs == hand->cards[index]->suit)) {
     return 1;
   }
