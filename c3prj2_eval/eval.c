@@ -98,8 +98,10 @@ int check_ace_low(deck_t * hand, size_t index, suit_t fs) {
 }
 
 int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
-  int straight_cards = 0;
-  unsigned next_value = 5;
+  int straight_cards = 1;
+  int next_value = hand->cards[index]->value - 1;
+  if (fs != NUM_SUITS && fs != hand->cards[index]->suit)
+    return 0;
   for (int i = index + 1; i < hand->n_cards; i++) {
     if (hand->cards[i]->value == next_value &&
         (fs == NUM_SUITS || fs == hand->cards[i]->suit)) {
