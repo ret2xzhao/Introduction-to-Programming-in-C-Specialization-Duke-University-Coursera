@@ -81,7 +81,7 @@ size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind) {
   return -1;
 }
 
-ssize_t  find_secondary_pair(deck_t * hand, unsigned * match_counts, size_t match_idx) {
+ssize_t find_secondary_pair(deck_t * hand, unsigned * match_counts, size_t match_idx) {
   for (int i=0; i<hand->n_cards; i++) {
     if (match_counts[i] > 1 && (hand->cards[i]->value!=hand->cards[match_idx]->value)) {
       return i;
@@ -92,28 +92,28 @@ ssize_t  find_secondary_pair(deck_t * hand, unsigned * match_counts, size_t matc
 
 int check_ace_low(deck_t * hand, size_t index, suit_t fs) {
   if (hand->cards[index]->value == VALUE_ACE &&
-      (fs == NUM_SUITS || fs == hand->cards[index]->suit))
+      (fs == NUM_SUITS || fs == hand->cards[index]->suit)) {
     return 1;
+  }
   return 0;
 }
 
-/*int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
-  int straight_cards = 1;
-  int next_value = hand->cards[index]->value - 1;
-  if (fs != NUM_SUITS && fs != hand->cards[index]->suit)
-    return 0;
+int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
+  int straight_cards = 0;
+  unsigned next_value = 5;
   for (int i = index + 1; i < hand->n_cards; i++) {
     if (hand->cards[i]->value == next_value &&
         (fs == NUM_SUITS || fs == hand->cards[i]->suit)) {
       straight_cards++;
       next_value--;
     }
-    if (straight_cards == n)
+    if (straight_cards == n) {
       return 1;
+    }
   }
   return 0;
 }
-*/
+
 int is_reg_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
   int straight_cards = 1;
   int next_value = hand->cards[index]->value - 1;
@@ -125,8 +125,9 @@ int is_reg_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
       straight_cards++;
       next_value--;
     }
-    if (straight_cards == n)
+    if (straight_cards == n) {
       return 1;
+    }
   }
   return 0;
 }
@@ -135,7 +136,7 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
   if (is_reg_straight_at(hand, index, fs, 5)) {
     return 1;
   }
-  else if (check_ace_low(hand, index, fs) && is_reg_straight_at(hand, index, fs, 4)) {
+  else if (check_ace_low(hand, index, fs) && is_n_length_straight_at(hand, index, fs, 4)) {
     return -1;
   }
   return 0;
