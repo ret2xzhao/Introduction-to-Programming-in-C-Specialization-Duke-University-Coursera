@@ -185,11 +185,11 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
       if (result1.cards[i]->value > result2.cards[i]->value) {
         return 1;
       }
-      else if (result1.cards[i]->value < result2.cards[i]->value) {
-        return -1;
+      else if (result1.cards[i]->value == result2.cards[i]->value) {
+        return 0;
       }
     }
-  return 0;
+  return -1;
   }
 }
 
