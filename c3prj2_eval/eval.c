@@ -175,19 +175,15 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand2->cards, hand2->n_cards, sizeof(hand2->cards[0]), card_ptr_comp);
   hand_eval_t result1 = evaluate_hand(hand1);
   hand_eval_t result2 = evaluate_hand(hand2);
-  if (result1.ranking > result2.ranking) {
+  if (result1.ranking > result2.ranking)
     return 1;
-  }
-  else if (result1.ranking < result2.ranking) {
+  else if (result1.ranking < result2.ranking)
     return -1;
-  }
   for (int i=0; i<5; i++) {
-    if (result1.cards[i]->value > result2.cards[i]->value) {
+    if (result1.cards[i]->value > result2.cards[i]->value)
       return 1;
-    }
-    else if (result1.cards[i]->value < result2.cards[i]->value) {
+    else if (result1.cards[i]->value < result2.cards[i]->value)
       return -1;
-    }
   }
   return 0;
 }
