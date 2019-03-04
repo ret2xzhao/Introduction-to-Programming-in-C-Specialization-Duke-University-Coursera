@@ -138,6 +138,7 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
   }
   else if (check_ace_low(hand, index, fs) && is_n_length_straight_at(hand, index\
 \
+\
                                                                      , fs, 4)) {
     return -1;
   }
@@ -180,17 +181,20 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   else if (result1.ranking < result2.ranking) {
     return -1;
   }
-  else {
-    for (int i=0; i<5; i++) { 
+  for (int i=0; i<5; i++) {
+    if (result1.cards[i]->value != result2.cards[i]->value) {
       if (result1.cards[i]->value > result2.cards[i]->value) {
         return 1;
       }
-      if (result1.cards[i]->value < result2.cards[i]->value) {
+      else {
         return -1;
-      }  
+      }
     }
-  return 0;
+    else {
+      continue;
+    }
   }
+  return 0;
 }
 
 //You will write this function in Course 4.
