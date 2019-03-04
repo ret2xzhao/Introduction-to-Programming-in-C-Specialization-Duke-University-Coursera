@@ -137,16 +137,17 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
     return 1;
   }
   else if (check_ace_low(hand, index, fs) && is_n_length_straight_at(hand, index\
-								     , fs, 4)) {
+\
+                                                                     , fs, 4)) {
     return -1;
   }
   return 0;
 }
 
 hand_eval_t build_hand_from_match(deck_t * hand,
-				  unsigned n,
-				  hand_ranking_t what,
-				  size_t idx) {
+                                  unsigned n,
+                                  hand_ranking_t what,
+                                  size_t idx) {
   hand_eval_t result;
   result.ranking = what;
   if (idx==0) {
@@ -160,7 +161,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     }
     for (int i=0; i<idx; i++) {
       result.cards[n+i] = hand->cards[i];
-    }  
+    }
     for (int i=idx+n; i<5; i++) {
       result.cards[i] = hand->cards[i];
     }
@@ -168,35 +169,29 @@ hand_eval_t build_hand_from_match(deck_t * hand,
   return result;
 }
 
-
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
   qsort(hand2->cards, hand2->n_cards, sizeof(hand2->cards[0]), card_ptr_comp);
-
-  hand_eval_t hand1_val = evaluate_hand(hand1);
-  hand_eval_t hand2_val = evaluate_hand(hand2);
-
-  card_t ** hand1_ptr = hand1_val.cards;
-  card_t ** hand2_ptr = hand2_val.cards;
-
-  if(hand1_val.ranking != hand2_val.ranking){
-    if(hand1_val.ranking <  hand2_val.ranking) return 1;
-    else return -1;
+  hand_eval_t result1 = evaluate_hand(hand1);
+  hand_eval_t result2 = evaluate_hand(hand2);
+  if (result1.ranking > result2.ranking) {
+    return 1;
   }
-  else{
-    unsigned cpr_val1 = (**hand1_ptr).value;
-    unsigned cpr_val2 = (**hand2_ptr).value;
-    for(int i=0; i<5; i++){
-      cpr_val1 = (**(hand1_ptr+i)).value;
-      cpr_val2 = (**(hand2_ptr+i)).value;
-      if(cpr_val1 > cpr_val2)  return 1;
-      else if(cpr_val1 < cpr_val2)  return -1;
+  if (result1.ranking < result2.ranking) {
+    return -1;
+  }
+  else {
+    for (int i=0; i<5; i++) { 
+      if (result1.cards[i]->value > result2.cards[i]->value) {
+        return 1;
+      }
+      else if (result1.cards[i]->value < result2.cards[i]->value) {
+        return -1;
+      }
     }
-  }
   return 0;
+  }
 }
-
-
 
 //You will write this function in Course 4.
 //For now, we leave a prototype (and provide our
