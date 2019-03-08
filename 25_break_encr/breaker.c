@@ -16,7 +16,7 @@ void frequency_count(int * frequency_count_array, FILE * f) {
   }
 }
 
-int find_key(int * frequency_count_array) {
+void find_key(int * frequency_count_array) {
   int x;
   int key;
   int max = 0;
@@ -25,13 +25,13 @@ int find_key(int * frequency_count_array) {
       max = frequency_count_array[x];
     }
   }
-  key = (max + 'a' - 'e' + 26)%26;
+  key = max + 'a' - 'e';
   printf("%d\n", key);
   return key;
 }
 
 int main(int argc, char ** argv) {
-  if (argc != 2) { 
+  if (argc != 2) {
     fprintf(stderr,"Not enough arguments");
     return EXIT_FAILURE;
   }
@@ -39,5 +39,9 @@ int main(int argc, char ** argv) {
   if (f == NULL) {
     perror("Could not open file");
     return EXIT_FAILURE;
-  }   
+  }
+  if (fclose(f) != 0) {    
+    perror("Failed to close the input file!");    
+    return EXIT_FAILURE; 
+  }
 }
