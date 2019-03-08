@@ -25,19 +25,18 @@ int find_key(int * frequency_count_array) {
 }
 
 int main(int argc, char ** argv) {
+  
   if (argc != 2) {
     fprintf(stderr,"Not enough arguments");
     return EXIT_FAILURE;
   }
+  
   FILE * f = fopen(argv[1], "r");
   if (f == NULL) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  if (fclose(f) != 0) {    
-    perror("Failed to close the input file!");    
-    return EXIT_FAILURE;
-  }
+  
   int frequency_count_array[26] = {0};
   frequency_count(frequency_count_array, f);
   int index = find_key(frequency_count_array);
