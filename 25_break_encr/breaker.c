@@ -39,7 +39,7 @@ int main(int argc, char ** argv) {
   
   int frequency_count_array[26] = {0};
   frequency_count(frequency_count_array, f);
-  int index = find_key(frequency_count_array);
-  int key = (index + 'a' - 'e' + 26) % 26;
+  int get_index = find_key(frequency_count_array);
+  int key = (get_index + 'a' - 'e' + 26) % 26;
   printf("%d\n", key);
 }
