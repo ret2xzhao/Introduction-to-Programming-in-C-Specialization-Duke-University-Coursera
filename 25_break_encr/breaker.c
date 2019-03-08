@@ -34,6 +34,10 @@ int main(int argc, char ** argv) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
+  if (fclose(f) != 0) {    
+    perror("Failed to close the input file!");    
+    return EXIT_FAILURE;
+  }
   int frequency_count_array[26] = {0};
   frequency_count(frequency_count_array, f);
   int index = find_key(frequency_count_array);
