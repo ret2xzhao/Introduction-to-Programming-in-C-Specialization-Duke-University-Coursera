@@ -25,7 +25,7 @@ int find_key(int * frequency_count_array) {
       max = frequency_count_array[x];
     }
   }
-  key = max + 'a' - 'e';
+  key = (max + 'a' - 'e' + 26)%26;
   printf("%d\n", key);
   return key;
 }
