@@ -15,10 +15,10 @@ void frequency_count(int * frequency_count_array, FILE * f) {
 int find_key(int * frequency_count_array) {
   int index = 0;
   int max = frequency_count_array[0];
-  for(int x=0; x<26; x++) {
-    if(frequency_count_array[x] > max) {
-      max = frequency_count_array[x];
-      index = x;
+  for(int i=0; i<26; i++) {
+    if(frequency_count_array[i] > max) {
+      max = frequency_count_array[i];
+      index = i;
     }
   }
   return index;
@@ -33,10 +33,6 @@ int main(int argc, char ** argv) {
   if (f == NULL) {
     perror("Could not open file");
     return EXIT_FAILURE;
-  }
-  if (fclose(f) != 0) {    
-    perror("Failed to close the input file!");    
-    return EXIT_FAILURE; 
   }
   int frequency_count_array[26] = {0};
   frequency_count(frequency_count_array, f);
