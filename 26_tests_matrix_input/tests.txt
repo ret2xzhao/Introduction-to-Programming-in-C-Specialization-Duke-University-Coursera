@@ -1,3 +1,5 @@
+test.tx
+test0.txt
 test1.txt 
 test2.txt
 test3.txt
