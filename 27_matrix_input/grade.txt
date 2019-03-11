@@ -1,9 +1,49 @@
-Grading at Mon Mar 11 17:07:26 UTC 2019
+Grading at Mon Mar 11 17:09:50 UTC 2019
 Attempting to compile rotateMatrix.c
-rotateMatrix.c: In function ‘main’:
-rotateMatrix.c:67:16: error: expected expression before ‘,’ token
-       printf(c%, "mat[r][c]");
-                ^
-The code did not compile!
+testcase1 passed
+#################################################
+testcase2: NonExistentFile
+ (should indicate an error)
+testcase2 passed
+#################################################
+testcase3: blank.txt
+ (should indicate an error)
+valgrind reported memory errors
+#################################################
+testcase4: short-line.txt
+ (should indicate an error)
+testcase4 passed
+#################################################
+testcase5: short-file.txt
+ (should indicate an error)
+valgrind reported memory errors
+#################################################
+testcase6: long-line.txt
+ (should indicate an error)
+testcase6 passed
+#################################################
+testcase7: long-file.txt
+ (should indicate an error)
+valgrind reported memory errors
+#################################################
+testcase8: long-line-2.txt
+ (should indicate an error)
+testcase8 passed
+#################################################
+testcase9: normal1.txt normal2.txt
+ (should indicate an error)
+testcase9 passed
+#################################################
+testcase10: normal1.txt
+valgrind reported memory errors
+#################################################
+testcase10: normal2.txt
+valgrind reported memory errors
+#################################################
+testcase10: normal3.txt
+valgrind reported memory errors
+#################################################
+testcase10: eof.txt
+valgrind reported memory errors
 
 Overall Grade: F
