@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define LINE_SIZE 12
 #define DIMENSION 10
 
@@ -50,7 +51,7 @@ int main(int argc, char ** argv) {
       return EXIT_FAILURE;
     }
     for (int i=0; i<10; i++) {
-      matrix[height][i] = line[i];
+      mat[height][i] = line[i];
     }
     height++;
   }
