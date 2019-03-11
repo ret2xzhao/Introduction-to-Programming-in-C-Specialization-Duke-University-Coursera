@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define LINE_SIZE 12
-#define DIMENSION 10
+#define LINE_SIZE = 12
+#define DIMENSION = 10
 
 /*Matrix Rotation Function*/
 void rotate(char matrix[10][10]) {
@@ -40,14 +40,14 @@ int main(int argc, char ** argv) {
       fprintf(stderr, "Line %d is too long!\n", height);
       return EXIT_FAILURE;
     }
-    int whereIsNL = 0;
+    int new_line = 0;
     for (int n=0; n<LINE_SIZE; n++) {
       if (line[n] == '\n') {
-	whereIsNL = n;
+	new_line = n;
       }
     }
-    if (whereIsNL < 10) {
-      fprintf(stderr, "Input matrix line (%d)'s width is %d, which is less than 10 characters.\n", height, whereIsNL);
+    if (new_line < 10) {
+      fprintf(stderr, "Input matrix line (%d)'s width is %d, which is less than 10 characters.\n", height, new_line);
       return EXIT_FAILURE;
     }
     for (int i=0; i<10; i++) {
@@ -57,9 +57,11 @@ int main(int argc, char ** argv) {
   }
   if (height < DIMENSION) {
     fprintf(stderr, "Input matrix's height is less than 10");
+    return EXIT_FAILURE;
   }
   if (height > DIMENSION) {
     fprintf(stderr, "Input matrix's height is more than 10");
+    return EXIT_FAILURE;
   }  
   rotate(mat);
   for (int r=0; r<10; r++) {
