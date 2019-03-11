@@ -46,7 +46,7 @@ int main(int argc, char ** argv) {
 	whereIsNL = n;
       }
     }
-    if (whereIsNL != 10) {
+    if (whereIsNL < 10) {
       fprintf(stderr, "Input matrix line (%d)'s width is %d, which is less than 10 characters.\n", height, whereIsNL);
       return EXIT_FAILURE;
     }
