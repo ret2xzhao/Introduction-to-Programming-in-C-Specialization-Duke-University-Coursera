@@ -1,10 +1,12 @@
-Grading at Mon Mar 11 17:35:00 UTC 2019
+Grading at Mon Mar 11 17:39:13 UTC 2019
 Attempting to compile rotateMatrix.c
 rotateMatrix.c: In function ‘main’:
-rotateMatrix.c:66:3: error: ISO C forbids nested functions [-Werror=pedantic]
-   void rotate(char matrix[10][10]) {
-   ^
-cc1: all warnings being treated as errors
+rotateMatrix.c:80:16: error: expected ‘)’ before ‘;’ token
+   rotate(matrix;)
+                ^
+rotateMatrix.c:81:5: error: expected ‘;’ before ‘for’
+     for (int r=0; r<MATRIX_DIM; r++) {
+     ^
 The code did not compile!
 
 Overall Grade: F
