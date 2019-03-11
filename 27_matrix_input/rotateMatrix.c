@@ -77,7 +77,7 @@ int main(int argc, char ** argv) {
     perror("Failed to close the file!");
     return EXIT_FAILURE;
   }
-  rotate(matrix;)
+  rotate(matrix);
     for (int r=0; r<MATRIX_DIM; r++) {
       for (int c=0; c<MATRIX_DIM; c++) {
 	printf("%c", matrix[r][c]);
