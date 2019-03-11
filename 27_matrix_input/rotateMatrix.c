@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define LINE_SIZE = 12
-#define DIMENSION = 10
+#define LINE_SIZE 12
+#define DIMENSION 10
 
 /*Matrix Rotation Function*/
 void rotate(char matrix[10][10]) {
