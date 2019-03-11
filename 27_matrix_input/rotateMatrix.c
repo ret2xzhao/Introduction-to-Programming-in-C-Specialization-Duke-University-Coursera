@@ -5,6 +5,22 @@
 int LINE_LENGTH = 12;
 int MATRIX_DIM = 10;
 
+// rotate the matrix 90 degrees clockwise and print it to stdout
+void rotate(char matrix[10][10]) {
+  int i;
+  int j;
+  char temp;
+  for (i=0; i<5; i++) {
+    for (j=i; j<(9-i); j++) {
+      temp = matrix[i][j];
+      matrix[i][j] = matrix[9-j][i];
+      matrix[9-j][i] = matrix[9-i][9-j];
+      matrix[9-i][9-j] = matrix[j][9-i];
+      matrix[j][9-i] = temp;
+    }
+  }
+}
+
 int main(int argc, char ** argv) {
   if (argc != 2) {
     fprintf(stderr, "Usage: rotateMatrix inputFileName\n");
@@ -61,29 +77,13 @@ int main(int argc, char ** argv) {
     perror("Failed to close the file!");
     return EXIT_FAILURE;
   }
-
-  // rotate the matrix 90 degrees clockwise and print it to stdout
-  void rotate(char matrix[10][10]) {
-    int i;
-    int j;
-    char temp;
-    for (i=0; i<5; i++) {
-      for (j=i; j<(9-i); j++) {
-	temp = matrix[i][j];
-	matrix[i][j] = matrix[9-j][i];
-	matrix[9-j][i] = matrix[9-i][9-j];
-	matrix[9-i][9-j] = matrix[j][9-i];
-	matrix[j][9-i] = temp;
+  rotate(matrix;)
+    for (int r=0; r<MATRIX_DIM; r++) {
+      for (int c=0; c<MATRIX_DIM; c++) {
+	printf("%c", matrix[r][c]);
       }
+      printf("\n");
     }
-  }
-
-  for (int r=0; r<MATRIX_DIM; r++) {
-    for (int c=0; c<MATRIX_DIM; c++) {
-      printf("%c", matrix[r][c]);
-    }
-    printf("\n");
-  }
   
   return EXIT_SUCCESS;
 }
