@@ -67,6 +67,7 @@ int main(int argc, char ** argv) {
     perror("Failed to close the input file!");    
     return EXIT_FAILURE;  
   }
+  
   rotate(mat);
   for (int r=0; r<DIMENSION; r++) {
     for (int c=0; r<DIMENSION; c++) {
@@ -74,5 +75,6 @@ int main(int argc, char ** argv) {
     }
     printf("\n");
   }
+  
   return EXIT_SUCCESS;
 }
