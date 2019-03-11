@@ -64,7 +64,7 @@ int main(int argc, char ** argv) {
   rotate(mat);
   for (int r=0; r<10; r++) {
     for (int c=0; r<10; c++) {
-      printf(c%, "mat[r][c]");
+      printf("c%", mat[r][c]);
     }
     printf("\n");
   }
