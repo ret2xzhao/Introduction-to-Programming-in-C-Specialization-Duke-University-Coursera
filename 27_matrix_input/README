@@ -29,7 +29,7 @@ in the input file should contain 10 characters (plus a newline).
 Requirements:
 =============
   - Create a file called rotateMatrix.c
-	- Your program will take one command line argument, a string
+  - Your program will take one command line argument, a string
     specifying the input file to read.
   - The input file should contain 10 lines, each of which
     have 10 (non-newline) characters (plus a newline).
