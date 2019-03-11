@@ -1,49 +1,49 @@
-Grading at Mon Mar 11 17:15:03 UTC 2019
+Grading at Mon Mar 11 17:24:09 UTC 2019
 Attempting to compile rotateMatrix.c
-rotateMatrix.c: In function ‘main’:
-rotateMatrix.c:4:19: error: expected expression before ‘=’ token
- #define LINE_SIZE = 12
-                   ^
-rotateMatrix.c:35:13: note: in expansion of macro ‘LINE_SIZE’
-   char line[LINE_SIZE];
-             ^
-rotateMatrix.c:5:19: error: expected expression before ‘=’ token
- #define DIMENSION = 10
-                   ^
-rotateMatrix.c:36:12: note: in expansion of macro ‘DIMENSION’
-   char mat[DIMENSION][DIMENSION];
-            ^
-rotateMatrix.c:4:19: error: expected expression before ‘=’ token
- #define LINE_SIZE = 12
-                   ^
-rotateMatrix.c:38:22: note: in expansion of macro ‘LINE_SIZE’
-   while (fgets(line, LINE_SIZE, f) !=NULL) {
-                      ^
-rotateMatrix.c:4:19: error: expected expression before ‘=’ token
- #define LINE_SIZE = 12
-                   ^
-rotateMatrix.c:44:21: note: in expansion of macro ‘LINE_SIZE’
-     for (int n=0; n<LINE_SIZE; n++) {
-                     ^
-rotateMatrix.c:5:19: error: expected expression before ‘=’ token
- #define DIMENSION = 10
-                   ^
-rotateMatrix.c:58:16: note: in expansion of macro ‘DIMENSION’
-   if (height < DIMENSION) {
-                ^
-rotateMatrix.c:5:19: error: expected expression before ‘=’ token
- #define DIMENSION = 10
-                   ^
-rotateMatrix.c:62:16: note: in expansion of macro ‘DIMENSION’
-   if (height > DIMENSION) {
-                ^
-rotateMatrix.c:36:8: error: unused variable ‘mat’ [-Werror=unused-variable]
-   char mat[DIMENSION][DIMENSION];
-        ^
-rotateMatrix.c:35:8: error: unused variable ‘line’ [-Werror=unused-variable]
-   char line[LINE_SIZE];
-        ^
-cc1: all warnings being treated as errors
-The code did not compile!
+testcase1 passed
+#################################################
+testcase2: NonExistentFile
+ (should indicate an error)
+testcase2 passed
+#################################################
+testcase3: blank.txt
+ (should indicate an error)
+testcase3 passed
+#################################################
+testcase4: short-line.txt
+ (should indicate an error)
+testcase4 passed
+#################################################
+testcase5: short-file.txt
+ (should indicate an error)
+testcase5 passed
+#################################################
+testcase6: long-line.txt
+ (should indicate an error)
+testcase6 passed
+#################################################
+testcase7: long-file.txt
+ (should indicate an error)
+testcase7 passed
+#################################################
+testcase8: long-line-2.txt
+ (should indicate an error)
+testcase8 passed
+#################################################
+testcase9: normal1.txt normal2.txt
+ (should indicate an error)
+testcase9 passed
+#################################################
+testcase10: normal1.txt
+valgrind reported memory errors
+#################################################
+testcase10: normal2.txt
+valgrind reported memory errors
+#################################################
+testcase10: normal3.txt
+valgrind reported memory errors
+#################################################
+testcase10: eof.txt
+valgrind reported memory errors
 
-Overall Grade: F
+Overall Grade: A
