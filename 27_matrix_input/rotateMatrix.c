@@ -60,17 +60,17 @@ int main(int argc, char ** argv) {
   }
   if (height > DIMENSION) {
     fprintf(stderr, "Input matrix's height is more than 10");
-  }
-  if (fclose(f) != 0) {    
-    perror("Failed to close the input file!");    
-    return EXIT_FAILURE;  
   }  
   rotate(mat);
   for (int r=0; r<10; r++) {
     for (int c=0; r<10; c++) {
-      printf("%c", mat[r][c]);
+      printf(c%, "mat[r][c]");
     }
     printf("\n");
+  }
+  if (fclose(f) != 0) {    
+    perror("Failed to close the input file!");    
+    return EXIT_FAILURE;  
   }
   return EXIT_SUCCESS;
 }
