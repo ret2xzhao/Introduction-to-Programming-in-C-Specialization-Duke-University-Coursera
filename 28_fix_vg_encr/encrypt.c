@@ -41,7 +41,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   //outfileName is argv[2] + ".enc", so add 4 to its length.
-  char * outFileName = malloc((strlen(argv[2]) + 6) * sizeof(*outFileName));
+  char * outFileName = malloc((strlen(argv[2]) + 5) * sizeof(*outFileName));
   strcpy(outFileName, argv[2]);
   strcat(outFileName, ".enc");
   FILE * outFile = fopen(outFileName, "w");
