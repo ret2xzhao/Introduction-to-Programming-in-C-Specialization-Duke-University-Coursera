@@ -1,14 +1,13 @@
-Grading at Sun Mar 17 21:52:26 UTC 2019
+Grading at Mon Mar 18 03:56:42 UTC 2019
 Attempting to compile:
-outname.c: In function ‘computeOutputFileName’:
-outname.c:9:22: error: ‘argv’ undeclared (first use in this function)
-   strcpy(outputName, argv[2]);
-                      ^
-outname.c:9:22: note: each undeclared identifier is reported only once for each function it appears in
-outname.c:12:3: error: ‘return’ with no value, in function returning non-void [-Werror]
-   return;
-   ^
-cc1: all warnings being treated as errors
-The code did not compile!
+#################################################
+testcase1:
+valgrind reported memory errors
+#################################################
+testcase2:
+valgrind reported memory errors
+#################################################
+testcase3:
+valgrind reported memory errors
 
 Overall Grade: F
