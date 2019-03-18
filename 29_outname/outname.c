@@ -5,9 +5,9 @@
 
 char * computeOutputFileName(const char * inputName) {
   //WRITE ME
-  char * outputName = malloc((strlen(inputName) + 6) * sizeof(*outputName));
-  strcpy(outputName, argv[2]);
+  char * outputName = malloc((strlen(inputName) + 10) * sizeof(*outputName));
+  strcpy(outputName, inputName);
   strcat(outputName, ".counts");
   free(outputName);
-  return;
+  return outputName;
 }
