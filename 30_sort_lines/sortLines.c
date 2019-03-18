@@ -36,6 +36,10 @@ void readData(FILE * f) {
 
 int main(int argc, char ** argv) { 
   //WRITE YOUR CODE HERE!
+  if (argc == 0) {
+    fprintf(stderr,"few arguments \n");
+    return EXIT_FAILURE;
+  }  
   if (argc == 1) {
     FILE * f = fopen(argv[1], "r");
     if (f == NULL) {
