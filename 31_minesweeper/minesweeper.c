@@ -28,7 +28,7 @@ void addRandomMine(board_t * b) {
   int x;
   int y;
   //we could have a board too small for the number
-  //of mines taht we request. try w*h*10 times before
+  //of mines than we request. try w*h*10 times before
   //we give up
   int limit = b->width * b->height * 10;
   do {
@@ -42,8 +42,27 @@ void addRandomMine(board_t * b) {
 
 board_t * makeBoard(int w, int h, int numMines) {
   //WRITE ME!
+  - makeBoard: this function should malloc and initialize a board_t
+  representing the board.  The parameters specify the width
+    and height of the board, as well as the number of mines.
+    You will also need to call malloc (multiple times)
+  to allocate space for the 2D array "board".
+  This function should fill in all squares on the board with
+			      UNKNOWN, then call addRandomMine an appropriate number of times
+			      (i.e., numMines) to "randomly" place mines on the board.
+  Note that the fields of your board_t must be initailzed before
+  you call addRandomMine.
+  Also note that the mine generation is pseudo random and will not
+  change if you re-run the program multiple times with the same
+  parameters.
+
+  Note that the layout of b->board should be such that it is indexed
+  b->board[y][x]
+  where y is between 0 and the height and x is between 0 and the width.
+		  addRandomMine(board_t * b);
   return NULL;
 }
+
 void printBoard(board_t * b) {    
   int found = 0;
   printf("    ");
@@ -94,10 +113,20 @@ void printBoard(board_t * b) {
   }
   printf("\nFound %d of %d mines\n", found, b->totalMines);
 }
+
 int countMines(board_t * b, int x, int y) {
   //WRITE ME!
-  return 0;
+  - countMines: this funciton takes a board_t, and an (x,y) coordinate.
+    It should count the mines in the 8 squares around that (x,y) 
+    coordinate, and return that count.  Note that a mine may be
+  indicated by a square on the board either being HAS_MINE or
+    KNOWN_MINE.  You can use the IS_MINE macro to test both cases:
+    IS_MINE(b->board[ny][nx]) 
+    (where b is the board_t, and (nx,ny) are the coordinates you 
+     want to check).  Be careful not to go out of bounds of the array.
+    return 0;
 }
+
 int click (board_t * b, int x, int y) {
   if (x < 0 || x >= b->width ||
       y < 0 || y >= b->height) {
@@ -119,12 +148,17 @@ int click (board_t * b, int x, int y) {
 
 int checkWin(board_t * b) {
   //WRITE ME!
-  return 0;
+  - checkWin: this funciton takes a board_t and see if the game has
+  been won.  The game is won when no squares are UNKNOWN.
+							     return 0;
 }
 
 void freeBoard(board_t * b) {
   //WRITE ME!
-}
+  - freeBoard: This function takes a board_t and frees all memory
+    associated with it (including the array inside of it).  That is,
+  freeBoard should undo all the allocations made by a call to makeBoard.
+    }
 
 int readInt(char ** linep, size_t * lineszp) {
   if (getline (linep, lineszp, stdin) == -1) {
@@ -209,6 +243,7 @@ int maybeReveal(board_t * b, int x, int y) {
   }
   return 0;
 }
+
 void determineKnownMines(board_t * b) {
   int foundMore = 0;
   for (int y = 0; y < b->height; y++) {
@@ -232,6 +267,7 @@ void revealMines(board_t * b) {
     }
   }
 }
+
 int playTurn(board_t * b, char ** linep, size_t *lineszp) {
   printf("Current board:\n");
   printBoard(b);
@@ -260,7 +296,6 @@ int playTurn(board_t * b, char ** linep, size_t *lineszp) {
   }
   return 0;
 }
-
 
 int main(int argc, char ** argv) {
   if (argc != 4) {
