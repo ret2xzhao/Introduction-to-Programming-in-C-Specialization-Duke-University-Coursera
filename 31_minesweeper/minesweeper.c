@@ -111,10 +111,6 @@ void printBoard(board_t * b) {
   }
   printf("\nFound %d of %d mines\n", found, b->totalMines);
 }
-int checkvalid(int x ,int y ,int w,int h){
-  if (((x>=0)&&(x < w))&&((y >= 0)&&(y<h))) return 1;
-  else return 0;
-}
 
 int within_boundary(int x, int y, int w, int h) {
   if ((x>=0 && x<w) && (y>=0 && y<h)) {
@@ -209,7 +205,6 @@ int click (board_t * b, int x, int y) {
   b->board[y][x] = countMines(b,x,y);
   return CLICK_CONTINUE;
 }
-
 
 int checkWin(board_t * b) {
   //WRITE ME!
@@ -315,6 +310,7 @@ int maybeReveal(board_t * b, int x, int y) {
   }
   return 0;
 }
+
 void determineKnownMines(board_t * b) {
   int foundMore = 0;
   for (int y = 0; y < b->height; y++) {
@@ -338,6 +334,7 @@ void revealMines(board_t * b) {
     }
   }
 }
+
 int playTurn(board_t * b, char ** linep, size_t *lineszp) {
   printf("Current board:\n");
   printBoard(b);
@@ -366,7 +363,6 @@ int playTurn(board_t * b, char ** linep, size_t *lineszp) {
   }
   return 0;
 }
-
 
 int main(int argc, char ** argv) {
   if (argc != 4) {
