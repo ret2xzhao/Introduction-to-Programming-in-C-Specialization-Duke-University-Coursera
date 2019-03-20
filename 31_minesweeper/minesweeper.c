@@ -213,10 +213,8 @@ int click (board_t * b, int x, int y) {
 
 int checkWin(board_t * b) {
   //WRITE ME!
-  int w = b->width;
-  int h = b->height;
-  for (int y=0; y<h; y++) {
-    for (int x=0; x<w; x++) {
+  for (int y=0; y<(b->height); y++) {
+    for (int x=0; x<(b->width); x++) {
       if (b->board[y][x] == UNKNOWN) {
         return 0;
       }
