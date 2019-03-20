@@ -121,59 +121,70 @@ int within_boundary(int x, int y, int w, int h) {
   }
 }
 
-int checkvalid(int x ,int y ,int w,int h){
-  if (((x>=0)&&(x < w))&&((y >= 0)&&(y<h))) return 1;
-  else return 0;
-}
-
 int countMines(board_t * b, int x, int y) {
-  int w=b->width;
-  int h=b->height;
-  int count=0;
-  
+  //WRITE ME!
+  int w = b->width;
+  int h = b->height;
+  int mines_counter = 0;
   int x1;
   int y1;
   
   x1=x-1;
-  y1=y-1;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
-  }
   y1=y;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
-  }
-  y1=y+1;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
-  }
-
-  x1=x+1;
-  y1=y-1;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
-  }
-  y1=y;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
-  }
-  y1=y+1;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
-  }
-
-  x1=x;
-  y1=y-1;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
-  }
-  y1=y+1;
-  if(checkvalid(x1,y1,w,h)){
-    if (IS_MINE(b->board[y1][x1])) count ++;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
   }
   
-  //WRITE ME!
-  return count;
+  x1=x+1;
+  y1=y;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+  
+  x1=x;
+  y1=y-1;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+  
+  x1=x;
+  y1=y+1;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+  
+  x1=x-1;
+  y1=y-1;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+  
+  x1=x+1;
+  y1=y-1;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+  
+  x1=x-1;
+  y1=y+1;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+  
+  x1=x+1;
+  y1=y+1;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+  return mines_counter;
 }
 
 int click (board_t * b, int x, int y) {
