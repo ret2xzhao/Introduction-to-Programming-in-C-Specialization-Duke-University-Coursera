@@ -130,14 +130,19 @@ int countMines(board_t * b, int x, int y) {
   int y1;
   
   x1=x-1;
+  y1=y-1;
+  within_boundary(x1, y1, w, h);
+  if (IS_MINE(b->board[y1][x1])) {
+    mines_counter++;
+  }
+
   y1=y;
   within_boundary(x1, y1, w, h);
   if (IS_MINE(b->board[y1][x1])) {
     mines_counter++;
   }
   
-  x1=x+1;
-  y1=y;
+  y1=y+1;
   within_boundary(x1, y1, w, h);
   if (IS_MINE(b->board[y1][x1])) {
     mines_counter++;
@@ -149,16 +154,8 @@ int countMines(board_t * b, int x, int y) {
   if (IS_MINE(b->board[y1][x1])) {
     mines_counter++;
   }
-  
-  x1=x;
+
   y1=y+1;
-  within_boundary(x1, y1, w, h);
-  if (IS_MINE(b->board[y1][x1])) {
-    mines_counter++;
-  }
-  
-  x1=x-1;
-  y1=y-1;
   within_boundary(x1, y1, w, h);
   if (IS_MINE(b->board[y1][x1])) {
     mines_counter++;
@@ -171,14 +168,12 @@ int countMines(board_t * b, int x, int y) {
     mines_counter++;
   }
   
-  x1=x-1;
-  y1=y+1;
+  y1=y;
   within_boundary(x1, y1, w, h);
   if (IS_MINE(b->board[y1][x1])) {
     mines_counter++;
   }
   
-  x1=x+1;
   y1=y+1;
   within_boundary(x1, y1, w, h);
   if (IS_MINE(b->board[y1][x1])) {
