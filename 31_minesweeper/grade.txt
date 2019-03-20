@@ -1,45 +1,20 @@
-Grading at Tue Mar 19 05:39:14 UTC 2019
+Grading at Wed Mar 20 00:16:46 UTC 2019
 Attempting to compile minesweeper.c
-minesweeper.c: In function ‘makeBoard’:
-minesweeper.c:45:3: error: wrong type argument to unary minus
-   - makeBoard: this function should malloc and initialize a board_t
-   ^
-minesweeper.c:45:14: error: expected ‘;’ before ‘:’ token
-   - makeBoard: this function should malloc and initialize a board_t
-              ^
-minesweeper.c:49:29: error: invalid suffix "D" on integer constant
-   to allocate space for the 2D array "board".
-                             ^
-minesweeper.c: In function ‘countMines’:
-minesweeper.c:119:3: error: wrong type argument to unary minus
-   - countMines: this funciton takes a board_t, and an (x,y) coordinate.
-   ^
-minesweeper.c:119:15: error: expected ‘;’ before ‘:’ token
-   - countMines: this funciton takes a board_t, and an (x,y) coordinate.
-               ^
-minesweeper.c: In function ‘checkWin’:
-minesweeper.c:151:3: error: wrong type argument to unary minus
-   - checkWin: this funciton takes a board_t and see if the game has
-   ^
-minesweeper.c:151:13: error: expected ‘;’ before ‘:’ token
-   - checkWin: this funciton takes a board_t and see if the game has
-             ^
-minesweeper.c: In function ‘freeBoard’:
-minesweeper.c:158:3: error: wrong type argument to unary minus
-   - freeBoard: This function takes a board_t and frees all memory
-   ^
-minesweeper.c:158:14: error: expected ‘;’ before ‘:’ token
-   - freeBoard: This function takes a board_t and frees all memory
-              ^
-minesweeper.c: In function ‘countMines’:
-minesweeper.c:128:1: error: control reaches end of non-void function [-Werror=return-type]
- }
- ^
-minesweeper.c: In function ‘checkWin’:
-minesweeper.c:154:1: error: control reaches end of non-void function [-Werror=return-type]
- }
- ^
-cc1: all warnings being treated as errors
-The code did not compile!
+#################################################
+testcase1:
+valgrind reported memory errors
+#################################################
+testcase2:
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase3:
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase4:
+valgrind reported memory errors
 
 Overall Grade: F
