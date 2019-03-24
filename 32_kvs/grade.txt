@@ -1,0 +1,14 @@
+Grading at Sun Mar 24 20:41:09 UTC 2019
+Attempting to compile:
+kv.c: In function ‘readKVs’:
+kv.c:10:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+kv.c: In function ‘lookupValue’:
+kv.c:22:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: all warnings being treated as errors
+The code did not compile!
+
+Overall Grade: F
