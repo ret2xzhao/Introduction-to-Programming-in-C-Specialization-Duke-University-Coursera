@@ -3,26 +3,12 @@
 #include <string.h>
 #include "kv.h"
 
-char * get_key (char * string) {
-  char * temp;
-  char * found = strdup(string);
-  temp = strsep(&found,"=");
-  return temp;  
-}
-
-char * get_value(char * string) {
-  char * temp;
-  char * found = strdup(string);
-  temp = strsep(&found,"\n");
-  return temp;  
-}
-
 kvpair_t * get_pair(char * string) {
   char * key;
   char * value;
   kvpair_t * kvpair = malloc(sizeof(*kvpair));
-  key = get_key (string);
-  value = get_value(string);
+  key = strsep(&string, "=");
+  value = strsep(&string, "\n");
   kvpair->key = strdup(key);
   kvpair->value = strdup(value);
   return kvpair;
