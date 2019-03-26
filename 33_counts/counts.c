@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "counts.h"
+
 counts_t * createCounts(void) {
   //WRITE ME
 }
