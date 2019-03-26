@@ -52,11 +52,11 @@ kvarray_t * readKVs(const char * fname) {
 void freeKVs(kvarray_t * kvarray) {
   //WRITE ME
   for (int i=0; i<kvarray->length; i++) {
-    free(kvarray->kvp_array[i]->key);
     free(kvarray->kvp_array[i]->value);
+    free(kvarray->kvp_array[i]->key);
     free(kvarray->kvp_array[i]);
-    free(kvarray->kvp_array);
   }
+  free(kvarray->kvp_array);
   free(kvarray);
 }
 
