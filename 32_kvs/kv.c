@@ -11,9 +11,10 @@ char * get_key (char * string) {
 }
 
 char * get_value(char * string) {
+  char * temp;
   char * found = strdup(string);
-  strsep(&found,"=");
-  return found;  
+  temp = strsep(&found,"\n");
+  return temp;  
 }
 
 kvpair_t * get_pair(char * string) {
