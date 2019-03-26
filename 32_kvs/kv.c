@@ -17,18 +17,19 @@ kvpair_t * get_pair(char * string) {
 void add_pair_to_array(kvarray_t * kvarray, kvpair_t * kvpair) {
   kvarray->length++;
   kvarray->kvp_array = realloc(kvarray->kvp_array, kvarray->length * sizeof(*kvarray->kvp_array));
-  kvarray->kvp_array[kvarray->length - 1] = kvpair;
+  kvarray->kvp_array[kvarray->length-1] = kvpair;
 }
 
 kvarray_t * readKVs(const char * fname) {
+  //WRITE ME
   FILE * f = fopen (fname, "r");
   if (f == NULL) {
     perror("fopen");
     fprintf(stderr, "Trying to open %s\n", fname);
     return NULL;
   }
-  
-  kvarray_t * kvarray = malloc(sizeof(*kvarray));  
+
+  kvarray_t * kvarray = malloc(sizeof(*kvarray));
   kvarray->kvp_array = NULL;
   kvarray->length = 0;
   char * line = NULL;
@@ -40,7 +41,7 @@ kvarray_t * readKVs(const char * fname) {
     line = NULL;
   }
   free(line);
-  
+
   if (fclose(f) !=0) {
     perror("fclose");
     fprintf(stderr, "Trying to close %s\n", fname);
