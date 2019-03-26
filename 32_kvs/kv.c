@@ -49,15 +49,15 @@ kvarray_t * readKVs(const char * fname) {
   return kvarray;
 }
 
-void freeKVs(kvarray_t * kvarray) {
+void freeKVs(kvarray_t * pairs) {
   //WRITE ME
-  for (int i=0; i<kvarray->length; i++) {
-    free(kvarray->kvp_array[i]->value);
-    free(kvarray->kvp_array[i]->key);
-    free(kvarray->kvp_array[i]);
+  for (int i=0; i<pairs->length; i++) {
+    free(pairs->kvp_array[i]->value);
+    free(pairs->kvp_array[i]->key);
+    free(pairs->kvp_array[i]);
   }
-  free(kvarray->kvp_array);
-  free(kvarray);
+  free(pairs->kvp_array);
+  free(pairs);
 }
 
 void printKVs(kvarray_t * pairs) {
