@@ -22,8 +22,8 @@ kvpair_t * get_pair(char * string) {
   kvpair_t * kvpair = malloc(sizeof(*kvpair));
   key = get_key (string);
   value = get_value(string);
-  kvpair->key = key;
-  kvpair->value = value;
+  kvpair->key = strdup(key);
+  kvpair->value = strdup(value);
   return kvpair;
 }
 
