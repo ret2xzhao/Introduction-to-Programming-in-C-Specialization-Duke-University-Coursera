@@ -16,6 +16,17 @@ char * get_value(char * string) {
   return found;  
 }
 
+kvpair_t * get_pair(char * string) {
+  char * key;
+  char * value;
+  kvpair_t * kvpair = malloc(sizeof(*kvpair));
+  key = get_key (string);
+  value = get_value(string);
+  kvpair->key = key;
+  kvpair->value = value;
+  return kvpair;
+}
+
 void add_pair_to_array(kvarray_t * kvarray, kvpair_t * kvpair) {
   kvarray->length++;
   kvarray->kvp_array = realloc(kvarray->kvp_array, kvarray->length * sizeof(*kvarray->kvp_array));
@@ -29,15 +40,11 @@ kvarray_t * readKVs(const char * fname) {
     fprintf(stderr, "Trying to open %s\n", fname);
     return NULL;
   }
-  kvarray_t * kvarray = malloc(sizeof(*kvarray));
-  kvpair_t * kvpair = malloc(sizeof(*kvpair));
-  kvpair->key = NULL;
-  kvpair->value = NULL;
+  kvarray_t * kvarray = malloc(sizeof(*kvarray));  
   char * line = NULL;
   size_t sz = 0;
   while(getline(&line, &sz, f)>0) {
-    kvpair->key = get_key (line);
-    kvpair->value = get_value(line);
+    kvpair_t * kvpair = get_pair(line);
     add_pair_to_array(kvarray, kvpair);
     free(line);
     line = NULL;
