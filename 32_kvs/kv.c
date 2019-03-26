@@ -1,159 +1,87 @@
 #include <stdio.h>
-
 #include <stdlib.h>
-
 #include <string.h>
-
 #include "kv.h"
 
+kvpair_t * getKVPair(char * line) {
+  char *key, *value;
+  //const char delim = '=';
+  kvpair_t * kvpair = malloc(sizeof(*kvpair));
 
-
-kvpair_t* splitPairs(char* str){
+  /*
+  //key = strsep(&line, &delim);
+  value = strchr(line, delim);
+  key = strsep(&line, &delim);
+  */
+  key = strsep(&line, "=");
+  value = strsep(&line, "\n");
+  kvpair->key = strdup(key);
+  kvpair->value = strdup(value);
   
-
-  
-  char* value1=strchr(str,'=');
-  
-  *value1='\0';
-  
-  value1 ++;
-  
-  char* n=strchr(value1,'\n');
-  
-  if(n != NULL) *n='\0';
-  
-
-  
-  kvpair_t* pair = malloc((size_t) sizeof(*pair));
-  
-  pair ->key=str;
-  
-  pair ->value=value1;
-  
-  return pair;
-  
+  return kvpair;
 }
 
-
+void addPairToArray(kvarray_t * pairs, kvpair_t * kvpair) {
+  pairs->length++;
+  pairs->kvp_array = realloc(pairs->kvp_array, pairs->length * sizeof(*kvpair));
+  pairs->kvp_array[pairs->length-1] = kvpair;
+}
 
 kvarray_t * readKVs(const char * fname) {
-  
-  //open the file
-  
+  //WRITE ME
   FILE * f = fopen(fname, "r");
-  
   if (f == NULL) {
-    
-    perror("Could not open file");
-    
+    perror("fopen");
+    fprintf(stderr, "Trying to open %s\n", fname);
     return NULL;
-    
   }
-  
 
-  
-  //read the lines
-  
-  char* line= NULL;
-  
-  size_t sz=0;
-  
-  kvpair_t* curr_pair = NULL;
-  
-
-  
-  kvarray_t* kv_array= malloc((size_t)(sizeof(*kv_array)));
-  
-  kv_array->size = 0;
-  
-  kv_array->arr=NULL;
-  
-
-  
-  while (getline(&line,&sz, f) >= 0) {
-    
-    curr_pair=splitPairs(line);
-    
-    kv_array->arr=realloc(kv_array->arr,(kv_array->size+1)*sizeof(*kv_array->arr));
-    
-    kv_array->arr[kv_array->size]=curr_pair;
-    
-    kv_array->size ++;
-    
-    line=NULL;
-    
+  kvarray_t * kvarray = malloc(sizeof(*kvarray));
+  kvarray->kvp_array = NULL;
+  kvarray->length = 0;
+  char * line = NULL;
+  size_t sz = 0;
+  while (getline(&line, &sz, f) > 0) {
+    kvpair_t * kvpair = getKVPair(line);
+    addPairToArray(kvarray, kvpair);
+    free(line);
+    line = NULL;
   }
-  
   free(line);
   
+  if (fclose(f) != 0) {
+    perror("fclose");
+    fprintf(stderr, "Trying to close %s\n", fname);
+    return NULL;
+  }
 
-  
-  int result=fclose(f);
-  
-  if (result !=0)return NULL;
-  
-  return kv_array;
-  
+  return kvarray;
 }
-
-
 
 void freeKVs(kvarray_t * pairs) {
-  
   //WRITE ME
-  
-  for(int i=0 ;i<pairs->size;i++){
-    
-
-    
-    free(pairs->arr[i]->key);
-    
-    free(pairs->arr[i]);
-    
+  for (int i=0; i<pairs->length; i++) {
+    free(pairs->kvp_array[i]->key);
+    free(pairs->kvp_array[i]->value);
+    free(pairs->kvp_array[i]);
   }
-  
-  free(pairs->arr);
-  
+  free(pairs->kvp_array);
   free(pairs);
-  
 }
-
-
 
 void printKVs(kvarray_t * pairs) {
-  
-
-  
-  kvpair_t* curr_pair;
-  
-  for(int i=0;i<pairs->size;i++){
-    
-    curr_pair=pairs->arr[i];
-    
-    printf("key = '%s' value = '%s'\n" ,curr_pair->key, curr_pair->value);
-    
-  }
-  
   //WRITE ME
-  
+  for (int i=0; i<pairs->length; i++) {
+    printf("key = '%s' value = '%s'\n", pairs->kvp_array[i]->key, pairs->kvp_array[i]->value);
+  }
 }
 
-
-
 char * lookupValue(kvarray_t * pairs, const char * key) {
-  
-  kvpair_t* curr_pair;
-  
-  for(int i=0;i<pairs->size;i++){
-    
-    curr_pair=pairs->arr[i];
-    
-    if (! strcmp(curr_pair->key,key)) return  curr_pair->value;
-    
-  }
-  
   //WRITE ME
-  
+  for (int i=0; i<pairs->length; i++) {
+    if (strcmp(pairs->kvp_array[i]->key, key)==0) {
+      return pairs->kvp_array[i]->value;
+    }
+  }
   return NULL;
-  
 }
