@@ -6,7 +6,7 @@
 counts_t * createCounts(void) {
   //WRITE ME
   counts_t * c = malloc(sizeof(*c));
-  c->one_count = malloc(sizeof(c->one_count));
+  c->one_count = malloc(sizeof(*c->one_count));
   c->array_len = 0;
   c->unknown_len = 0;
   return c;
@@ -18,18 +18,15 @@ void addCount(counts_t * c, const char * name) {
     c->unknown_len++;
   }
   else {
-    int i;
     int size = 0;
-    for(i=0; i<c->array_len; i++) {
+    for(int i=0; i<c->array_len; i++) {
       if(strcmp(name, c->one_count[i]->string) == 0) {
         size = 1;
+        c->one_count[i]->counter++;
         break;
       }
     }
-    if(size == 1) {
-      c->one_count[i]->counter++;
-    }
-    else { 
+    if(size == 0) { 
       c->array_len++;
       c->one_count = realloc(c->one_count, c->array_len * sizeof(*c->one_count));
       c->one_count[c->array_len - 1] = malloc(sizeof(one_count_t));
