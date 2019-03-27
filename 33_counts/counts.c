@@ -36,6 +36,12 @@ void addCount(counts_t * c, const char * name) {
 
 void printCounts(counts_t * c, FILE * outFile) {
   //WRITE ME
+  for(int i=0; i<c->array_len; i++) {
+    fprintf(outFile, "%s: %d\n", c->one_count[i]->string, c->one_count[i]->counter);
+  }
+  if(c->unknown_len>0) {
+    fprintf(outFile, "<unknown> : %d\n", c->unknown_len);
+  }
 }
 
 void freeCounts(counts_t * c) {
