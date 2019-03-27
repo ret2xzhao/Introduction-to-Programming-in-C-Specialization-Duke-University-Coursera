@@ -8,14 +8,14 @@ counts_t * createCounts(void) {
   counts_t * c = malloc(sizeof(*c));
   c->one_count = NULL;
   c->array_len = 0;
-  c->unknown_count = 0;
+  c->unknown_len = 0;
   return c;
 }
 
 void addCount(counts_t * c, const char * name) {
   //WRITE ME
   if(name = NULL) {
-    c->unknown_count++;
+    c->unknown_len++;
     return;
   }
   else {
