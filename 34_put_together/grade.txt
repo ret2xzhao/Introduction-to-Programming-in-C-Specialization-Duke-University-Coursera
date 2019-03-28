@@ -1,80 +1,45 @@
-Grading at Thu Mar 28 07:23:49 UTC 2019
+Grading at Thu Mar 28 19:10:16 UTC 2019
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 counts.c
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 main.c
-main.c: In function ‘countFile’:
-main.c:24:36: error: expected expression before ‘void’
-   counts_t * result = createCounts(void);
-                                    ^
-main.c:24:23: error: too many arguments to function ‘createCounts’
-   counts_t * result = createCounts(void);
-                       ^
-In file included from main.c:5:0:
-counts.h:18:12: note: declared here
- counts_t * createCounts(void);
-            ^
-main.c:29:29: error: passing argument 3 of ‘getline’ from incompatible pointer type [-Werror=incompatible-pointer-types]
-   while(getline(&line, &sz, filename)>0) {
-                             ^
-In file included from main.c:1:0:
-/usr/include/stdio.h:678:20: note: expected ‘FILE * restrict {aka struct _IO_FILE * restrict}’ but argument is of type ‘const char *’
- extern _IO_ssize_t getline (char **__restrict __lineptr,
-                    ^
-main.c:30:9: error: void value not ignored as it ought to be
-     key = stripNewline(line);
-         ^
-main.c:40:45: error: ‘fname’ undeclared (first use in this function)
-     fprintf(stderr, "Trying to close %s\n", fname);
-                                             ^
-main.c:40:45: note: each undeclared identifier is reported only once for each function it appears in
-main.c: In function ‘main’:
-main.c:52:3: error: unknown type name ‘roster_t’
-   roster_t * the_roster = readInput(argv[1]);
-   ^
-main.c:52:27: error: implicit declaration of function ‘readInput’ [-Werror=implicit-function-declaration]
-   roster_t * the_roster = readInput(argv[1]);
-                           ^
-main.c:52:27: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
-main.c:53:7: error: ‘r’ undeclared (first use in this function)
-   if (r == NULL) {
-       ^
-main.c:58:3: error: ISO C forbids nested functions [-Werror=pedantic]
-   int main(int argc, char ** argv) {
-   ^
-main.c:58:7: error: ‘main’ is normally a non-static function [-Werror=main]
-   int main(int argc, char ** argv) {
-       ^
-main.c: In function ‘main’:
-main.c:75:46: error: expected expression before ‘const’
-       char * outName = computeOutputFileName(const char * inputName) {
-                                              ^
-main.c:75:70: error: expected ‘,’ or ‘;’ before ‘{’ token
-       char * outName = computeOutputFileName(const char * inputName) {
-                                                                      ^
-main.c:91:7: error: expected declaration or statement at end of input
-       }
-       ^
-main.c:75:14: error: unused variable ‘outName’ [-Werror=unused-variable]
-       char * outName = computeOutputFileName(const char * inputName) {
-              ^
-main.c:91:7: error: expected declaration or statement at end of input
-       }
-       ^
-main.c:65:17: error: unused variable ‘kv’ [-Werror=unused-variable]
-     kvarray_t * kv = readKVs(argv[1]);
-                 ^
-main.c: In function ‘main’:
-main.c:91:7: error: expected declaration or statement at end of input
-       }
-       ^
-main.c:52:14: error: unused variable ‘the_roster’ [-Werror=unused-variable]
-   roster_t * the_roster = readInput(argv[1]);
-              ^
-cc1: all warnings being treated as errors
-Makefile:10: recipe for target 'main.o' failed
-make: *** [main.o] Error 1
-The code did not compile! Please try git add . to push all files in your working directory 
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 kv.c
+gcc -Wall -Werror -std=gnu99 -pedantic -ggdb3 -o count_values  outname.o  counts.o  main.o  kv.o
+#################################################
+testcase1:
+testcase1 passed, your program successfully indicated a failure
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase2:
+Your file matched the expected output
+Comparing file list1a.txt.counts with answer
+Your output is correct
+Comparing file list1b.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase3:
+Your file matched the expected output
+Comparing file list2a.txt.counts with answer
+Your output is correct
+Comparing file list2b.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+Comparing file list2c.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase4:
+Your file matched the expected output
+Comparing file list3a.txt.counts with answer
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 
-Overall Grade: F
+Overall Grade: A
