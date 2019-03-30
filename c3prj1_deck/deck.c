@@ -64,3 +64,19 @@ card_t * add_empty_card(deck_t * deck) {
   add_card_to(deck, c);
   return deck->cards[deck->n_cards-1];
 }
+
+deck_t * make_deck_exclude(deck_t * excluded_cards) {
+  deck_t * result = malloc(sizeof(*result));
+  result->cards = NULL;
+  result->n_cards = 0; 
+  int a;
+  card_t c;
+  for(int i=0; i<52; i++) {
+    c = card_from_num(i);
+    a = deck_contains(excluded_cards, c);
+    if(a==0) {
+      add_card_to(result, c);
+    }
+  }
+  return result;
+}
