@@ -56,3 +56,11 @@ void add_card_to(deck_t * deck, card_t c) {
   deck->cards[deck->n_cards-1]->value = c.value;
   deck->cards[deck->n_cards-1]->suit = c.suit;
 }
+
+card_t * add_empty_card(deck_t * deck) {
+  card_t c;
+  c.value = 0;
+  c.suit = 0;
+  add_card_to(deck, c);
+  return deck->cards[deck->n_cards-1];
+}
