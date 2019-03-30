@@ -40,43 +40,10 @@ void shuffle(deck_t * d) {
     temp = card[i];
     card[i] = card[rand];
     card[rand] = temp;
-  }  
+  }
 }
 
 void assert_full_deck(deck_t * d) {
   for (int i=0; i<d->n_cards; i++)
     assert(deck_contains(d, card_from_num(i)));
-}
-
-void add_card_to(deck_t * deck, card_t c) {
-  deck->n_cards++;
-  deck->cards = realloc(deck->cards, deck->n_cards * sizeof(*deck->cards));
-  deck->cards[deck->n_cards-1] = NULL;
-  deck->cards[deck->n_cards-1] = realloc(deck->cards[deck->n_cards-1], sizeof(*deck->cards[deck->n_cards-1]));
-  deck->cards[deck->n_cards-1]->value = c.value;
-  deck->cards[deck->n_cards-1]->suit = c.suit;
-}
-
-card_t * add_empty_card(deck_t * deck) {
-  card_t c;
-  c.value = 0;
-  c.suit = 0;
-  add_card_to(deck, c);
-  return deck->cards[deck->n_cards-1];
-}
-
-deck_t * make_deck_exclude(deck_t * excluded_cards) {
-  deck_t * result = malloc(sizeof(*result));
-  result->cards = NULL;
-  result->n_cards = 0; 
-  int a;
-  card_t c;
-  for(int i=0; i<52; i++) {
-    c = card_from_num(i);
-    a = deck_contains(excluded_cards, c);
-    if(a==0) {
-      add_card_to(result, c);
-    }
-  }
-  return result;
 }
