@@ -47,3 +47,12 @@ void assert_full_deck(deck_t * d) {
   for (int i=0; i<d->n_cards; i++)
     assert(deck_contains(d, card_from_num(i)));
 }
+
+void add_card_to(deck_t * deck, card_t c) {
+  deck->n_cards++;
+  deck->cards = realloc(deck->cards, deck->n_cards * sizeof(*deck->cards));
+  deck->cards[deck->n_cards-1] = NULL;
+  deck->cards[deck->n_cards-1] = realloc(deck->cards[deck->n_cards-1], sizeof(*deck->cards[deck->n_cards-1]));
+  deck->cards[deck->n_cards-1]->value = c.value;
+  deck->cards[deck->n_cards-1]->suit = c.suit;
+}
