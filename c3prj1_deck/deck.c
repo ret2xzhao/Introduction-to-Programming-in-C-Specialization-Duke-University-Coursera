@@ -87,11 +87,11 @@ deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands) {
   excluded_cards->n_cards = 0;
   for (int i=0; i<n_hands; i++) {
     for (int j=0; j<hands[i]->n_cards; j++) {
-      add_card_to(excluded_cards, hands[i]->cards[j]);
+      add_card_to(excluded_cards, *hands[i]->cards[j]);
     }
   }
-  make_deck_exclude(excluded_cards);
-  return;
+  make_deck_exclude = make_deck_exclude(excluded_cards);
+  return make_deck_exclude;
 }
 
 void free_deck(deck_t * deck) {
