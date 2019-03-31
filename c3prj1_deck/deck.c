@@ -90,8 +90,8 @@ deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands) {
       add_card_to(excluded_cards, *hands[i]->cards[j]);
     }
   }
-  make_deck_exclude = make_deck_exclude(excluded_cards);
-  return make_deck_exclude;
+  excluded_cards = make_deck_exclude(excluded_cards);
+  return excluded_cards;
 }
 
 void free_deck(deck_t * deck) {
