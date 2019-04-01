@@ -1,24 +1,10 @@
-Grading at Mon Apr  1 00:59:48 UTC 2019
+Grading at Mon Apr  1 01:10:38 UTC 2019
 Compiling deck.c -> deck.o
 Compiling eval.c -> eval.o
 eval.c: In function ‘get_match_counts’:
-eval.c:198:3: error: statement with no effect [-Werror=unused-value]
-   hand->cards
-   ^
-eval.c:199:3: error: expected ‘;’ before ‘hand’
-   hand->n_cards
-   ^
-eval.c:204:24: error: request for member ‘value’ in something not a structure or union
-       if(hand->cards[j].value == i) {
-                        ^
-eval.c:208:2: error: ‘array’ undeclared (first use in this function)
-  array[k] = counter;
-  ^
-eval.c:208:2: note: each undeclared identifier is reported only once for each function it appears in
-eval.c:214:1: error: control reaches end of non-void function [-Werror=return-type]
- }
- ^
-cc1: all warnings being treated as errors
+eval.c:202:25: error: request for member ‘value’ in something not a structure or union
+       if(*hand->cards[j].value == i) {
+                         ^
 Compilation of eval.c failed
 
 Overall Grade: F
