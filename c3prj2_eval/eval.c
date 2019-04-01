@@ -201,8 +201,8 @@ int com1(card_t c1,card_t c2){
 
 unsigned * get_match_counts(deck_t * hand) {
   unsigned * array = malloc(hand->n_cards * sizeof(*array));
-  int counter = 0;
   for(int i=0; i<hand->n_cards; i++) {
+    int counter = 0;
     for(int j=0; j<hand->n_cards; j++) {
       if(hand->cards[j]->value == hand->cards[i]->value) {
         counter++;
