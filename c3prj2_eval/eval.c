@@ -200,35 +200,19 @@ int com1(card_t c1,card_t c2){
 }
 
 unsigned * get_match_counts(deck_t * hand) {
-  unsigned* array=malloc(hand->n_cards*sizeof(*array));
-  for(int i=0 ; i< hand->n_cards ; i++){
-    card_t x = *(hand->cards[i]);
-    unsigned  count=0;
-    for(int j=0 ; j< hand->n_cards;j++){
-      if(com1(*(hand->cards[j]),x)) count ++;
-    }
-    array[i] = count;}
-  return array;
-}
-
-/*
-unsigned * get_match_counts(deck_t * hand) {
   unsigned * array = malloc(hand->n_cards * sizeof(*array));
   int counter = 0;
-  for(int i=14; i>0; i--) {
+  for(int i=0; i<hand->n_cards; i++) {
     for(int j=0; j<hand->n_cards; j++) {
-      if(hand->cards[j]->value == i) {
+      if(hand->cards[j]->value == hand->cards[i]->value) {
         counter++;
       }
-      for(int k=0; k<counter; k++) {
-	array[k] = counter;
-      }
-      counter = 0;
+      array[i] = counter;
     }
   }
   return array;
 }
-*/
+
 // We provide the below functions.  You do NOT need to modify them
 // In fact, you should not modify them!
 
