@@ -1,4 +1,4 @@
-Grading at Mon Apr  1 01:28:11 UTC 2019
+Grading at Mon Apr  1 01:45:39 UTC 2019
 Compiling deck.c -> deck.o
 Compiling eval.c -> eval.o
 Compiling cards.c -> cards.o
@@ -20,6 +20,195 @@ Testing with 5 hands
 Testing with 6 hands
 - Test passed
 Testing get_match_count(deck_t *)
-- Test passed
+In this hand: Ac Ah 
+  I expected the 1'th match count to be 2 but you got 4
+In this hand: Ac Ah Kc 
+  I expected the 1'th match count to be 2 but you got 4
+  I expected the 2'th match count to be 1 but you got 5
+In this hand: Ac Ah Kc Qs 
+  I expected the 1'th match count to be 2 but you got 4
+  I expected the 2'th match count to be 1 but you got 5
+  I expected the 3'th match count to be 1 but you got 6
+In this hand: Ac Ad Ah Kc Qs 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 1 but you got 10
+  I expected the 4'th match count to be 1 but you got 11
+In this hand: Ac Ad Ah Kc Kd Qs 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 2 but you got 11
+  I expected the 4'th match count to be 2 but you got 13
+  I expected the 5'th match count to be 1 but you got 14
+In this hand: Ac Ad Ah Kc Kd Qh Qs 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 2 but you got 11
+  I expected the 4'th match count to be 2 but you got 13
+  I expected the 5'th match count to be 2 but you got 15
+  I expected the 6'th match count to be 2 but you got 17
+In this hand: Ac Ad Ah Kc Kd Qh Qs 0s 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 2 but you got 11
+  I expected the 4'th match count to be 2 but you got 13
+  I expected the 5'th match count to be 2 but you got 15
+  I expected the 6'th match count to be 2 but you got 17
+  I expected the 7'th match count to be 1 but you got 18
+In this hand: Ac Ad Ah Kc Kd Qh Qs 0s 9c 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 2 but you got 11
+  I expected the 4'th match count to be 2 but you got 13
+  I expected the 5'th match count to be 2 but you got 15
+  I expected the 6'th match count to be 2 but you got 17
+  I expected the 7'th match count to be 1 but you got 18
+  I expected the 8'th match count to be 1 but you got 19
+In this hand: Ac Ad Ah Kc Kd Qd Qh Qs 0s 9c 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 2 but you got 11
+  I expected the 4'th match count to be 2 but you got 13
+  I expected the 5'th match count to be 3 but you got 16
+  I expected the 6'th match count to be 3 but you got 19
+  I expected the 7'th match count to be 3 but you got 22
+  I expected the 8'th match count to be 1 but you got 23
+  I expected the 9'th match count to be 1 but you got 24
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0s 9c 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 3 but you got 12
+  I expected the 4'th match count to be 3 but you got 15
+  I expected the 5'th match count to be 3 but you got 18
+  I expected the 6'th match count to be 3 but you got 21
+  I expected the 7'th match count to be 3 but you got 24
+  I expected the 8'th match count to be 3 but you got 27
+  I expected the 9'th match count to be 1 but you got 28
+  I expected the 10'th match count to be 1 but you got 29
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 3 but you got 12
+  I expected the 4'th match count to be 3 but you got 15
+  I expected the 5'th match count to be 3 but you got 18
+  I expected the 6'th match count to be 3 but you got 21
+  I expected the 7'th match count to be 3 but you got 24
+  I expected the 8'th match count to be 3 but you got 27
+  I expected the 9'th match count to be 2 but you got 29
+  I expected the 10'th match count to be 2 but you got 31
+  I expected the 11'th match count to be 1 but you got 32
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 3 but you got 12
+  I expected the 4'th match count to be 3 but you got 15
+  I expected the 5'th match count to be 3 but you got 18
+  I expected the 6'th match count to be 3 but you got 21
+  I expected the 7'th match count to be 3 but you got 24
+  I expected the 8'th match count to be 3 but you got 27
+  I expected the 9'th match count to be 2 but you got 29
+  I expected the 10'th match count to be 2 but you got 31
+  I expected the 11'th match count to be 2 but you got 33
+  I expected the 12'th match count to be 2 but you got 35
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7s 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 3 but you got 12
+  I expected the 4'th match count to be 3 but you got 15
+  I expected the 5'th match count to be 3 but you got 18
+  I expected the 6'th match count to be 3 but you got 21
+  I expected the 7'th match count to be 3 but you got 24
+  I expected the 8'th match count to be 3 but you got 27
+  I expected the 9'th match count to be 2 but you got 29
+  I expected the 10'th match count to be 2 but you got 31
+  I expected the 11'th match count to be 2 but you got 33
+  I expected the 12'th match count to be 2 but you got 35
+  I expected the 13'th match count to be 1 but you got 36
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7s 6h 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 3 but you got 12
+  I expected the 4'th match count to be 3 but you got 15
+  I expected the 5'th match count to be 3 but you got 18
+  I expected the 6'th match count to be 3 but you got 21
+  I expected the 7'th match count to be 3 but you got 24
+  I expected the 8'th match count to be 3 but you got 27
+  I expected the 9'th match count to be 2 but you got 29
+  I expected the 10'th match count to be 2 but you got 31
+  I expected the 11'th match count to be 2 but you got 33
+  I expected the 12'th match count to be 2 but you got 35
+  I expected the 13'th match count to be 1 but you got 36
+  I expected the 14'th match count to be 1 but you got 37
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7h 7s 6h 
+  I expected the 1'th match count to be 3 but you got 6
+  I expected the 2'th match count to be 3 but you got 9
+  I expected the 3'th match count to be 3 but you got 12
+  I expected the 4'th match count to be 3 but you got 15
+  I expected the 5'th match count to be 3 but you got 18
+  I expected the 6'th match count to be 3 but you got 21
+  I expected the 7'th match count to be 3 but you got 24
+  I expected the 8'th match count to be 3 but you got 27
+  I expected the 9'th match count to be 2 but you got 29
+  I expected the 10'th match count to be 2 but you got 31
+  I expected the 11'th match count to be 2 but you got 33
+  I expected the 12'th match count to be 2 but you got 35
+  I expected the 13'th match count to be 2 but you got 37
+  I expected the 14'th match count to be 2 but you got 39
+  I expected the 15'th match count to be 1 but you got 40
+In this hand: Ac Ad Ah As Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7h 7s 6h 
+  I expected the 1'th match count to be 4 but you got 8
+  I expected the 2'th match count to be 4 but you got 12
+  I expected the 3'th match count to be 4 but you got 16
+  I expected the 4'th match count to be 3 but you got 19
+  I expected the 5'th match count to be 3 but you got 22
+  I expected the 6'th match count to be 3 but you got 25
+  I expected the 7'th match count to be 3 but you got 28
+  I expected the 8'th match count to be 3 but you got 31
+  I expected the 9'th match count to be 3 but you got 34
+  I expected the 10'th match count to be 2 but you got 36
+  I expected the 11'th match count to be 2 but you got 38
+  I expected the 12'th match count to be 2 but you got 40
+  I expected the 13'th match count to be 2 but you got 42
+  I expected the 14'th match count to be 2 but you got 44
+  I expected the 15'th match count to be 2 but you got 46
+  I expected the 16'th match count to be 1 but you got 47
+In this hand: Ac Ad Ah As Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7h 7s 6h 4d 
+  I expected the 1'th match count to be 4 but you got 8
+  I expected the 2'th match count to be 4 but you got 12
+  I expected the 3'th match count to be 4 but you got 16
+  I expected the 4'th match count to be 3 but you got 19
+  I expected the 5'th match count to be 3 but you got 22
+  I expected the 6'th match count to be 3 but you got 25
+  I expected the 7'th match count to be 3 but you got 28
+  I expected the 8'th match count to be 3 but you got 31
+  I expected the 9'th match count to be 3 but you got 34
+  I expected the 10'th match count to be 2 but you got 36
+  I expected the 11'th match count to be 2 but you got 38
+  I expected the 12'th match count to be 2 but you got 40
+  I expected the 13'th match count to be 2 but you got 42
+  I expected the 14'th match count to be 2 but you got 44
+  I expected the 15'th match count to be 2 but you got 46
+  I expected the 16'th match count to be 1 but you got 47
+  I expected the 17'th match count to be 1 but you got 48
+In this hand: Ac Ad Ah As Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 9s 7h 7s 6h 4d 
+  I expected the 1'th match count to be 4 but you got 8
+  I expected the 2'th match count to be 4 but you got 12
+  I expected the 3'th match count to be 4 but you got 16
+  I expected the 4'th match count to be 3 but you got 19
+  I expected the 5'th match count to be 3 but you got 22
+  I expected the 6'th match count to be 3 but you got 25
+  I expected the 7'th match count to be 3 but you got 28
+  I expected the 8'th match count to be 3 but you got 31
+  I expected the 9'th match count to be 3 but you got 34
+  I expected the 10'th match count to be 2 but you got 36
+  I expected the 11'th match count to be 2 but you got 38
+  I expected the 12'th match count to be 3 but you got 41
+  I expected the 13'th match count to be 3 but you got 44
+  I expected the 14'th match count to be 3 but you got 47
+  I expected the 15'th match count to be 2 but you got 49
+  I expected the 16'th match count to be 2 but you got 51
+  I expected the 17'th match count to be 1 but you got 52
+  I expected the 18'th match count to be 1 but you got 53
+- Test failed
 
-Overall Grade: A
+Overall Grade: B
