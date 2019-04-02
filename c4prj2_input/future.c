@@ -1,62 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "cards.h"
-#include "deck.h"
 #include "future.h"
 
-void add_future_card(future_cards_t * fc, size_t index, card_t * ptr) {
-  
-  if (fc->n_decks <= index) {
-    fc->decks = realloc(fc->decks, (index+1) * sizeof(*fc->decks));
-    for (size_t i=fc->n_decks; i<=index; i++) {
-      fc->decks[i].cards = NULL;
-      //fc->decks[i].cards = malloc(sizeof(*fc->decks[i].cards));
-      fc->decks[i].n_cards = 0;
-    }
-    fc->n_decks = index+1;
+void add_future_card(future_cards_t * fc, size_t index, card_t * ptr){
+  size_t size = 0;
+  if(fc==NULL){
+    fc = (future_cards_t *)realloc(fc, sizeof(*fc));
+    fc->decks = NULL;
+    fc->n_decks = 0;
   }
-
-  //add_card_to(&(fc->decks[index]), *ptr);
-  fc->decks[index].n_cards++;
-  fc->decks[index].cards = realloc(fc->decks[index].cards, fc->decks[index].n_cards * sizeof(*fc->decks[index].cards[fc->decks[index].n_cards-1]));
-  fc->decks[index].cards[fc->decks[index].n_cards-1] = ptr;
+  if(index >= fc->n_decks){
+    fc->decks = (deck_t *)realloc(fc->decks, (index+1)*sizeof(*(fc->decks)));
+    size = fc->n_decks;
+    fc->n_decks = index + 1;
+    for(size_t i=size; i<fc->n_decks; i++){
+      (fc->decks[i]).cards = (card_t **)malloc(sizeof(*(fc->decks[i].cards)));
+      (fc->decks[i]).cards = NULL;
+      (fc->decks[i]).n_cards = 0;
+    }
+  }
+  size_t nw_n_cards = (fc->decks[index]).n_cards + 1;
+  (fc->decks[index]).cards = (card_t **)realloc((fc->decks[index]).cards, nw_n_cards*sizeof(*(fc->decks[index].cards)));
+  (fc->decks[index]).n_cards++;
+  (fc->decks[index]).cards[nw_n_cards-1] = ptr;
 }
 
-void future_cards_from_deck(deck_t * deck, future_cards_t * fc) {
-  if (deck == NULL) {
-    return;
+void future_cards_from_deck(deck_t * deck, future_cards_t * fc){
+  if(fc==NULL){
+    fprintf(stderr, "Null future cards");
   }
-  if (fc->decks == NULL) {
-    return;
+  if(fc->n_decks > deck->n_cards){
+    fprintf(stderr, "Not enough cards in deck");
   }
-  if (deck->n_cards == 0) {
-    //fprintf(stderr, "future_cards_from_deck: shuffled_deck->n_cards == 0\n");
-    return;
-  }
-  if (fc->n_decks == 0) {
-    //fprintf(stderr, "future_cards_from_deck: fc->n_decks == 0\n");
-    return;
-  }
-
-  size_t num_future_cards = 0;
-  for (size_t i=0; i<fc->n_decks; i++) {
-    if (fc->decks[i].n_cards > 0) {
-      num_future_cards++;
+  deck_t d;
+  card_t *c;
+  for(size_t i=0; i<fc->n_decks; i++){
+    c = deck->cards[i];
+    d = fc->decks[i];
+    for(size_t j=0; j<d.n_cards; j++){
+      (*(d.cards[j])).value = (*c).value;
+      (*(d.cards[j])).suit = (*c).suit;
     }
-  }
-  
-  if (num_future_cards > deck->n_cards) {
-    //fprintf(stderr, "future_cards_from_deck: num_future_cards > shuffled_deck->n_cards\n");
-    return;
-  }
-  
-  size_t k = 0;
-  for (size_t i=0; i<fc->n_decks; i++) {
-    if (fc->decks[i].n_cards > 0) {
-      for (size_t j=0; j<fc->decks[i].n_cards; j++) {
-	*fc->decks[i].cards[j] = *deck->cards[k];;
-      }
-    }
-    k++;
   }
 }
