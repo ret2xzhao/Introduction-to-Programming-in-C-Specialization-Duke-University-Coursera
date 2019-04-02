@@ -30,11 +30,11 @@ int win_hand(deck_t ** deck_array,int n_hands){
     
     for (int j=i+1;j<n_hands;j++){
       
-      // print_hand(deck_array[i]);
+      print_hand(deck_array[i]);
       
-      //            print_hand(deck_array[j]);
+      print_hand(deck_array[j]);
       
-      // printf("\n");
+      printf("\n");
       
       v=compare_hands(deck_array[i],deck_array[j]);
       
