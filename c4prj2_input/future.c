@@ -8,18 +8,18 @@
 
 void add_future_card(future_cards_t * fc, size_t index, card_t * ptr) {
   if (index < fc->n_decks) {
-    fc->decks[index].cards = realloc(fc->decks[index].cards, (fc->decks[index].n_decks+1)sizeof(*fc->decks[index].cards));
+    fc->decks[index].cards = realloc(fc->decks[index].cards, (fc->decks[index].n_cards+1)*sizeof(*fc->decks[index].cards));
     fc->decks[index].cards[fc->decks[index].n_cards] = ptr;
     fc->decks[index].n_cards++;
   }
   else {
     while (index >= fc->n_decks) {
-      fc->decks = realloc(fc->decks, (fc->n_decks+1)sizeof(*fc->decks));
+      fc->decks = realloc(fc->decks, (fc->n_decks+1)*sizeof(*fc->decks));
       fc->decks[index].cards = NULL;
       fc->decks[index].n_cards = 0;
       fc->n_decks++;
     }
-    fc->decks[index].cards = realloc(fc->decks[index].cards, (fc->decks[index].n_decks+1)sizeof(*fc->decks[index].cards));
+    fc->decks[index].cards = realloc(fc->decks[index].cards, (fc->decks[index].n_cards+1)*sizeof(*fc->decks[index].cards));
     fc->decks[index].cards[fc->decks[index].n_cards] = ptr;
     fc->decks[index].n_cards++;
   }
