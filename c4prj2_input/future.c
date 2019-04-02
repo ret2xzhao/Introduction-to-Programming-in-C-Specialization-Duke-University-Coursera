@@ -31,12 +31,9 @@ void future_cards_from_deck(deck_t * deck, future_cards_t * fc) {
     return;
   }
   for(int i=0; i<fc->n_decks; i++) {
-    if(fc->decks[i].n_cards == 0) {
-      continue;
-    }
-    for(int x=0; x<fc->decks[i].n_cards; x++) {
-      (fc->decks[i].cards[x])->value=(deck->cards[i])->value;
-      (fc->decks[i].cards[x])->suit=(deck->cards[i])->suit;
+    for(int j=0; j<fc->decks[i].n_cards; j++) {
+      (fc->decks[i].cards[j])->value = (deck->cards[i])->value;
+      (fc->decks[i].cards[j])->suit = (deck->cards[i])->suit;
     }
   }
 }
