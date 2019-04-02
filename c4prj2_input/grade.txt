@@ -1,17 +1,28 @@
-Grading at Tue Apr  2 00:19:43 UTC 2019
+Grading at Tue Apr  2 00:24:41 UTC 2019
 Compiling cards.c -> cards.o
 Compiling deck.c -> deck.o
 Compiling input.c -> input.o
-input.c: In function ‘deck_from_string’:
-input.c:171:19: error: implicit declaration of function ‘make_empty_deck’ [-Werror=implicit-function-declaration]
-   deck_t * deck = make_empty_deck();
-                   ^
-input.c:171:19: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
-input.c: In function ‘hand_from_string’:
-input.c:293:19: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
-   deck_t * deck = make_empty_deck();
-                   ^
-cc1: all warnings being treated as errors
-Compilation of input.c failed
+Compiling future.c -> future.o
+Linking input.o, future.o deck.o, cards.o, and our tester
+Testing with input file with 
+ o 1 hand
+ o No unknown/future cards
+Your file matched the expected output
+Test case passed
+Testing with input file with 
+ o Many hands
+ o No unknown/future cards
+Your file matched the expected output
+Test case passed
+Testing with input file with 
+ o Many hands
+ o 1 unknown/future cards per hand
+Your file matched the expected output
+Test case passed
+Testing with input file with 
+ o Many hands
+ o Many unknown/future cards per hand
+Your file matched the expected output
+Test case passed
 
-Overall Grade: F
+Overall Grade: A
