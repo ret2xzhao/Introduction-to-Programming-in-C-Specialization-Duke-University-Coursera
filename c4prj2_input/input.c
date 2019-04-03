@@ -21,9 +21,9 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc) {
         char index[2];
         while (!((str[i] == ' ')||(str[i] == '\n'))) {
           index[j] = str[i];
+	  i++;
+	  j++;
         }
-        i++;
-        j++;
         index[j] = '\0';
         add_future_card(fc, atoi(index), add_empty_card(deck));
       }
