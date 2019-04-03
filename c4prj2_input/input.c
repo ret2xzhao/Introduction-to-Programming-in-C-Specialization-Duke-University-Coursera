@@ -18,8 +18,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
         int n=0;
         while(!((str[i] == '\n')||(str[i] == ' '))) {
           num[n]=str[i];
-          i++;n++;}
-        num[n]='\0';
+        }
         add_future_card(fc,atoi(num),add_empty_card(deck)) ;
 
       }
