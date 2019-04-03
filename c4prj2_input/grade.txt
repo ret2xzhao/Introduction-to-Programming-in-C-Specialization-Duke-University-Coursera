@@ -1,14 +1,14 @@
-Grading at Wed Apr  3 06:57:12 UTC 2019
+Grading at Wed Apr  3 06:58:18 UTC 2019
 Compiling cards.c -> cards.o
 Compiling deck.c -> deck.o
 Compiling input.c -> input.o
 input.c: In function ‘read_input’:
-input.c:75:6: error: request for member ‘cards’ in something not a structure or union
-   arr->cards = NULL;
-      ^
-input.c:76:6: error: request for member ‘n_cards’ in something not a structure or union
-   arr->n_cards = 0;
-      ^
+input.c:75:7: error: request for member ‘cards’ in something not a structure or union
+   *arr->cards = NULL;
+       ^
+input.c:76:7: error: request for member ‘n_cards’ in something not a structure or union
+   *arr->n_cards = 0;
+       ^
 Compilation of input.c failed
 
 Overall Grade: F
