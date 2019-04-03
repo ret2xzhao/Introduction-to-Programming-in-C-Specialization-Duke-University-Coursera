@@ -72,8 +72,8 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
 
 deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   deck_t ** arr = malloc(sizeof(**arr));
-  
-  deck_t **arr=NULL;
+  arr->cards = NULL;
+  arr->n_cards = 0;
   
   size_t n_hand=0;
   
