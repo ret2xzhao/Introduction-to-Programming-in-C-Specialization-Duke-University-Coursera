@@ -6,18 +6,25 @@
 #include "cards.h"
 #include "future.h"
 
+void stripNewline(char * str) {
+  char * p = strchr(str, '\n');
+  if (p != NULL) {
+    *p = '\0';
+  }
+}
+
 deck_t * hand_from_string(const char * str, future_cards_t * fc){
   deck_t* deck=malloc(sizeof(*deck));
   deck->cards = NULL;
   deck->n_cards=0;
   for(int i=0;i<strlen(str);i++){
-    if((str[i] == '\n')||(str[i] == ' '))continue;
+    if((str[i] == ' '))continue;
     else{
       if(str[i] == '?'){
         i++;
         int j=0;
 	char num[2];
-        while(!((str[i] == '\n')||(str[i] == ' '))) {
+        while(str[i] != ' ') {
           num[j] = str[i];
 	  j++;i++;
 	}
@@ -43,6 +50,7 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   size_t sz=0;
   while(getline(&line,&sz,f)>=0){
     arr=realloc(arr,(n_hand+1)*sizeof(*arr));
+    stripNewline(line);
     deck_t*deck=hand_from_string(line,fc);
     if (deck == NULL)continue;
     arr[n_hand]=deck;
