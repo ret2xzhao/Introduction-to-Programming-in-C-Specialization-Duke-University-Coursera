@@ -1,22 +1,12 @@
-Grading at Wed Apr  3 07:11:29 UTC 2019
+Grading at Wed Apr  3 07:13:05 UTC 2019
 Compiling cards.c -> cards.o
 Compiling deck.c -> deck.o
 Compiling input.c -> input.o
 input.c: In function ‘read_input’:
-input.c:45:3: error: ‘n_hand’ undeclared (first use in this function)
-   n_hand = 0;
-   ^
-input.c:45:3: note: each undeclared identifier is reported only once for each function it appears in
-input.c:49:29: error: ‘input’ undeclared (first use in this function)
+input.c:48:29: error: ‘input’ undeclared (first use in this function)
    while(getline(&line, &sz, input)>0) {
                              ^
-input.c:50:37: error: request for member ‘n_hand’ in something not a structure or union
-     result = realloc(result, (result->n_hand+1) * sizeof(*result));
-                                     ^
-input.c:48:7: error: unused variable ‘counter’ [-Werror=unused-variable]
-   int counter = 0;
-       ^
-cc1: all warnings being treated as errors
+input.c:48:29: note: each undeclared identifier is reported only once for each function it appears in
 Compilation of input.c failed
 
 Overall Grade: F
