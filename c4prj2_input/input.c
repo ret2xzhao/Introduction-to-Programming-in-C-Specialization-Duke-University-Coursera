@@ -15,13 +15,13 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
     else{
       if(str[i] == '?'){
         i++;
-        char num[3];
+        int num;
         int n=0;
         while(!((str[i] == '\n')||(str[i] == ' '))) {
-          num[n]=str[i];
+          num=str[i];
           i++;
 	}
-        add_future_card(fc,atoi(num),add_empty_card(deck)) ;
+        add_future_card(fc,num,add_empty_card(deck)) ;
 
       }
       else{
