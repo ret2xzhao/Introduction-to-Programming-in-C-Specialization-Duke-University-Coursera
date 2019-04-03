@@ -19,7 +19,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
 	char num[2];
         while(!((str[i] == '\n')||(str[i] == ' '))) {
           num[j] = str[i];
-	  j++;
+	  j++;i++;
 	}
 	num[j] = '\0';
         add_future_card(fc, atoi(num) ,add_empty_card(deck)) ;
