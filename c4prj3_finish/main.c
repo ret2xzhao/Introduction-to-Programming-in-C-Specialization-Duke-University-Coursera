@@ -8,47 +8,33 @@
 #include "future.h"
 #include "input.h"
 
-int win_hand(deck_t ** deck_array,int n_hands) {
+int win_hand(deck_t ** deck_array,int n_hands){
   int w[n_hands+1];
-  for (int u=0;u<n_hands+1;u++) {
-    w[u]=0;
-  }
+  for(int u=0;u<n_hands+1;u++) w[u]=0;  
   int v=0;
-  for (int i =0;i<n_hands-1;i++) {
-    for (int j=i+1;j<n_hands;j++) {
+  for(int i =0;i<n_hands-1;i++){
+    for (int j=i+1;j<n_hands;j++){
       // print_hand(deck_array[i]);
       //            print_hand(deck_array[j]);
       // printf("\n");
       v=compare_hands(deck_array[i],deck_array[j]);
-      if(v>0) {
-	w[i]++;
-      }
-      else if (v<0) {
-	w[j]++;
-      }
-      else {
-	w[n_hands]++;  
-      }
+      if(v>0) w[i]++;
+      else if (v<0) w[j]++;
+      else w[n_hands]++;  
     }
   }
   unsigned largest= 0;
-  for (int x=0;x<n_hands+1;x++) {
-    if (w[x] > w[largest]) {
-      largest=x;
-    }
+  for(int x=0;x<n_hands+1;x++){
+    if(w[x] > w[largest])largest=x;
   }
   int count=0;  
-  if (w[n_hands]>0) { 
-    for (int x=0;x<n_hands+1;x++) {
-      if (w[x] == w[largest]) {
-	count++;
-      }
+  if(w[n_hands]>0){ 
+    for(int x=0;x<n_hands+1;x++){
+      if(w[x] == w[largest]) count++;
     }
   }
-  if (count>1) {
-    return n_hands;
-  }
-  return  largest;
+  if(count>1) return n_hands;
+  return  largest;  
 }
 
 int main(int argc, char ** argv) {
@@ -72,13 +58,11 @@ int main(int argc, char ** argv) {
   //Create a deck with the remaining cards
   deck_t* sh=build_remaining_deck(deck_array, n_hands);
   int win_array[n_hands+1];
-  for(int u=0;u<n_hands+1;u++) {
-    win_array[u]=0;
-  }
+  for(int u=0;u<n_hands+1;u++) win_array[u]=0;
   // Do each Monte Carlo trial (repeat num_trials times)
   int num_trials = 10000;
   if (argc ==3) num_trials=atoi(argv[2]);
-  for(int i=0;i<num_trials;i++) {
+  for(int i=0;i<num_trials;i++){
     //Shuffle the deck of remaining cards
     shuffle(sh);
     //Assign unknown cards from the shuffled deck
@@ -88,23 +72,23 @@ int main(int argc, char ** argv) {
     win_array[c]++;
   }
   //you just need to print your results
-  for(size_t j=0;j<n_hands;j++) {
+  for(size_t j=0;j<n_hands;j++){
     printf("Hand %zu won %u / %u times (%.2f%%)\n",j,win_array[j],num_trials,(((float)win_array[j])/num_trials)*100);
   }
   printf( "And there were %u ties\n",win_array[n_hands]);
   //free any memory you allocated
-  for(int x=0;x<n_hands;x++) {
+  for(int x=0;x<n_hands;x++){
     free_deck(deck_array[x]);
   }
   free(deck_array);
-  for(int o=fc->n_decks-1 ;o>=0;o--) {
+  for(int o=fc->n_decks-1 ;o>=0;o--){
     if(fc->decks[o].n_cards != 0) free(fc->decks[o].cards);
   }
   free(fc->decks);
   free(fc);
   free_deck(sh);
  
-  if(fclose(f) != 0) {
+  if(fclose(f) != 0){
     fprintf(stderr, "close file");
     return EXIT_FAILURE;
   }
