@@ -1,4 +1,4 @@
-Grading at Wed Apr  3 07:17:43 UTC 2019
+Grading at Wed Apr  3 07:20:23 UTC 2019
 Compiling cards.c -> cards.o
 Compiling deck.c -> deck.o
 Compiling input.c -> input.o
@@ -7,22 +7,186 @@ Linking input.o, future.o deck.o, cards.o, and our tester
 Testing with input file with 
  o 1 hand
  o No unknown/future cards
-Your file matched the expected output
-Test case passed
+Valgrind reported errors:
+==2452== Memcheck, a memory error detector
+==2452== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==2452== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==2452== Command: ./tester hands.txt draw.txt
+==2452== Parent PID: 2451
+==2452== 
+==2452== Invalid read of size 8
+==2452==    at 0x4010EB: print_hand (in /graderhome/work/c4prj2_input/tester)
+==2452==    by 0x401CEA: main (test-input.c:84)
+==2452==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==2452== 
+==2452== 
+==2452== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==2452==  Access not within mapped region at address 0x8
+==2452==    at 0x4010EB: print_hand (in /graderhome/work/c4prj2_input/tester)
+==2452==    by 0x401CEA: main (test-input.c:84)
+==2452==  If you believe this happened as a result of a stack
+==2452==  overflow in your program's main thread (unlikely but
+==2452==  possible), you can try to increase the size of the
+==2452==  main thread stack using the --main-stacksize= flag.
+==2452==  The main thread stack size used in this run was 8388608.
+==2452== 
+==2452== HEAP SUMMARY:
+==2452==     in use at exit: 80 bytes in 8 blocks
+==2452==   total heap usage: 15 allocs, 7 frees, 13,712 bytes allocated
+==2452== 
+==2452== LEAK SUMMARY:
+==2452==    definitely lost: 16 bytes in 1 blocks
+==2452==    indirectly lost: 16 bytes in 2 blocks
+==2452==      possibly lost: 0 bytes in 0 blocks
+==2452==    still reachable: 48 bytes in 5 blocks
+==2452==         suppressed: 0 bytes in 0 blocks
+==2452== Rerun with --leak-check=full to see details of leaked memory
+==2452== 
+==2452== For counts of detected and suppressed errors, rerun with: -v
+==2452== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Testing with input file with 
  o Many hands
  o No unknown/future cards
-Your file matched the expected output
-Test case passed
+Valgrind reported errors:
+==2457== Memcheck, a memory error detector
+==2457== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==2457== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==2457== Command: ./tester hands.txt draw.txt
+==2457== Parent PID: 2456
+==2457== 
+==2457== Invalid read of size 8
+==2457==    at 0x4010EB: print_hand (in /graderhome/work/c4prj2_input/tester)
+==2457==    by 0x401CEA: main (test-input.c:84)
+==2457==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==2457== 
+==2457== 
+==2457== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==2457==  Access not within mapped region at address 0x8
+==2457==    at 0x4010EB: print_hand (in /graderhome/work/c4prj2_input/tester)
+==2457==    by 0x401CEA: main (test-input.c:84)
+==2457==  If you believe this happened as a result of a stack
+==2457==  overflow in your program's main thread (unlikely but
+==2457==  possible), you can try to increase the size of the
+==2457==  main thread stack using the --main-stacksize= flag.
+==2457==  The main thread stack size used in this run was 8388608.
+==2457== 
+==2457== HEAP SUMMARY:
+==2457==     in use at exit: 200 bytes in 17 blocks
+==2457==   total heap usage: 27 allocs, 10 frees, 13,880 bytes allocated
+==2457== 
+==2457== LEAK SUMMARY:
+==2457==    definitely lost: 64 bytes in 4 blocks
+==2457==    indirectly lost: 64 bytes in 8 blocks
+==2457==      possibly lost: 0 bytes in 0 blocks
+==2457==    still reachable: 72 bytes in 5 blocks
+==2457==         suppressed: 0 bytes in 0 blocks
+==2457== Rerun with --leak-check=full to see details of leaked memory
+==2457== 
+==2457== For counts of detected and suppressed errors, rerun with: -v
+==2457== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Testing with input file with 
  o Many hands
  o 1 unknown/future cards per hand
-Your file matched the expected output
-Test case passed
+Valgrind reported errors:
+==2463== Memcheck, a memory error detector
+==2463== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==2463== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==2463== Command: ./tester h.txt d.txt
+==2463== Parent PID: 2462
+==2463== 
+==2463== Invalid read of size 8
+==2463==    at 0x4010EB: print_hand (in /graderhome/work/c4prj2_input/tester)
+==2463==    by 0x401CEA: main (test-input.c:84)
+==2463==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==2463== 
+==2463== 
+==2463== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==2463==  Access not within mapped region at address 0x8
+==2463==    at 0x4010EB: print_hand (in /graderhome/work/c4prj2_input/tester)
+==2463==    by 0x401CEA: main (test-input.c:84)
+==2463==  If you believe this happened as a result of a stack
+==2463==  overflow in your program's main thread (unlikely but
+==2463==  possible), you can try to increase the size of the
+==2463==  main thread stack using the --main-stacksize= flag.
+==2463==  The main thread stack size used in this run was 8388608.
+==2463== 
+==2463== HEAP SUMMARY:
+==2463==     in use at exit: 512 bytes in 38 blocks
+==2463==   total heap usage: 63 allocs, 25 frees, 14,432 bytes allocated
+==2463== 
+==2463== LEAK SUMMARY:
+==2463==    definitely lost: 64 bytes in 4 blocks
+==2463==    indirectly lost: 64 bytes in 8 blocks
+==2463==      possibly lost: 0 bytes in 0 blocks
+==2463==    still reachable: 384 bytes in 26 blocks
+==2463==         suppressed: 0 bytes in 0 blocks
+==2463== Rerun with --leak-check=full to see details of leaked memory
+==2463== 
+==2463== For counts of detected and suppressed errors, rerun with: -v
+==2463== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Testing with input file with 
  o Many hands
  o Many unknown/future cards per hand
-Your file matched the expected output
-Test case passed
+Valgrind reported errors:
+==2469== Memcheck, a memory error detector
+==2469== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==2469== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==2469== Command: ./tester i1 i2
+==2469== Parent PID: 2468
+==2469== 
+==2469== Invalid write of size 8
+==2469==    at 0x400E73: add_future_card (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x400BAE: hand_from_string (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x400CE4: read_input (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x401BCF: main (test-input.c:69)
+==2469==  Address 0x5205ca0 is 16 bytes inside an unallocated block of size 4,186,960 in arena "client"
+==2469== 
+==2469== Invalid write of size 8
+==2469==    at 0x400E8C: add_future_card (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x400BAE: hand_from_string (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x400CE4: read_input (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x401BCF: main (test-input.c:69)
+==2469==  Address 0x5205ca8 is 24 bytes inside an unallocated block of size 4,186,960 in arena "client"
+==2469== 
 
-Overall Grade: A
+valgrind: m_mallocfree.c:277 (mk_plain_bszB): Assertion 'bszB != 0' failed.
+valgrind: This is probably caused by your program erroneously writing past the
+end of a heap block and corrupting heap metadata.  If you fix any
+invalid writes reported by Memcheck, this assertion failure will
+probably go away.  Please try that before reporting this as a bug.
+
+
+host stacktrace:
+==2469==    at 0x38083F48: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==2469==    by 0x38084064: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==2469==    by 0x380841F1: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==2469==    by 0x38091F36: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==2469==    by 0x38051369: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==2469==    by 0x380D4CF3: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==2469==    by 0x380E3946: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+
+sched status:
+  running_tid=1
+
+Thread 1: status = VgTs_Runnable (lwpid 2469)
+==2469==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2469==    by 0x400E56: add_future_card (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x400BAE: hand_from_string (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x400CE4: read_input (in /graderhome/work/c4prj2_input/tester)
+==2469==    by 0x401BCF: main (test-input.c:69)
+
+
+Note: see also the FAQ in the source distribution.
+It contains workarounds to several common problems.
+In particular, if Valgrind aborted or crashed after
+identifying problems in your program, there's a good chance
+that fixing those problems will prevent Valgrind aborting or
+crashing, especially if it happened in m_mallocfree.c.
+
+If that doesn't help, please report this bug to: www.valgrind.org
+
+In the bug report, send all the above text, the valgrind
+version, and what OS and version you are using.  Thanks.
+
+
+Overall Grade: F
