@@ -42,12 +42,11 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc) {
 
 deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc) {
   deck_t ** result = NULL;
-  n_hand = 0;
+  int n_hand = 0;
   char * line = NULL;
   size_t sz = 0;
-  int counter = 0;
   while(getline(&line, &sz, input)>0) {
-    result = realloc(result, (result->n_hand+1) * sizeof(*result));
+    result = realloc(result, (n_hand+1) * sizeof(*result));
     deck_t*deck=hand_from_string(line, fc);
     result[n_hand]=deck;
     n_hand ++;
