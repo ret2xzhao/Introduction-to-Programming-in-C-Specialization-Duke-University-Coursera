@@ -39,9 +39,9 @@ int win_hand(deck_t ** deck_array,int n_hands){
 
 int main(int argc, char ** argv) {
   //check arguments
-  if((argc==1) || (argc>3)){
-    fprintf(stderr, "Wrong number of Arguments");
-    return EXIT_FAILURE;
+  if (argc < 2 ){
+    fprintf(stderr, "not enough number of arguments\n");
+    return EXIT_FAILURE ;
   }
   //Open the input file and read the hands in it
   FILE* f=fopen(argv[1],"r");
@@ -49,7 +49,6 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "not valid  input file\n");
     return EXIT_FAILURE ;
   }
-  int num_trials;
   deck_t ** deck_array=NULL;
   size_t n_hands =0 ;
   future_cards_t * fc=malloc(sizeof(*fc));
@@ -61,11 +60,8 @@ int main(int argc, char ** argv) {
   int win_array[n_hands+1];
   for(int u=0;u<n_hands+1;u++) win_array[u]=0;
   // Do each Monte Carlo trial (repeat num_trials times)
-  if(argc == 2){
-    num_trials = 10000;
-  }else{
-    num_trials = atoi(argv[2]);
-  }
+  int num_trials = 10000;
+  if (argc ==3) num_trials=atoi(argv[2]);
   for(int i=0;i<num_trials;i++){
     //Shuffle the deck of remaining cards
     shuffle(sh);
