@@ -15,7 +15,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
     else{
       if(str[i] == '?'){
         i++;
-        char num[strlen(str)];
+        char num[3];
         int n=0;
         while(!((str[i] == '\n')||(str[i] == ' '))) {
           num[n]=str[i];
