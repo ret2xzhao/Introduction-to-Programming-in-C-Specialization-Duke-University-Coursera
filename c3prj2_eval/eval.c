@@ -193,13 +193,11 @@ hand_eval_t build_hand_from_match(deck_t * hand,
       break;
     }
   }
-  if (count<5) {
-    for (int i=idx+n; i<hand->n_cards+1; i++) {
-      result.cards[count]=hand->cards[i];
-      count++;
-      if (count == 5) {
-	break;
-      }
+  for (int i=idx+n; i<hand->n_cards+1; i++) {
+    result.cards[count]=hand->cards[i];
+    count++;
+    if (count == 5) {
+      break;
     }
   }
   return result;
