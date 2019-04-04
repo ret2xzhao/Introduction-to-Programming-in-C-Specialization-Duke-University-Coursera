@@ -146,43 +146,29 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
 }
 
 hand_eval_t build_hand_from_match(deck_t * hand,
-				  unsigned n,
-				  hand_ranking_t what,
-				  size_t idx) {
-  
-  hand_eval_t ans;
-  ans.ranking = what;
-  card_t ** dk_card_ptr = hand-> cards;
-  card_t cur_card = **dk_card_ptr;
-  unsigned n_k_val = (**(dk_card_ptr+idx)).value;
-  unsigned delta_ptr = 0;
-
-  if(n==0){
-    while(delta_ptr<5){
-      *(ans.cards + delta_ptr) = *(dk_card_ptr + delta_ptr);
-      delta_ptr++;
+                                  unsigned n,
+                                  hand_ranking_t what,
+                                  size_t idx) {
+  hand_eval_t result;
+  result.ranking = what;
+  if (idx==0) {
+    for (int i=0; i<5; i++) {
+      result.cards[i] = hand->cards[i];
     }
-    return ans;
   }
-
-  while(delta_ptr<n){
-    *(ans.cards + delta_ptr) = *(dk_card_ptr + idx + delta_ptr);
-    delta_ptr++;
-  }
-
-  int count = 0;
-  while(delta_ptr<5){
-    cur_card =  **(dk_card_ptr+count);
-    if(cur_card.value != n_k_val){
-      *(ans.cards + delta_ptr) = *(dk_card_ptr + count);
-      delta_ptr++;
+  else if (idx > 0) {
+    for (int i=0; i<n; i++) {
+      result.cards[i] = hand->cards[idx+i];
     }
-    count++;
+    for (int i=0; i<idx; i++) {
+      result.cards[n+i] = hand->cards[i];
+    }
+    for (int i=idx+n; i<5; i++) {
+      result.cards[i] = hand->cards[i];
+    }
   }
-
-  return ans;
+  return result;
 }
-
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
@@ -210,7 +196,6 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   }
   return 0;
 }
-
 
 int com1(card_t c1,card_t c2){
   if (c1.value == c2.value) return 1;  
