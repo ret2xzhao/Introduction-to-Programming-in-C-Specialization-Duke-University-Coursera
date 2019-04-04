@@ -222,12 +222,12 @@ hand_eval_t build_hand_from_match(deck_t * hand,
   // in the "n of a kind".
   int i=n;
   int j=0;
-  for(i<5 && j<idx; i++, j++) {
+  for(;i<5 && j<idx; i++, j++) {
     ans.cards[i] = hand->cards[j];
   }
   if(i < 5) {
     j=idx+n;
-    for(i<5; i++, j++) {
+    for(;i<5; i++, j++) {
       ans.cards[i] = hand->cards[j];
     }
   }
