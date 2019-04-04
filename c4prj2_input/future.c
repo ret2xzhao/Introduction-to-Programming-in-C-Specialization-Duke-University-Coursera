@@ -1,120 +1,89 @@
-/*#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include "deck.h"
-#include "cards.h"
-#include "future.h"
-
-void add_future_card(future_cards_t * fc, size_t index, card_t * ptr) {
-  if (index < fc->n_decks) {
-    fc->decks[index].cards = realloc(fc->decks[index].cards, (fc->decks[index].n_cards+1) * sizeof(*fc->decks[index].cards));
-    fc->decks[index].cards[fc->decks[index].n_cards] = ptr;
-    fc->decks[index].n_cards++;
-  }
-  else {
-    while (index >= fc->n_decks) {
-      fc->decks = realloc(fc->decks, (fc->n_decks+1) * sizeof(*fc->decks));
-      fc->decks[index].cards = NULL;
-      fc->decks[index].n_cards = 0;
-      fc->n_decks++;
-    }
-    fc->decks[index].cards = realloc(fc->decks[index].cards, (fc->decks[index].n_cards+1) * sizeof(*fc->decks[index].cards));
-    fc->decks[index].cards[fc->decks[index].n_cards] = ptr;
-    fc->decks[index].n_cards++;
-  }
-}
-  
-void future_cards_from_deck(deck_t * deck, future_cards_t * fc) {
-  if (deck->n_cards< fc->n_decks) {
-    fprintf(stderr,"Not enough cards from deck");
-    return;
-  }
-  for(int i=0; i<fc->n_decks; i++) {
-    for(int j=0; j<fc->decks[i].n_cards; j++) {
-      (fc->decks[i].cards[j])->value = (deck->cards[i])->value;
-      (fc->decks[i].cards[j])->suit = (deck->cards[i])->suit;
-    }
-  }
-}
-*/
-#include<string.h>
-
 #include <stdio.h>
 
 #include <stdlib.h>
 
-#include <assert.h>
-
-#include "deck.h"
-
-#include "cards.h"
-
 #include "future.h"
+
+
 
 void add_future_card(future_cards_t * fc, size_t index, card_t * ptr){
   
-  if(index < fc->n_decks){
+  size_t size = 0;
+  
+  if(fc==NULL){
     
-    fc->decks[index].cards=realloc(fc->decks[index].cards,(fc->decks[index].n_cards+1)*sizeof(*(fc->decks[index].cards)));
+    fc = (future_cards_t *)realloc(fc, sizeof(*fc));
     
-    fc->decks[index].cards[fc->decks[index].n_cards]=ptr;
+    fc->decks = NULL;
     
-    fc->decks[index].n_cards ++;
+    fc->n_decks = 0;
     
   }
   
-  else{
+  if(index >= fc->n_decks){
     
-    while(fc->n_decks <= index){
+    fc->decks = (deck_t *)realloc(fc->decks, (index+1)*sizeof(*(fc->decks)));
+    
+    size = fc->n_decks;
+    
+    fc->n_decks = index + 1;
+    
+    for(size_t i=size; i<fc->n_decks; i++){
       
-      fc->decks=realloc(fc->decks,(fc->n_decks+1)*sizeof(*fc->decks));
+      (fc->decks[i]).cards = (card_t **)malloc(sizeof(*(fc->decks[i].cards)));
       
-      fc->decks[fc->n_decks].cards=NULL;
+      (fc->decks[i]).cards = NULL;
       
-      fc->decks[fc->n_decks].n_cards=0;
-      
-      fc->n_decks ++;
+      (fc->decks[i]).n_cards = 0;
       
     }
     
-    fc->decks[index].cards=realloc(fc->decks[index].cards,(fc->decks[index].n_cards+1)*sizeof(*(fc->decks[index].cards)));
-    
-    fc->decks[index].cards[fc->decks[index].n_cards]=ptr;
-    
-    fc->decks[index].n_cards ++;
-    
   }
   
+  size_t nw_n_cards = (fc->decks[index]).n_cards + 1;
+  
+  (fc->decks[index]).cards = (card_t **)realloc((fc->decks[index]).cards, nw_n_cards*sizeof(*(fc->decks[index].cards)));
+  
+  (fc->decks[index]).n_cards++;
+  
+  (fc->decks[index]).cards[nw_n_cards-1] = ptr;
+  
 }
+
+
 
 void future_cards_from_deck(deck_t * deck, future_cards_t * fc){
   
-  //error cheching
-  
-  if (deck->n_cards< fc->n_decks){
+  if(fc==NULL){
     
-    fprintf(stderr,"future_cards_from_deck");
-    
-    return;
+    fprintf(stderr, "Null future cards");
     
   }
   
-  //initalization
+  if(fc->n_decks > deck->n_cards){
+    
+    fprintf(stderr, "Not enough cards in deck");
+    
+  }
   
-  for(int i=0 ;i<fc->n_decks;i++){
+  deck_t d;
+  
+  card_t *c;
+  
+  for(size_t i=0; i<fc->n_decks; i++){
     
-    if(fc->decks[i].n_cards == 0) continue;
+    c = deck->cards[i];
     
-    for(int x=0 ;x<fc->decks[i].n_cards ;x++){
+    d = fc->decks[i];
+    
+    for(size_t j=0; j<d.n_cards; j++){
       
-      (*(fc->decks[i].cards[x])).value=(*(deck->cards[i])).value;
+      (*(d.cards[j])).value = (*c).value;
       
-      (*(fc->decks[i].cards[x])).suit=(*(deck->cards[i])).suit;
+      (*(d.cards[j])).suit = (*c).suit;
       
     }
     
   }
   
 }
-
