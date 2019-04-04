@@ -1,4 +1,4 @@
-Grading at Thu Apr  4 08:30:55 UTC 2019
+Grading at Thu Apr  4 08:49:16 UTC 2019
 Running 'make clean' to do a clean build of your project
 rm -rf *.o poker *~
 Running 'make poker OTHERFLAGS=-O3' to build your project
@@ -11,51 +11,161 @@ gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o main.o main.c
 gcc -o poker -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3 cards.o deck.o eval.o future.o input.o main.o
  - Starting with some Texas Hold'em hands
 Running a simulation with 20000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 20000
 Running a simulation with 25000 draws for 3 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==25862== Memcheck, a memory error detector
+==25862== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==25862== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==25862== Command: ./poker inp.txt 25000
+==25862== Parent PID: 25861
+==25862== 
+==25862== Invalid read of size 8
+==25862==    at 0x4024B1: build_hand_from_match (eval.c:168)
+==25862==    by 0x4024B1: evaluate_hand (eval.c:306)
+==25862==    by 0x4029F2: compare_hands (eval.c:180)
+==25862==    by 0x400AEB: actScore (main.c:32)
+==25862==    by 0x400AEB: main (main.c:101)
+==25862==  Address 0x5205bd8 is 0 bytes after a block of size 56 alloc'd
+==25862==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25862==    by 0x401270: add_card_to (deck.c:53)
+==25862==    by 0x401270: add_empty_card (deck.c:64)
+==25862==    by 0x402CB0: hand_from_string (input.c:28)
+==25862==    by 0x402DF6: read_input (input.c:50)
+==25862==    by 0x400A17: main (main.c:91)
+==25862== 
+==25862== Invalid read of size 8
+==25862==    at 0x4024B1: build_hand_from_match (eval.c:168)
+==25862==    by 0x4024B1: evaluate_hand (eval.c:306)
+==25862==    by 0x402A02: compare_hands (eval.c:181)
+==25862==    by 0x400AEB: actScore (main.c:32)
+==25862==    by 0x400AEB: main (main.c:101)
+==25862==  Address 0x5206448 is 0 bytes after a block of size 56 alloc'd
+==25862==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25862==    by 0x401270: add_card_to (deck.c:53)
+==25862==    by 0x401270: add_empty_card (deck.c:64)
+==25862==    by 0x402CB0: hand_from_string (input.c:28)
+==25862==    by 0x402DF6: read_input (input.c:50)
+==25862==    by 0x400A17: main (main.c:91)
+==25862== 
+==25862== 
+==25862== HEAP SUMMARY:
+==25862==     in use at exit: 352 bytes in 23 blocks
+==25862==   total heap usage: 100,206 allocs, 100,183 frees, 2,821,520 bytes allocated
+==25862== 
+==25862== LEAK SUMMARY:
+==25862==    definitely lost: 16 bytes in 1 blocks
+==25862==    indirectly lost: 336 bytes in 22 blocks
+==25862==      possibly lost: 0 bytes in 0 blocks
+==25862==    still reachable: 0 bytes in 0 blocks
+==25862==         suppressed: 0 bytes in 0 blocks
+==25862== Rerun with --leak-check=full to see details of leaked memory
+==25862== 
+==25862== For counts of detected and suppressed errors, rerun with: -v
+==25862== ERROR SUMMARY: 1601 errors from 2 contexts (suppressed: 0 from 0)
 Running a simulation with 25000 draws for 3 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Test case passed!    
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 25000
 Running a simulation with 25000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 25000
 Running a simulation with 80000 draws for 4 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Hand 3 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==25960== Memcheck, a memory error detector
+==25960== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==25960== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==25960== Command: ./poker inp3.txt 80000
+==25960== Parent PID: 25959
+==25960== 
+==25960== Invalid read of size 8
+==25960==    at 0x4024B1: build_hand_from_match (eval.c:168)
+==25960==    by 0x4024B1: evaluate_hand (eval.c:306)
+==25960==    by 0x402A02: compare_hands (eval.c:181)
+==25960==    by 0x400AEB: actScore (main.c:32)
+==25960==    by 0x400AEB: main (main.c:101)
+==25960==  Address 0x52060f0 is 8 bytes after a block of size 56 alloc'd
+==25960==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25960==    by 0x401270: add_card_to (deck.c:53)
+==25960==    by 0x401270: add_empty_card (deck.c:64)
+==25960==    by 0x402CB0: hand_from_string (input.c:28)
+==25960==    by 0x402DF6: read_input (input.c:50)
+==25960==    by 0x400A17: main (main.c:91)
+==25960== 
+==25960== Invalid read of size 8
+==25960==    at 0x4024B1: build_hand_from_match (eval.c:168)
+==25960==    by 0x4024B1: evaluate_hand (eval.c:306)
+==25960==    by 0x4029F2: compare_hands (eval.c:180)
+==25960==    by 0x400AEB: actScore (main.c:32)
+==25960==    by 0x400AEB: main (main.c:101)
+==25960==  Address 0x52060f0 is 8 bytes after a block of size 56 alloc'd
+==25960==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25960==    by 0x401270: add_card_to (deck.c:53)
+==25960==    by 0x401270: add_empty_card (deck.c:64)
+==25960==    by 0x402CB0: hand_from_string (input.c:28)
+==25960==    by 0x402DF6: read_input (input.c:50)
+==25960==    by 0x400A17: main (main.c:91)
+==25960== 
+==25960== 
+==25960== Process terminating with default action of signal 6 (SIGABRT): dumping core
+==25960==    at 0x4E6F428: raise (raise.c:54)
+==25960==    by 0x4E71029: abort (abort.c:89)
+==25960==    by 0x4EB17E9: __libc_message (libc_fatal.c:175)
+==25960==    by 0x4F5311B: __fortify_fail (fortify_fail.c:37)
+==25960==    by 0x4F530BF: __stack_chk_fail (stack_chk_fail.c:28)
+==25960==    by 0x401C1F: build_hand_from_match (eval.c:175)
+==25960==    by 0x40293E: evaluate_hand (eval.c:350)
+==25960==    by 0x402A02: compare_hands (eval.c:181)
+==25960==    by 0x400AEB: actScore (main.c:32)
+==25960==    by 0x400AEB: main (main.c:101)
+==25960== 
+==25960== HEAP SUMMARY:
+==25960==     in use at exit: 2,364 bytes in 116 blocks
+==25960==   total heap usage: 584 allocs, 468 frees, 27,564 bytes allocated
+==25960== 
+==25960== LEAK SUMMARY:
+==25960==    definitely lost: 16 bytes in 1 blocks
+==25960==    indirectly lost: 448 bytes in 29 blocks
+==25960==      possibly lost: 0 bytes in 0 blocks
+==25960==    still reachable: 1,900 bytes in 86 blocks
+==25960==         suppressed: 0 bytes in 0 blocks
+==25960== Rerun with --leak-check=full to see details of leaked memory
+==25960== 
+==25960== For counts of detected and suppressed errors, rerun with: -v
+==25960== ERROR SUMMARY: 23 errors from 2 contexts (suppressed: 0 from 0)
 Running a simulation with 30000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 30000
  - Next, few Seven Card Stud hands
 Running a simulation with 30000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 30000
 Running a simulation with 40000 draws for 3 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Test case passed!    
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 40000
  - Then one from a completely made up poker variant
 Running a simulation with 100000 draws for 6 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Hand 3 was close enough to our answer
-    Hand 4 was close enough to our answer
-    Hand 5 was close enough to our answer
-    Test case passed!    
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 100000
 
-Overall Grade: A
+Overall Grade: F
