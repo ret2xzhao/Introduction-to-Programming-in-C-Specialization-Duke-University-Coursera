@@ -233,7 +233,7 @@ int com1(card_t c1,card_t c2){
   return 0;  
 }
 
-unsigned * get_match_counts(deck_t * hand); /*{
+unsigned * get_match_counts(deck_t * hand) {
   unsigned * array = malloc(hand->n_cards * sizeof(*array));
   for(int i=0; i<hand->n_cards; i++) {
     int counter = 0;
@@ -246,7 +246,7 @@ unsigned * get_match_counts(deck_t * hand); /*{
   }
   return array;
 }
-*/
+
 // We provide the below functions.  You do NOT need to modify them
 // In fact, you should not modify them!
 
