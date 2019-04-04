@@ -174,7 +174,6 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     
   return result;
 }
-*/
 
 hand_eval_t build_hand_from_match(deck_t * hand,
 				  unsigned n,
@@ -203,6 +202,36 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     }
   }
   return result;
+}
+*/
+
+hand_eval_t build_hand_from_match(deck_t * hand,
+				  unsigned n,
+				  hand_ranking_t what,
+				  size_t idx) {
+  hand_eval_t ans;
+  ans.ranking = what;
+  // Copy "n" cards from the hand, starting at "idx"
+  // into the first "n" elements of the "cards" array
+  // of "ans"
+  for(int i=0; i<n; i++) {
+    ans.cards[i] = hand->cards[idx+i];    // see eval.h
+  }
+  // Fill the remainder of the "cards" array with the
+  // highest-value cards from the hand which were not
+  // in the "n of a kind".
+  int i=n;
+  int j=0;
+  for(i<5 && j<idx; i++, j++) {
+    ans.cards[i] = hand->cards[j];
+  }
+  if(i < 5) {
+    j=idx+n;
+    for(i<5; i++, j++) {
+      ans.cards[i] = hand->cards[j];
+    }
+  }
+  return ans;
 }
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
