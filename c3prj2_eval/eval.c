@@ -146,55 +146,65 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
 }
 
 hand_eval_t build_hand_from_match(deck_t * hand,
-                                  unsigned n,
-                                  hand_ranking_t what,
-                                  size_t idx) {
-  hand_eval_t result;
-  result.ranking = what;
-  if (idx==0) {
-    for (int i=0; i<5; i++) {
-      result.cards[i] = hand->cards[i];
+				  unsigned n,
+				  hand_ranking_t what,
+				  size_t idx) {
+  
+  hand_eval_t ans;
+  ans.ranking = what;
+  card_t ** dk_card_ptr = hand-> cards;
+  card_t cur_card = **dk_card_ptr;
+  unsigned n_k_val = (**(dk_card_ptr+idx)).value;
+  unsigned delta_ptr = 0;
+
+  if(n==0){
+    while(delta_ptr<5){
+      *(ans.cards + delta_ptr) = *(dk_card_ptr + delta_ptr);
+      delta_ptr++;
     }
+    return ans;
   }
-  else if (idx > 0) {
-    for (int i=0; i<n; i++) {
-      result.cards[i] = hand->cards[idx+i];
-    }
-    for (int i=0; i<idx; i++) {
-      result.cards[n+i] = hand->cards[i];
-    }
-    for (int i=idx+n; i<5; i++) {
-      result.cards[i] = hand->cards[i];
-    }
+
+  while(delta_ptr<n){
+    *(ans.cards + delta_ptr) = *(dk_card_ptr + idx + delta_ptr);
+    delta_ptr++;
   }
-  return result;
+
+  int count = 0;
+  while(delta_ptr<5){
+    cur_card =  **(dk_card_ptr+count);
+    if(cur_card.value != n_k_val){
+      *(ans.cards + delta_ptr) = *(dk_card_ptr + count);
+      delta_ptr++;
+    }
+    count++;
+  }
+
+  return ans;
 }
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
   qsort(hand2->cards, hand2->n_cards, sizeof(hand2->cards[0]), card_ptr_comp);
-
-  hand_eval_t hand1_val = evaluate_hand(hand1);
-  hand_eval_t hand2_val = evaluate_hand(hand2);
-
-  card_t ** hand1_ptr = hand1_val.cards;
-  card_t ** hand2_ptr = hand2_val.cards;
-
-  if(hand1_val.ranking != hand2_val.ranking){
-    if(hand1_val.ranking <  hand2_val.ranking) return 1;
-    else return -1;
+  hand_eval_t result1 = evaluate_hand(hand1);
+  hand_eval_t result2 = evaluate_hand(hand2);
+  if (result1.ranking > result2.ranking) {
+    return -1;
   }
-  else{
-    unsigned cpr_val1 = (**hand1_ptr).value;
-    unsigned cpr_val2 = (**hand2_ptr).value;
-    for(int i=0; i<5; i++){
-      cpr_val1 = (**(hand1_ptr+i)).value;
-      cpr_val2 = (**(hand2_ptr+i)).value;
-      if(cpr_val1 > cpr_val2)  return 1;
-      else if(cpr_val1 < cpr_val2)  return -1;
+  else if (result1.ranking < result2.ranking) {
+    return 1;
+  }
+  else {
+    for (int i=0; i<5; i++) {
+      if (result1.cards[i]->value > result2.cards[i]->value) {
+        return 1;
+      }
+      else if (result1.cards[i]->value < result2.cards[i]->value) {
+        return -1;
+      }
     }
+    return 0;
   }
-  return 0;
 }
 
 int com1(card_t c1,card_t c2){
