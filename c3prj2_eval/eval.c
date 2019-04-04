@@ -149,37 +149,31 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  unsigned n,
 				  hand_ranking_t what,
 				  size_t idx) {
-  
+
+ 
   hand_eval_t ans;
+  card_t**card = hand -> cards;
+  unsigned count =n;
+ 
   ans.ranking = what;
-  card_t ** dk_card_ptr = hand-> cards;
-  card_t cur_card = **dk_card_ptr;
-  unsigned n_k_val = (**(dk_card_ptr+idx)).value;
-  unsigned delta_ptr = 0;
-
-  if(n==0){
-    while(delta_ptr<5){
-      *(ans.cards + delta_ptr) = *(dk_card_ptr + delta_ptr);
-      delta_ptr++;
+  
+  for(size_t i=0 ; i< n ; i++){
+    ans.cards[i] = *(card +idx+i);
+  }
+  if (n < 5){
+    for(size_t i=0 ; i< idx ; i++){  
+      ans.cards[i+n] = *(card +i);
+      count ++;
+      if (count == 5 )  break;
     }
-    return ans;
-  }
-
-  while(delta_ptr<n){
-    *(ans.cards + delta_ptr) = *(dk_card_ptr + idx + delta_ptr);
-    delta_ptr++;
-  }
-
-  int count = 0;
-  while(delta_ptr<5){
-    cur_card =  **(dk_card_ptr+count);
-    if(cur_card.value != n_k_val){
-      *(ans.cards + delta_ptr) = *(dk_card_ptr + count);
-      delta_ptr++;
+    if (count < 5){
+      for (size_t i=n+idx ; i < hand -> n_cards+1 ; i++ ){
+	ans.cards[count]=*(card +i);
+	count ++;
+	if (count >= 5) break;}
     }
-    count++;
   }
-
+    
   return ans;
 }
 
