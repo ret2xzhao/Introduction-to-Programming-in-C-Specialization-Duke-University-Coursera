@@ -144,7 +144,7 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
   }
   return 0;
 }
-
+/*
 hand_eval_t build_hand_from_match(deck_t * hand,
 				  unsigned n,
 				  hand_ranking_t what,
@@ -172,6 +172,38 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     }
   }
     
+  return result;
+}
+*/
+
+hand_eval_t build_hand_from_match(deck_t * hand,
+				  unsigned n,
+				  hand_ranking_t what,
+				  size_t idx) {
+  hand_eval_t result;
+  result.ranking = what;
+  unsigned count =n;  
+  for (size_t i=0; i<n; i++) {
+    result.cards[i] = hand->cards[idx+i];
+  }
+  if (n < 5) {
+    for (size_t i=0; i<idx; i++) {  
+      result.cards[i+n] = hand->cards[i];
+      count ++;
+      if (count == 5 ) {
+        break;
+      }
+    }
+    if (count < 5) {
+      for (size_t i=n+idx; i<hand->n_cards+1; i++) {
+        result.cards[count]=hand->cards[i];
+        count ++;
+      }
+      if (count >= 5) {
+        break;
+      }
+    }
+  }    
   return result;
 }
 
