@@ -210,25 +210,30 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  hand_ranking_t what,
 				  size_t idx) {
 
-  hand_eval_t ans;
-  ans.ranking = what; //set hand ranking
-
-  // fill in array of pointers 
-  for (unsigned i=0; i<n; i++) {
-    ans.cards[i] = hand->cards[idx+i];
-  }
+ 
+  hand_eval_t result;
+  result.ranking = what;
+  card_t**card = hand -> cards;
+  unsigned count =n;
   
-  // fill in best remaining cards
-  // fill in end of ans array with the cards before idx in your hand
-  for (unsigned i=0; i<idx; i++) {
-    ans.cards[n+i] = hand->cards[i];
+  for(size_t i=0 ; i< n ; i++){
+    result.cards[i] = hand->cards[idx+i];
   }
-  // fill in the end of ans array with the cards after idx+n in your hand
-  for (unsigned i=idx+n; i<5; i++) {
-    ans.cards[i] = hand->cards[i];
+  if (n < 5){
+    for(size_t i=0 ; i< idx ; i++){  
+      result.cards[i+n] = hand->cards[i];
+      count ++;
+      if (count == 5 )  break;
+    }
+    if (count < 5){
+      for (size_t i=n+idx ; i < hand -> n_cards+1 ; i++ ){
+	result.cards[count]=hand->cards[i];
+	count ++;
+	if (count >= 5) break;}
+    }
   }
-
-  return ans;
+    
+  return result;
 }
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
