@@ -213,7 +213,6 @@ hand_eval_t build_hand_from_match(deck_t * hand,
  
   hand_eval_t result;
   result.ranking = what;
-  card_t**card = hand -> cards;
   unsigned count =n;
   
   for(size_t i=0 ; i< n ; i++){
